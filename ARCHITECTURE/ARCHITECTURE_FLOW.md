@@ -23,7 +23,7 @@
 │ • Returns anycast IP address (multiple PoPs can answer)     │
 │ • Handles failover if primary PoP is down                   │
 │ • Caches results locally with TTL                           │
-│                                                              │
+│                                                             │
 │ Component: CloudBridge DNS Network                          │
 │ Performance: Sub-millisecond response time                  │
 └──────────────────────────┬──────────────────────────────────┘
@@ -31,14 +31,14 @@
                            ▼
 ┌─────────────────────────────────────────────────────────────┐
 │ STEP 2: CREDENTIAL VALIDATION                               │
-│ CloudBridge Control Plane (Zitadel OIDC)                   │
+│ CloudBridge Control Plane (Zitadel OIDC)                    │
 │ ─────────────────────────────────────────────────────────   │
 │ • Client authenticates with Control Plane                   │
 │ • Validates credentials via Zitadel OIDC/OAuth2             │
 │ • Issues JWT token for PoP access                           │
 │ • Enforces tenant quotas and rate limits                    │
 │ • Checks multi-factor authentication if required            │
-│                                                              │
+│                                                             │
 │ Component: CloudBridge Control Plane                        │
 │ Features: Service accounts, PAT generation, RBAC, ABAC      │
 │ Performance: < 100ms validation                             │
@@ -49,14 +49,14 @@
 │ STEP 3: THREAT DETECTION & MITIGATION                       │
 │ CloudBridge DDoS Protection                                 │
 │ ─────────────────────────────────────────────────────────   │
-│ • Analyzes incoming traffic patterns                         │
+│ • Analyzes incoming traffic patterns                        │
 │ • ML-based anomaly detection checks for threats             │
 │ • Detects volumetric attacks, protocol anomalies            │
 │ • Validates client JWT token authenticity                   │
 │ • Enforces rate limiting policies                           │
-│ • Activates XDP/eBPF filters if attack detected            │
+│ • Activates XDP/eBPF filters if attack detected             │
 │ • Blocks malicious sources via BGP Flowspec                 │
-│                                                              │
+│                                                             │
 │ Component: CloudBridge DDoS Protection                      │
 │ Capacity: 800,000 requests/second                           │
 │ Detection latency: < 100ms                                  │
@@ -74,9 +74,9 @@
 │ • Connection multiplexing (multiple streams)                │
 │ • 0-RTT session resumption                                  │
 │ • Connection migration for seamless handover                │
-│                                                              │
+│                                                             │
 │ PoP Locations: Moscow, Frankfurt, Amsterdam                 │
-│ Latency: < 1ms (P2P), < 5ms (via 1 PoP)                    │
+│ Latency: < 1ms (P2P), < 5ms (via 1 PoP)                     │
 │ Component: CloudBridge Scalable Relay                       │
 │ Per PoP Throughput: 100 Gbps aggregate                      │
 └──────────────────────────┬──────────────────────────────────┘
@@ -86,13 +86,13 @@
 │ STEP 5: METRICS COLLECTION                                  │
 │ CloudBridge Monitoring                                      │
 │ ─────────────────────────────────────────────────────────   │
-│ • All PoPs export performance metrics                        │
+│ • All PoPs export performance metrics                       │
 │ • QUIC and protocol statistics collected                    │
 │ • BBRv3 congestion window state tracked                     │
 │ • Error rates, packet loss, latency recorded                │
 │ • Throughput measurements aggregated                        │
 │ • Health check results compiled                             │
-│                                                              │
+│                                                             │
 │ Component: CloudBridge Monitoring                           │
 │ Framework: Prometheus + Grafana                             │
 │ Total Metrics: 300+                                         │
@@ -112,7 +112,7 @@
 │ • Calculates optimal route recommendations                  │
 │ • Predicts client latency experience                        │
 │ • Auto-retrains models nightly                              │
-│                                                              │
+│                                                             │
 │ Component: CloudBridge AI Service                           │
 │ Frameworks: TensorFlow 2.12, PyTorch 2.0                    │
 │ Processing: 9-phase neural network pipeline                 │
@@ -123,13 +123,13 @@
                            ▼
 ┌─────────────────────────────────────────────────────────────┐
 │ STEP 7: FEEDBACK LOOP & OPTIMIZATION                        │
-│                                                              │
+│                                                             │
 │ • AI sends optimization hints back to Relay PoPs            │
 │ • Load balancing weights adjusted                           │
 │ • BGP route preferences updated                             │
 │ • Congestion avoidance recommendations applied              │
 │ • Connection pooling strategies adjusted                    │
-│                                                              │
+│                                                             │
 │ • Control Plane distributes policy updates                  │
 │ • New rate limiting rules deployed                          │
 │ • Tenant quota adjustments propagated                       │
@@ -147,7 +147,7 @@
 │ • Alert generation for threshold breaches                   │
 │ • Anomaly detection alerts sent to operations               │
 │ • Notifications via email, Slack, PagerDuty                 │
-│                                                              │
+│                                                             │
 │ Component: CloudBridge Dashboard                            │
 │ Technology: Next.js 15 + React frontend                     │
 │ Pre-built Dashboards: 12+                                   │

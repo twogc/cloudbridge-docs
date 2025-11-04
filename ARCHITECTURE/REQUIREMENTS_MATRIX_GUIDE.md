@@ -320,10 +320,10 @@ See Implementation Roadmap section at end of **REQUIREMENTS MATRIX**
 
 Feature: Real-time Model Updates (AI Service, Q1 2026)
 Prerequisites:
-- ❌ Model training pipeline (Not started) ← BLOCKER
-- ❌ New attack sample collection (Partial) ← BLOCKER
-- ❌ Model versioning system (Not started) ← BLOCKER
-- ✅ Metrics collection pipeline (Ready)
+- Model training pipeline (Not started) ← BLOCKER
+- New attack sample collection (Partial) ← BLOCKER
+- Model versioning system (Not started) ← BLOCKER
+- Metrics collection pipeline (Ready)
 
 → Can't start this feature until 3 blockers are resolved.
 
@@ -331,10 +331,10 @@ Prerequisites:
 
 Feature: WireGuard Tunnel Integration (Relay, Q4 2025)
 Prerequisites:
-- ✅ WireGuard kernel module (Ready)
-- ✅ WireGuard Go library (Ready)
-- ❌ Tunnel configuration management (Stub) ← BLOCKER
-- ❌ Key exchange mechanism (Designed, not implemented) ← BLOCKER
+- WireGuard kernel module (Ready)
+- WireGuard Go library (Ready)
+- Tunnel configuration management (Stub) ← BLOCKER
+- Key exchange mechanism (Designed, not implemented) ← BLOCKER
 
 → Can start in parallel: WireGuard setup while implementing Tunnel config.
 

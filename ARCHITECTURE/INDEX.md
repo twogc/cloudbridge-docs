@@ -350,7 +350,7 @@ Step 8: Operations Visibility
 
 ```
                 **COMPLETE ARCHITECTURE GUIDE** (Central Hub)
-                        |
+                         |
         _________________|___________________
         |                                   |
         v                                   v

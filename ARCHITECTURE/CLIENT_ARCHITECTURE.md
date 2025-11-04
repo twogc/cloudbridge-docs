@@ -30,52 +30,52 @@ CloudBridge Relay Client is a production-ready, cross-platform P2P mesh networki
 ┌─────────────────────────────────────────────────────────────────┐
 │                  CloudBridge Relay Client                       │
 │                                                                 │
-│  ┌─────────────────────────────────────────────────────────┐  │
-│  │                    CLI Interface                        │  │
-│  │  (cloudbridge-client init/join/p2p/tunnel/service)     │  │
-│  └────────────────────┬────────────────────────────────────┘  │
+│  ┌─────────────────────────────────────────────────────────┐    │
+│  │                    CLI Interface                        │    │
+│  │  (cloudbridge-client init/join/p2p/tunnel/service)      │    │
+│  └────────────────────┬────────────────────────────────────┘    │
 │                       │                                         │
-│  ┌────────────────────▼────────────────────────────────────┐  │
-│  │              Config Management                         │  │
-│  │  (YAML loader, env vars, hot-reload, watcher)         │  │
-│  └────────────────────┬────────────────────────────────────┘  │
+│  ┌────────────────────▼────────────────────────────────────┐    │
+│  │              Config Management                          │    │
+│  │  (YAML loader, env vars, hot-reload, watcher)           │    │
+│  └────────────────────┬────────────────────────────────────┘    │
 │                       │                                         │
-│  ┌────────────────────▼────────────────────────────────────┐  │
-│  │            Main Relay Client                           │  │
-│  │  (Connect, Authenticate, CreateTunnel, Heartbeat)      │  │
-│  │                                                        │  │
-│  │  ┌──────────┐ ┌──────────┐ ┌──────────┐ ┌──────────┐ │  │
-│  │  │ Auth     │ │ P2P      │ │ Tunnel   │ │ Metrics  │ │  │
-│  │  │ Manager  │ │ Manager  │ │ Manager  │ │          │ │  │
-│  │  └──────────┘ └──────────┘ └──────────┘ └──────────┘ │  │
-│  └────────────────────┬────────────────────────────────────┘  │
+│  ┌────────────────────▼────────────────────────────────────┐    │
+│  │            Main Relay Client                            │    │
+│  │  (Connect, Authenticate, CreateTunnel, Heartbeat)       │    │
+│  │                                                         │    │
+│  │  ┌──────────┐ ┌──────────┐ ┌──────────┐ ┌──────────┐ │  │    │
+│  │  │ Auth     │ │ P2P      │ │ Tunnel   │ │ Metrics  │ │  │    │
+│  │  │ Manager  │ │ Manager  │ │ Manager  │ │          │ │  │    │
+│  │  └──────────┘ └──────────┘ └──────────┘ └──────────┘ │  │    │
+│  └────────────────────┬────────────────────────────────────┘    │
 │                       │                                         │
-│  ┌────────────────────▼────────────────────────────────────┐  │
-│  │           Transport Layer Selection                    │  │
-│  │  (Intelligent fallback: QUIC → gRPC → WebSocket)      │  │
-│  └────────────────────┬────────────────────────────────────┘  │
+│  ┌────────────────────▼────────────────────────────────────┐    │
+│  │           Transport Layer Selection                     │    │
+│  │  (Intelligent fallback: QUIC → gRPC → WebSocket)        │    │
+│  └────────────────────┬────────────────────────────────────┘    │
 │                       │                                         │
-│   ┌───────┬───────┬───┴────┬────────┬─────────┐              │
-│   │       │       │        │        │         │              │
-│  ▼       ▼       ▼        ▼        ▼         ▼              │
-│ ┌───┐ ┌────┐ ┌──────┐ ┌──────┐ ┌─────┐ ┌──────┐             │
-│ │Q  │ │gRPC│ │WebSo │ │QUIC  │ │TURN │ │DERP  │             │
-│ │U  │ │    │ │cket  │ │Strms │ │Rela │ │Fall  │             │
-│ │I  │ │    │ │      │ │      │ │y    │ │back  │             │
-│ │C  │ │    │ │      │ │      │ │     │ │      │             │
-│ └───┘ └────┘ └──────┘ └──────┘ └─────┘ └──────┘             │
-│                                                              │
-│  ┌──────────────────────────────────────────────────────┐  │
-│  │         Network Layer (NAT Traversal)                │  │
-│  │  ICE, STUN, TURN, DERP - Pion Library               │  │
-│  └──────────────────────────────────────────────────────┘  │
-│                                                              │
-│  ┌──────────────────────────────────────────────────────┐  │
-│  │         Platform Services                            │  │
-│  │  systemd / launchd / Windows Service                │  │
-│  └──────────────────────────────────────────────────────┘  │
-│                                                              │
-└─────────────────────────────────────────────────────────────┘
+│   ┌───────┬───────┬───┴────┬────────┬─────────┐                 │
+│   │       │       │        │        │         │                 │
+│   ▼       ▼       ▼        ▼        ▼         ▼                 │
+│ ┌───┐  ┌────┐  ┌──────┐ ┌──────┐ ┌─────┐  ┌──────┐              │
+│ │Q  │  │gRPC│  │WebSo │ │QUIC  │ │TURN │  │DERP  │              │
+│ │U  │  │    │  │cket  │ │Strms │ │Rela │  │Fall  │              │
+│ │I  │  │    │  │      │ │      │ │y    │  │back  │              │
+│ │C  │  │    │  │      │ │      │ │     │  │      │              │
+│ └───┘  └────┘  └──────┘ └──────┘ └─────┘  └──────┘              │
+│                                                                 │
+│  ┌──────────────────────────────────────────────────────┐       │
+│  │         Network Layer (NAT Traversal)                │       │
+│  │  ICE, STUN, TURN, DERP - Pion Library                │       │
+│  └──────────────────────────────────────────────────────┘       │
+│                                                                 │
+│  ┌──────────────────────────────────────────────────────┐       │
+│  │         Platform Services                            │       │
+│  │  systemd / launchd / Windows Service                 │       │
+│  └──────────────────────────────────────────────────────┘       │
+│                                                                 │
+└─────────────────────────────────────────────────────────────────┘
 
                         ▼
                   Relay Server
@@ -772,77 +772,77 @@ Per-tenant WireGuard interface:
 
 **Complete & Production-Ready:**
 
-✅ **JWT Authentication**
+**JWT Authentication**
 - Token validation with RS256 signature
 - Custom claims extraction
 - Token caching (1 hour)
 - Expiration checking
 
-✅ **OIDC Integration (Zitadel)**
+**OIDC Integration (Zitadel)**
 - JWKS discovery and caching
 - Issuer verification
 - Audience validation
 - Scope support
 
-✅ **P2P Mesh Networking**
+**P2P Mesh Networking**
 - Automatic peer discovery
 - Multi-protocol connectivity (QUIC/gRPC/WebSocket)
 - ICE/STUN/TURN/DERP fallback
 - L3-overlay with WireGuard
 
-✅ **Tunnel Mode (Port Forwarding)**
+**Tunnel Mode (Port Forwarding)**
 - TCP port forwarding
 - Local port binding
 - Remote address proxying
 - Per-tunnel statistics
 
-✅ **Heartbeat & Keep-Alive**
+**Heartbeat & Keep-Alive**
 - Periodic heartbeat to relay
 - Exponential backoff on failure
 - Jitter to prevent thundering herd
 - Automatic reconnection
 
-✅ **Configuration System**
+**Configuration System**
 - YAML-based configuration
 - Environment variable overrides
 - CLI flag overrides
 - Hot-reload support
 
-✅ **Prometheus Metrics**
+**Prometheus Metrics**
 - Client connection metrics
 - P2P session statistics
 - Transport mode tracking
 - Latency histograms
 - Error counters
 
-✅ **Service Integration**
+**Service Integration**
 - systemd (Linux)
 - launchd (macOS)
 - Windows Service
 
-✅ **Error Handling**
+**Error Handling**
 - Classified error codes
 - Retry strategies per error type
 - Exponential backoff
 - Circuit breaker pattern
 
-✅ **Cross-Platform Support**
+**Cross-Platform Support**
 - Linux (x86_64, ARM64, i386)
 - macOS (x86_64, ARM64)
 - Windows (x86_64, i386)
 
-✅ **OS Keyring Integration**
+**OS Keyring Integration**
 - Windows Credential Manager
 - macOS Keychain
 - Linux libsecret
 
-✅ **Interactive Setup**
+**Interactive Setup**
 - Step-by-step configuration wizard
 - Validation of each setting
 - Guided relay selection
 - Token setup
 
-✅ **Health Checks**
+**Health Checks**
 - Network connectivity testing
 - Configuration validation
 - Authentication status
@@ -873,15 +873,15 @@ Per-tenant WireGuard interface:
 
 ### 5.3 Not Implemented
 
-❌ **Mobile SDKs**
+**Mobile SDKs**
 - iOS support
 - Android support
 
-❌ **Advanced Analytics**
+**Advanced Analytics**
 - Machine learning on client metrics
 - Anomaly detection
 
-❌ **Hardware TPM**
+**Hardware TPM**
 - TPM 2.0 support for key storage
 
 ---
@@ -1482,7 +1482,7 @@ Branch (Tenant B)
 
 ```
 Mobile Device          Relay         Enterprise Network
-  (Cellular)            │                    │
+  (Cellular)             │                    │
      │                   │                    │
      ├─ QUIC attempt     │                    │
      │  (usually blocked)│
@@ -1496,8 +1496,8 @@ Mobile Device          Relay         Enterprise Network
      │  (if direct fails)│
      │                   │
      └──────wss://───────┼────────→ Enterprise VPN
-                        │           or Tunnel
-         Connects to    │
+                         │           or Tunnel
+         Connects to     │
          office P2P mesh
 ```
 
