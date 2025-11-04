@@ -40,7 +40,7 @@
 
 ### PRIMARY DOCUMENTS (Read These)
 
-#### 1. **COMPLETE ARCHITECTURE GUIDE** (14 KB)
+#### 1. **COMPLETE ARCHITECTURE GUIDE**
 **Purpose:** Comprehensive single-document architecture overview
 
 **Contents:**
@@ -68,7 +68,7 @@
 
 ---
 
-#### 2. **TENANT ISOLATION ARCHITECTURE** (23 KB)
+#### 2. **TENANT ISOLATION ARCHITECTURE**
 **Purpose:** Deep dive into multi-tenancy and isolation mechanisms
 
 **Contents:**
@@ -100,7 +100,7 @@
 
 ---
 
-#### 3. **PROJECT OVERVIEW** (21 KB)
+#### 3. **PROJECT OVERVIEW**
 **Purpose:** Complete system architecture with 8 components
 
 **Contents:**
@@ -117,13 +117,13 @@
 - Future roadmap
 
 **Components Covered:**
-1. CloudBridge Scalable Relay (116,598 LOC)
-2. CloudBridge DNS Network (84,063 LOC)
-3. CloudBridge Control Plane (8,272 LOC)
-4. CloudBridge DDoS Protection (2,160,672 LOC)
-5. CloudBridge Monitoring (8,097 LOC)
-6. CloudBridge AI Service (2,314,799 LOC)
-7. CloudBridge Dashboard (1,491,639 LOC)
+1. CloudBridge Scalable Relay
+2. CloudBridge DNS Network
+3. CloudBridge Control Plane
+4. CloudBridge DDoS Protection
+5. CloudBridge Monitoring
+6. CloudBridge AI Service
+7. CloudBridge Dashboard
 8. CloudBridge Edge PoPs (3 global locations)
 
 **Best for:**
@@ -135,7 +135,7 @@
 
 ---
 
-#### 4. **ARCHITECTURE FLOW** (17 KB)
+#### 4. **ARCHITECTURE FLOW**
 **Purpose:** Step-by-step request flow and component interactions
 
 **Contents:**
@@ -166,7 +166,7 @@
 
 ---
 
-#### 5. **NETWORK LAYERS OSI MODEL** (14 KB)
+#### 5. **NETWORK LAYERS OSI MODEL**
 **Purpose:** OSI model implementation (L1-L7 layers)
 
 **Contents:**
@@ -194,7 +194,7 @@
 
 ### SECONDARY DOCUMENTS (Reference)
 
-#### 6. **README** (3.2 KB)
+#### 6. **README**
 **Purpose:** Navigation guide to architecture documents
 
 **Contents:**
@@ -302,15 +302,15 @@ Step 8: Operations Visibility
 
 ## Technology Stack Overview
 
-| Layer | Technology | Purpose | Size |
-|-------|-----------|---------|------|
-| Transport | QUIC (RFC 9000) + BBRv3 | P2P relay | 116 KB |
-| Discovery | GeoDNS | Service discovery | 84 KB |
-| Auth | Zitadel OIDC | Tenant authentication | 8 KB |
-| Protection | TensorFlow + XDP/eBPF | DDoS mitigation | 2,160 KB |
-| Intelligence | TensorFlow + PyTorch | ML optimization | 2,314 KB |
-| Observability | Prometheus + Grafana | Monitoring | 8 KB |
-| Management | Next.js + React | Dashboard UI | 1,491 KB |
+| Layer | Technology | Purpose |
+|-------|-----------|---------|
+| Transport | QUIC (RFC 9000) + BBRv3 | P2P relay |
+| Discovery | GeoDNS | Service discovery |
+| Auth | Zitadel OIDC | Tenant authentication |
+| Protection | TensorFlow + XDP/eBPF | DDoS mitigation |
+| Intelligence | TensorFlow + PyTorch | ML optimization |
+| Observability | Prometheus + Grafana | Monitoring |
+| Management | Next.js + React | Dashboard UI |
 
 ---
 
@@ -378,7 +378,6 @@ Step 8: Operations Visibility
 - 7 OSI Layers
 - 5 Isolation Layers
 - 3 PoP Locations
-- 4,263,341 Lines of Code
 - 300+ Metrics
 - 99.99% Availability SLO
 - 215ms End-to-End Latency

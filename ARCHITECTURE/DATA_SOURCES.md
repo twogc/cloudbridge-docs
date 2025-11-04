@@ -188,8 +188,6 @@ find cloudbridge-dashboard -name "*.ts" -o -name "*.tsx" -o -name "*.js" -o -nam
 
 ### 8. Total Project LOC
 
-**Total:** 4,263,341 Lines of Code
-
 **Breakdown:**
 - Go: ~116,598 + 84,063 + 8,272 + 8,097 = 217,030 LOC
 - Python: ~2,160,672 + 2,314,799 = 4,475,471 LOC

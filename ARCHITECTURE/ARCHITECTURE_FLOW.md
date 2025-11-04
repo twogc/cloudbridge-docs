@@ -24,7 +24,7 @@
 │ • Handles failover if primary PoP is down                   │
 │ • Caches results locally with TTL                           │
 │                                                              │
-│ Component: CloudBridge DNS Network (84,063 LOC)             │
+│ Component: CloudBridge DNS Network                          │
 │ Performance: Sub-millisecond response time                  │
 └──────────────────────────┬──────────────────────────────────┘
                            │ (IP address of nearest PoP)
@@ -39,7 +39,7 @@
 │ • Enforces tenant quotas and rate limits                    │
 │ • Checks multi-factor authentication if required            │
 │                                                              │
-│ Component: CloudBridge Control Plane (8,272 LOC)            │
+│ Component: CloudBridge Control Plane                        │
 │ Features: Service accounts, PAT generation, RBAC, ABAC      │
 │ Performance: < 100ms validation                             │
 └──────────────────────────┬──────────────────────────────────┘
@@ -57,7 +57,7 @@
 │ • Activates XDP/eBPF filters if attack detected            │
 │ • Blocks malicious sources via BGP Flowspec                 │
 │                                                              │
-│ Component: CloudBridge DDoS Protection (2,160,672 LOC)      │
+│ Component: CloudBridge DDoS Protection                      │
 │ Capacity: 800,000 requests/second                           │
 │ Detection latency: < 100ms                                  │
 │ False positive rate: < 0.5%                                 │
@@ -77,7 +77,7 @@
 │                                                              │
 │ PoP Locations: Moscow, Frankfurt, Amsterdam                 │
 │ Latency: < 1ms (P2P), < 5ms (via 1 PoP)                    │
-│ Component: CloudBridge Scalable Relay (116,598 LOC)         │
+│ Component: CloudBridge Scalable Relay                       │
 │ Per PoP Throughput: 100 Gbps aggregate                      │
 └──────────────────────────┬──────────────────────────────────┘
                            │ (Data flowing through network)
@@ -93,7 +93,7 @@
 │ • Throughput measurements aggregated                        │
 │ • Health check results compiled                             │
 │                                                              │
-│ Component: CloudBridge Monitoring (8,097 LOC)               │
+│ Component: CloudBridge Monitoring                           │
 │ Framework: Prometheus + Grafana                             │
 │ Total Metrics: 300+                                         │
 │ Collection Interval: 15 seconds                             │
@@ -113,7 +113,7 @@
 │ • Predicts client latency experience                        │
 │ • Auto-retrains models nightly                              │
 │                                                              │
-│ Component: CloudBridge AI Service (2,314,799 LOC)           │
+│ Component: CloudBridge AI Service                           │
 │ Frameworks: TensorFlow 2.12, PyTorch 2.0                    │
 │ Processing: 9-phase neural network pipeline                 │
 │ Inference Latency: < 100ms per request                      │
@@ -148,7 +148,7 @@
 │ • Anomaly detection alerts sent to operations               │
 │ • Notifications via email, Slack, PagerDuty                 │
 │                                                              │
-│ Component: CloudBridge Dashboard (1,491,639 LOC)            │
+│ Component: CloudBridge Dashboard                            │
 │ Technology: Next.js 15 + React frontend                     │
 │ Pre-built Dashboards: 12+                                   │
 │ Real-time Update Interval: 5 seconds                        │

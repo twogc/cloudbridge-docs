@@ -28,7 +28,6 @@ Then read based on your role (see below).
 ### Primary Reference Documents
 
 #### 1. **CLIENT ARCHITECTURE** (NEW)
-**Size:** 75 KB | **Length:** 1,800+ lines
 **Purpose:** Complete documentation of CloudBridge Relay Client
 
 **Contains:**
@@ -57,7 +56,6 @@ Then read based on your role (see below).
 ---
 
 #### 2. **INDEX**
-**Size:** 11 KB | **Length:** 600+ lines
 **Purpose:** Navigation hub by role
 
 **Contents:**
@@ -71,7 +69,6 @@ Then read based on your role (see below).
 ---
 
 #### 3. **COMPLETE ARCHITECTURE GUIDE**
-**Size:** 14 KB | **Length:** 400+ lines  
 **Purpose:** Single comprehensive reference
 
 **Contains:**
@@ -86,7 +83,6 @@ Then read based on your role (see below).
 ---
 
 #### 4. **TENANT ISOLATION ARCHITECTURE**
-**Size:** 23 KB | **Length:** 840 lines  
 **Purpose:** Multi-tenancy deep dive
 
 **Covers:**
@@ -105,17 +101,16 @@ Then read based on your role (see below).
 ---
 
 #### 5. **PROJECT OVERVIEW**
-**Size:** 21 KB | **Length:** 700+ lines  
 **Purpose:** 8 components with correct ordering
 
 **Describes:**
-1. CloudBridge Scalable Relay (116,598 LOC)
-2. CloudBridge DNS Network (84,063 LOC)
-3. CloudBridge Control Plane (8,272 LOC)
-4. CloudBridge DDoS Protection (2,160,672 LOC)
-5. CloudBridge Monitoring (8,097 LOC)
-6. CloudBridge AI Service (2,314,799 LOC)
-7. CloudBridge Dashboard (1,491,639 LOC)
+1. CloudBridge Scalable Relay
+2. CloudBridge DNS Network
+3. CloudBridge Control Plane
+4. CloudBridge DDoS Protection
+5. CloudBridge Monitoring
+6. CloudBridge AI Service
+7. CloudBridge Dashboard
 8. CloudBridge Edge PoPs (3 global locations)
 
 **Plus:**
@@ -130,7 +125,6 @@ Then read based on your role (see below).
 ---
 
 #### 6. **ARCHITECTURE FLOW**
-**Size:** 17 KB | **Length:** 600+ lines  
 **Purpose:** Request processing pipeline details
 
 **Shows:**
@@ -148,7 +142,6 @@ Then read based on your role (see below).
 ---
 
 #### 7. **NETWORK LAYERS OSI MODEL**
-**Size:** 14 KB | **Length:** 549 lines  
 **Purpose:** OSI model implementation (L1-L7)
 
 **Details:**
@@ -169,7 +162,6 @@ Then read based on your role (see below).
 ### Reference Documents
 
 #### 8. **DATA SOURCES**
-**Size:** 20 KB | **Length:** 700+ lines  
 **Purpose:** Citation and verification of all metrics
 
 **Contains:**
@@ -192,7 +184,6 @@ Then read based on your role (see below).
 ---
 
 #### 9. **REQUIREMENTS MATRIX** (NEW)
-**Size:** 85 KB | **Length:** 2,100+ lines
 **Purpose:** Component requirements, capabilities, and feature roadmap
 
 **Contains - For All 8 Components:**
@@ -229,7 +220,6 @@ Then read based on your role (see below).
 ---
 
 #### 10. **REQUIREMENTS MATRIX GUIDE** (NEW)
-**Size:** 22 KB | **Length:** 650+ lines
 **Purpose:** Quick navigation for the Requirements Matrix
 
 **Contains:**
@@ -242,7 +232,7 @@ Then read based on your role (see below).
 - Examples: common scenarios and how to use the matrix
 
 **Use this for:**
-- Quick navigation (don't read all 2,100 lines!)
+- Quick navigation
 - Finding your specific need
 - Identifying blockers for your feature
 - Planning dependencies
@@ -253,7 +243,6 @@ Then read based on your role (see below).
 ---
 
 #### 11. **README**
-**Size:** 3.2 KB
 **Purpose:** Quick navigation for previous location
 
 **Contains:**
@@ -321,7 +310,6 @@ Then read based on your role (see below).
 - 7 OSI Layers
 - 5 Isolation Layers
 - 3 PoP Locations
-- 4.2 Million LOC
 
 ### Isolation
 - Network: Kubernetes + Calico VRF
@@ -361,8 +349,8 @@ Then read based on your role (see below).
 ```
 
 **New in this version:**
-- **REQUIREMENTS MATRIX** (2,100+ lines) - Components and features with complete requirements
-- **REQUIREMENTS MATRIX GUIDE** (650+ lines) - Quick navigation for the matrix
+- **REQUIREMENTS MATRIX** - Components and features with complete requirements
+- **REQUIREMENTS MATRIX GUIDE** - Quick navigation for the matrix
 
 ---
 
@@ -437,8 +425,6 @@ Then read based on your role (see below).
 
 ## Document Set Overview
 
-**12 Documents in This Series:**
-
 1. **START HERE** - Navigation guide and entry point
 2. **CLIENT ARCHITECTURE** - CloudBridge Relay Client documentation (NEW)
 3. **REQUIREMENTS MATRIX GUIDE** - Quick navigation for the matrix (NEW)
@@ -452,7 +438,7 @@ Then read based on your role (see below).
 11. **REQUIREMENTS MATRIX** - Component requirements and roadmap
 12. **README** - Legacy navigation
 
-**Total Documentation: 12 documents, 8,613 lines, 277 KB**
+ 
 
 ---
 

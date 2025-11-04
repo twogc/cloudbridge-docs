@@ -25,7 +25,6 @@ For each component, you'll find:
 ### Component: Scalable Relay - DNS Module
 
 **Current Implementation Status:** 35% complete (interface-driven, partial stubs)
-**LOC:** 84,063 lines
 **Location:** `internal/dns/*`, `internal/config/dns_config.go`
 
 ### Current Capabilities
@@ -196,7 +195,6 @@ Verification: Send forged DNS packet with bad signature, confirm rejection
 ### Component: Control Plane - Zitadel OIDC Integration
 
 **Current Implementation Status:** 75% complete
-**LOC:** 8,272 lines
 **Location:** `internal/auth/*`, `internal/config/zitadel_config.go`
 
 ### Current Capabilities
@@ -413,7 +411,6 @@ Verification: Enable MFA on test user, provide invalid code (fail), correct code
 ### Component: DDoS Protection - ML + XDP/eBPF
 
 **Current Implementation Status:** 20% complete (framework, Python stubs)
-**LOC:** 2,160,672 lines (includes TensorFlow/PyTorch models)
 **Location:** `internal/ddos/*`, Python ML models in `ml/`
 
 ### Current Capabilities
@@ -646,7 +643,6 @@ Verification: Query GeoIP database, confirm country code matches policy
 ### Component: Scalable Relay - QUIC + BBRv3 + P2P
 
 **Current Implementation Status:** 35% complete (interface-driven, stubs)
-**LOC:** 116,598 lines
 **Location:** `internal/relay/*`, `internal/quic/*`, `internal/p2p/*`, `cmd/relay/`
 
 ### Current Capabilities
@@ -907,7 +903,6 @@ Verification: Monitor tunnel bandwidth, check WireGuard status, verify key rotat
 ### Component: Monitoring - Prometheus + Grafana
 
 **Current Implementation Status:** 75% complete
-**LOC:** 8,097 lines
 **Location:** `internal/monitoring/*`, `deployments/prometheus/`, `deployments/grafana/`
 
 ### Current Capabilities
@@ -1132,7 +1127,6 @@ Verification: Open Jaeger UI, search by trace_id, verify span hierarchy
 ### Component: AI Service - TensorFlow + PyTorch Models
 
 **Current Implementation Status:** 20% complete (framework, model stubs)
-**LOC:** 2,314,799 lines (includes ML frameworks)
 **Location:** `ml/`, `internal/ai/`, Python microservice
 
 ### Current Capabilities
@@ -1406,7 +1400,6 @@ Verification: Monitor A/B test metrics, check model version history
 ### Component: Dashboard - Next.js Frontend + Real-time Updates
 
 **Current Implementation Status:** 50% complete (UI framework, API integration incomplete)
-**LOC:** 1,491,639 lines (includes Next.js/React ecosystem)
 **Location:** `frontend/`, `deployments/dashboard/`
 
 ### Current Capabilities

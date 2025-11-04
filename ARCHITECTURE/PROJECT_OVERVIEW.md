@@ -6,10 +6,10 @@
 
 ## Executive Summary
 
-CloudBridge Global Network is an enterprise-grade P2P mesh networking platform consisting of 8 integrated components with over 4.2 million lines of code. The platform delivers global connectivity with sub-millisecond latency, automatic failover, and advanced traffic optimization.
+CloudBridge Global Network is an enterprise-grade P2P mesh networking platform consisting of 8 integrated components. The platform delivers global connectivity with sub-millisecond latency, automatic failover, and advanced traffic optimization.
 
 **Key Metrics:**
-- Total Code: 4,263,341 lines
+ 
 - Core Components: 8 major projects in pipeline order
 - Test Coverage: 1,260+ tests
 - Availability Target: 99.99% SLO
@@ -33,30 +33,30 @@ CloudBridge Global Network is an enterprise-grade P2P mesh networking platform c
 ```mermaid
 graph TB
     subgraph "Client Layer"
-        CLIENT["CloudBridge Relay Client<br/>Cross-Platform (Linux/macOS/Windows)<br/>QUIC/gRPC/WebSocket<br/>24,365 LOC"]
+        CLIENT["CloudBridge Relay Client<br/>Cross-Platform (Linux/macOS/Windows)<br/>QUIC/gRPC/WebSocket"]
     end
 
     subgraph "Core Transport Layer"
-        RELAY["CloudBridge Scalable Relay<br/>QUIC/MASQUE/WireGuard<br/>116,598 LOC"]
+        RELAY["CloudBridge Scalable Relay<br/>QUIC/MASQUE/WireGuard"]
         EDGE["CloudBridge Edge PoPs<br/>3 Global: Moscow, Frankfurt, Amsterdam<br/>Sub-millisecond RTT"]
     end
 
     subgraph "Discovery & Authentication"
-        DNS["CloudBridge DNS Network<br/>GeoDNS + Service Discovery<br/>84,063 LOC"]
-        CONTROL["CloudBridge Control Plane<br/>Zitadel OIDC<br/>8,272 LOC"]
+        DNS["CloudBridge DNS Network<br/>GeoDNS + Service Discovery"]
+        CONTROL["CloudBridge Control Plane<br/>Zitadel OIDC"]
     end
 
     subgraph "Protection Layer"
-        DDOS["CloudBridge DDoS Protection<br/>ML-based Detection<br/>800k RPS Capacity<br/>2,160,672 LOC"]
+        DDOS["CloudBridge DDoS Protection<br/>ML-based Detection<br/>800k RPS Capacity"]
     end
 
     subgraph "Intelligence Layer"
-        AI["CloudBridge AI Service<br/>ML Routing Optimization<br/>2,314,799 LOC"]
+        AI["CloudBridge AI Service<br/>ML Routing Optimization"]
     end
 
     subgraph "Observability Layer"
-        MONITOR["CloudBridge Monitoring<br/>Prometheus + Grafana<br/>8,097 LOC"]
-        DASHBOARD["CloudBridge Dashboard<br/>Management UI<br/>1,491,639 LOC"]
+        MONITOR["CloudBridge Monitoring<br/>Prometheus + Grafana"]
+        DASHBOARD["CloudBridge Dashboard<br/>Management UI"]
     end
 
     CLIENT --> RELAY
@@ -87,11 +87,10 @@ graph TB
 **Purpose:** Cross-platform client application for connecting to CloudBridge mesh networks.
 
 **Technology Stack:**
-- Language: Go 1.25
-- Platforms: Linux (x86_64, ARM64), macOS (x86_64, ARM64), Windows (x86_64)
-- Protocols: QUIC, gRPC, WebSocket (with intelligent fallback)
-- Authentication: JWT + OIDC (Zitadel)
-- Size: 24,365 lines of code
+ - Language: Go 1.25
+ - Platforms: Linux (x86_64, ARM64), macOS (x86_64, ARM64), Windows (x86_64)
+ - Protocols: QUIC, gRPC, WebSocket (with intelligent fallback)
+ - Authentication: JWT + OIDC (Zitadel)
 
 **Key Features:**
 - Multi-protocol support with automatic fallback (QUIC → gRPC → WebSocket)
@@ -123,10 +122,9 @@ graph TB
 **Purpose:** Ultra-low latency P2P relay with multiple transport protocols.
 
 **Technology Stack:**
-- Language: Go 1.25
-- Protocols: QUIC RFC 9000, MASQUE RFC 9297, WireGuard 1.0
-- Congestion Control: BBRv3 (50% jitter reduction)
-- Size: 116,598 lines of code
+ - Language: Go 1.25
+ - Protocols: QUIC RFC 9000, MASQUE RFC 9297, WireGuard 1.0
+ - Congestion Control: BBRv3 (50% jitter reduction)
 
 **Key Features:**
 - QUIC multiplexing with 0-RTT session resumption
@@ -150,10 +148,9 @@ graph TB
 **Purpose:** Machine learning-based network optimization and anomaly detection.
 
 **Technology Stack:**
-- Language: Python 3.11
-- ML Framework: TensorFlow 2.12, PyTorch 2.0
-- Pipeline: 9 phases of neural processing
-- Size: 2,314,799 lines of code
+ - Language: Python 3.11
+ - ML Framework: TensorFlow 2.12, PyTorch 2.0
+ - Pipeline: 9 phases of neural processing
 
 **AI Capabilities:**
 - Anomaly Detection: Real-time network anomalies
@@ -181,9 +178,8 @@ graph TB
 **Purpose:** Geographic DNS and service discovery with 94% PoP selection accuracy.
 
 **Technology Stack:**
-- Language: Go + Python
-- Protocol: DNS + HTTP APIs
-- Size: 84,063 lines of code
+ - Language: Go + Python
+ - Protocol: DNS + HTTP APIs
 
 **Features:**
 - GeoDNS: Client location-based routing
@@ -211,10 +207,9 @@ graph TB
 **Purpose:** ML-based DDoS detection and mitigation with 800k RPS capacity.
 
 **Technology Stack:**
-- Languages: Python + Go
-- Detection Engine: TensorFlow-based anomaly detection
-- Mitigation: XDP/eBPF kernel-space filtering
-- Size: 2,160,672 lines of code
+ - Languages: Python + Go
+ - Detection Engine: TensorFlow-based anomaly detection
+ - Mitigation: XDP/eBPF kernel-space filtering
 
 **DDoS Capabilities:**
 - Volumetric Attack Protection: Layer 3-4 filtering
@@ -243,11 +238,10 @@ graph TB
 **Purpose:** Identity management, policy enforcement, and workflow orchestration.
 
 **Technology Stack:**
-- Language: Go
-- Identity Provider: Zitadel OIDC/OAuth2
-- Workflow Orchestration: Uber Cadence
-- Configuration: Environment-driven
-- Size: 8,272 lines of code
+ - Language: Go
+ - Identity Provider: Zitadel OIDC/OAuth2
+ - Workflow Orchestration: Uber Cadence
+ - Configuration: Environment-driven
 
 **Authentication and Authorization:**
 - OIDC Provider: Zitadel integration
@@ -276,11 +270,10 @@ graph TB
 **Purpose:** Metrics collection, visualization, and alerting.
 
 **Technology Stack:**
-- Metrics: Prometheus
-- Visualization: Grafana
-- Alerting: AlertManager
-- Time-series DB: Prometheus TSDB
-- Size: 8,097 lines of code
+ - Metrics: Prometheus
+ - Visualization: Grafana
+ - Alerting: AlertManager
+ - Time-series DB: Prometheus TSDB
 
 **Metrics Collection:**
 - Total Metrics: 300+
@@ -312,11 +305,10 @@ graph TB
 **Purpose:** Web-based management UI for operations and self-service provisioning.
 
 **Technology Stack:**
-- Frontend: Next.js 15 (React)
-- Backend: Go BFF (Backend-for-Frontend)
-- Database: PostgreSQL
-- Caching: Redis
-- Size: 1,491,639 lines of code
+ - Frontend: Next.js 15 (React)
+ - Backend: Go BFF (Backend-for-Frontend)
+ - Database: PostgreSQL
+ - Caching: Redis
 
 **Key Pages and Features:**
 

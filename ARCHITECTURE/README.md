@@ -34,7 +34,7 @@ Comprehensive overview of the entire CloudBridge ecosystem including all 8 compo
 - Integration planning
 - Operations and troubleshooting
 
-**Size:** 681 lines, No code, No emoji, 3 Mermaid diagrams
+ 
 
 ---
 
@@ -63,7 +63,7 @@ Deep dive into the OSI model implementation (L1-L7 layers).
 - Security hardening
 - Troubleshooting network issues
 
-**Size:** 549 lines, No code, No emoji, 10 Mermaid diagrams
+ 
 
 ---
 

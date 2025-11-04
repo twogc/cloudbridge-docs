@@ -73,8 +73,7 @@ Need to understand: What features are coming? What dependencies? What timeline?
 - Q: How do I troubleshoot? → Check "Part 12: Troubleshooting & Diagnostics"
 
 **Key Figures:**
-- LOC: 24,365
-- Status: ~95% complete (some features partial)
+ - Status: ~95% complete (some features partial)
 - Platforms: Linux, macOS, Windows
 - Protocols: QUIC, gRPC, WebSocket (auto-fallback)
 
@@ -105,8 +104,7 @@ User/Application → Client (authenticates, discovers, connects)
 - Q: When will failover work? → Check "Futures" (Q4 2025)
 
 **Key Figures:**
-- LOC: 84,063
-- Status: 35% complete
+ - Status: 35% complete
 - Response Time Target: <100ms
 - PoPs: 3 (Moscow, Frankfurt, Amsterdam)
 
@@ -128,8 +126,7 @@ dig relay.cloudbridge.io +short
 - Q: What blocks RBAC? → Check "Prerequisites" (Policy engine)
 
 **Key Figures:**
-- LOC: 8,272
-- Status: 75% complete
+ - Status: 75% complete
 - Token Cache TTL: 3600 seconds
 - Zitadel Domain: zitadel.2gc.io
 
@@ -156,8 +153,7 @@ jwt.io # paste token here
 - Q: What blocks real-time learning? → Check "Prerequisites" (ML training pipeline)
 
 **Key Figures:**
-- LOC: 2,160,672 (includes ML frameworks)
-- Status: 20% complete
+ - Status: 20% complete
 - Detection Threshold: 0.85 confidence
 - Block Duration: 300 seconds
 
@@ -182,8 +178,7 @@ curl http://localhost:9090/api/v1/query?query=ddos_blocked_requests_total
 - Q: What blocks TCP→QUIC? → Check "Prerequisites" (Tunnel Manager not started)
 
 **Key Figures:**
-- LOC: 116,598
-- Status: 35% complete
+ - Status: 35% complete
 - QUIC Listen Port: 4433
 - BBRv3 Jitter Improvement: 50% reduction
 - Throughput Improvement: +0.2%
@@ -211,8 +206,7 @@ ss -t | grep -i bbr
 - Q: What blocks ELK logging? → Check "Prerequisites" (Elasticsearch not started)
 
 **Key Figures:**
-- LOC: 8,097
-- Status: 75% complete
+ - Status: 75% complete
 - Metrics Port: 9090 (Prometheus)
 - Grafana Port: 3000
 - Retention: 15 days
@@ -238,8 +232,7 @@ http://localhost:3000/
 - Q: What blocks federated learning? → Check "Prerequisites" (Not started)
 
 **Key Figures:**
-- LOC: 2,314,799 (includes ML frameworks)
-- Status: 20% complete (framework ready, models stub)
+ - Status: 20% complete (framework ready, models stub)
 - Inference Timeout: 100ms
 - Confidence Threshold: 0.75
 
@@ -261,8 +254,7 @@ http://localhost:3000/
 - Q: What blocks log search? → Check "Prerequisites" (Loki not started)
 
 **Key Figures:**
-- LOC: 1,491,639 (includes React ecosystem)
-- Status: 50% complete
+ - Status: 50% complete
 - Port: 3000
 - Refresh Interval: 5 seconds (default)
 - Theme: Dark (default)
