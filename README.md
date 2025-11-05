@@ -20,10 +20,10 @@ This repository contains comprehensive architecture documentation for CloudBridg
 
 ```
  ARCHITECTURE/
-  START_HERE.md
+  [START_HERE.md](ARCHITECTURE/START_HERE.md)
     Entry point and navigation guide
 
-  CLIENT_ARCHITECTURE.md
+  [CLIENT_ARCHITECTURE.md](ARCHITECTURE/CLIENT_ARCHITECTURE.md)
     Complete CloudBridge Relay Client documentation
       • 8 core components
       • Protocol support (QUIC, gRPC, WebSocket)
@@ -31,96 +31,104 @@ This repository contains comprehensive architecture documentation for CloudBridg
       • Multi-tenancy via JWT claims
       • Troubleshooting guide
 
-  REQUIREMENTS_MATRIX.md
+  [REQUIREMENTS_MATRIX.md](ARCHITECTURE/REQUIREMENTS_MATRIX.md)
     Components requirements and feature roadmap
       • Detailed requirements for 8-step pipeline
       • Current capabilities vs planned futures
       • Prerequisites and blocking dependencies
       • Q4 2025 and Q1 2026 roadmap
 
-  REQUIREMENTS_MATRIX_GUIDE.md
+  [REQUIREMENTS_MATRIX_GUIDE.md](ARCHITECTURE/REQUIREMENTS_MATRIX_GUIDE.md)
     Quick navigation for the matrix
       • By role (Operations, Developers, Planning)
       • By component with quick links
       • Blocking dependencies analysis
       • Real-world examples
 
-  PROJECT_OVERVIEW.md
+  [PROJECT_OVERVIEW.md](ARCHITECTURE/PROJECT_OVERVIEW.md)
     9 components with correct ordering
       • Scalable Relay, DNS Network, Control Plane
       • DDoS Protection, Monitoring, AI Service
       • Dashboard, Client, Edge PoPs
 
-  COMPLETE_ARCHITECTURE_GUIDE.md
+  [COMPLETE_ARCHITECTURE_GUIDE.md](ARCHITECTURE/COMPLETE_ARCHITECTURE_GUIDE.md)
     Central architecture reference
       • 8-step request pipeline
       • Component interactions
       • 5 isolation layers
       • Security & performance
 
-  TENANT_ISOLATION_ARCHITECTURE.md
+  [TENANT_ISOLATION_ARCHITECTURE.md](ARCHITECTURE/TENANT_ISOLATION_ARCHITECTURE.md)
     Multi-tenancy deep dive
       • 5-layer isolation model
       • Calico VRF configuration
       • IPAM and JWT claims
       • Database isolation
 
-  ARCHITECTURE_FLOW.md
+  [ARCHITECTURE_FLOW.md](ARCHITECTURE/ARCHITECTURE_FLOW.md)
     8-step request processing
       • Client journey through system
       • Latency breakdown
       • Failure scenarios
 
-  NETWORK_LAYERS_OSI_MODEL.md
+  [NETWORK_LAYERS_OSI_MODEL.md](ARCHITECTURE/NETWORK_LAYERS_OSI_MODEL.md)
     L1-L7 implementation details
       • Physical to Application layer
       • Protocol details
       • Data flow diagrams
 
-  DNS_NETWORK_ARCHITECTURE.md
+  [DNS_NETWORK_ARCHITECTURE.md](ARCHITECTURE/DNS_NETWORK_ARCHITECTURE.md)
     DNS network architecture
       • Resolution flow, zones, records
       • Anycast, DNSSEC roadmap
       • Integration with Control Plane
 
-  DATA_SOURCES.md
+  [DATA_SOURCES.md](ARCHITECTURE/DATA_SOURCES.md)
     Metric citations and verification
       • Where all metrics come from
       • How to verify specs
       • Testing methodology
 
-  INDEX.md
+  [INDEX.md](ARCHITECTURE/INDEX.md)
     Role-based navigation
       • Architects, Ops, Security, Developers
       • Quick summaries
+
+  [PROTOCOL_STACK.md](ARCHITECTURE/PROTOCOL_STACK.md)
+    Protocol stack architecture
+      • Complete protocol layer details
+      • Implementation specifications
 
   README.md
      Legacy navigation reference
 
  LAB/
-  Experimental_QUIC_Laboratory_Research_Report.md
+  [Experimental_QUIC_Laboratory_Research_Report.md](LAB/Experimental_QUIC_Laboratory_Research_Report.md)
     QUIC protocol lab research results
       • Methodology, setup, raw findings
 
-  Experimental_QUIC_Testing_Report.md
+  [Experimental_QUIC_Testing_Report.md](LAB/Experimental_QUIC_Testing_Report.md)
     Consolidated experimental testing outcomes for QUIC
       • Test matrix, KPIs, conclusions
 
-  QUIC_Laboratory_Research_Report.md
+  [QUIC_Laboratory_Research_Report.md](LAB/QUIC_Laboratory_Research_Report.md)
     QUIC laboratory research (baseline)
       • Latency, loss, congestion profiles
 
-  QUIC_Performance_Comparison_Report.md
+  [QUIC_Performance_Comparison_Report.md](LAB/QUIC_Performance_Comparison_Report.md)
     Comparative performance analysis for QUIC variants
       • Throughput/latency comparison charts
 
-  MASQUE_Laboratory_Research_Report.md
+  [MASQUE_Laboratory_Research_Report.md](LAB/MASQUE_Laboratory_Research_Report.md)
     MASQUE protocol lab research
       • Tunneling performance, overhead, scenarios
 
-  PHASE1_PHASE3_TESTING_REPORT.md
+  [PHASE1_PHASE3_TESTING_REPORT.md](LAB/PHASE1_PHASE3_TESTING_REPORT.md)
     Phase 1–3 testing program summary
       • Objectives, methods, results, next steps
+
+  [README.md](LAB/README.md)
+    Laboratory reports overview and navigation
 ```
 
 ---
@@ -130,16 +138,16 @@ This repository contains comprehensive architecture documentation for CloudBridg
 ### Reading Order
 
 **For everyone:**
-1. Start with **START_HERE** - navigation guide
-2. Use **REQUIREMENTS MATRIX GUIDE** - quick search tool
+1. Start with **[START_HERE](ARCHITECTURE/START_HERE.md)** - navigation guide
+2. Use **[REQUIREMENTS MATRIX GUIDE](ARCHITECTURE/REQUIREMENTS_MATRIX_GUIDE.md)** - quick search tool
 3. Dive into specific documents based on your role
 
 **By Role:**
 
-- **Architects:** START_HERE → COMPLETE ARCHITECTURE GUIDE → REQUIREMENTS MATRIX
-- **Operations:** START_HERE → REQUIREMENTS MATRIX GUIDE → ARCHITECTURE FLOW
-- **Developers:** START_HERE → CLIENT ARCHITECTURE → REQUIREMENTS MATRIX
-- **Planning:** REQUIREMENTS MATRIX GUIDE → REQUIREMENTS MATRIX (Roadmap section)
+- **Architects:** [START_HERE](ARCHITECTURE/START_HERE.md) → [COMPLETE ARCHITECTURE GUIDE](ARCHITECTURE/COMPLETE_ARCHITECTURE_GUIDE.md) → [REQUIREMENTS MATRIX](ARCHITECTURE/REQUIREMENTS_MATRIX.md)
+- **Operations:** [START_HERE](ARCHITECTURE/START_HERE.md) → [REQUIREMENTS MATRIX GUIDE](ARCHITECTURE/REQUIREMENTS_MATRIX_GUIDE.md) → [ARCHITECTURE FLOW](ARCHITECTURE/ARCHITECTURE_FLOW.md)
+- **Developers:** [START_HERE](ARCHITECTURE/START_HERE.md) → [CLIENT ARCHITECTURE](ARCHITECTURE/CLIENT_ARCHITECTURE.md) → [REQUIREMENTS MATRIX](ARCHITECTURE/REQUIREMENTS_MATRIX.md)
+- **Planning:** [REQUIREMENTS MATRIX GUIDE](ARCHITECTURE/REQUIREMENTS_MATRIX_GUIDE.md) → [REQUIREMENTS MATRIX](ARCHITECTURE/REQUIREMENTS_MATRIX.md) (Roadmap section)
 
 ### What You'll Learn
 
@@ -179,33 +187,34 @@ This repository contains comprehensive architecture documentation for CloudBridg
 
 | Document | Purpose | Best For |
 |----------|---------|----------|
-| **START_HERE** | Navigation and guide | First-time readers |
-| **INDEX** | Role-based navigation | Finding your path |
-| **REQUIREMENTS MATRIX GUIDE** | Quick search tool | Finding specific info |
+| **[START_HERE](ARCHITECTURE/START_HERE.md)** | Navigation and guide | First-time readers |
+| **[INDEX](ARCHITECTURE/INDEX.md)** | Role-based navigation | Finding your path |
+| **[REQUIREMENTS MATRIX GUIDE](ARCHITECTURE/REQUIREMENTS_MATRIX_GUIDE.md)** | Quick search tool | Finding specific info |
 
 ### Architecture Overview
 
 | Document | Purpose | Best For |
 |----------|---------|----------|
-| **COMPLETE ARCHITECTURE GUIDE** | Central reference | Understanding whole system |
-| **PROJECT_OVERVIEW** | 9 components | Component descriptions |
-| **ARCHITECTURE_FLOW** | 8-step pipeline | Request processing |
+| **[COMPLETE ARCHITECTURE GUIDE](ARCHITECTURE/COMPLETE_ARCHITECTURE_GUIDE.md)** | Central reference | Understanding whole system |
+| **[PROJECT_OVERVIEW](ARCHITECTURE/PROJECT_OVERVIEW.md)** | 9 components | Component descriptions |
+| **[ARCHITECTURE_FLOW](ARCHITECTURE/ARCHITECTURE_FLOW.md)** | 8-step pipeline | Request processing |
 
 ### Deep Dives
 
 | Document | Purpose | Best For |
 |----------|---------|----------|
-| **CLIENT_ARCHITECTURE** | Client codebase | Client developers |
-| **REQUIREMENTS_MATRIX** | Detailed specs | Detailed requirements |
-| **TENANT_ISOLATION_ARCHITECTURE** | Multi-tenancy | Security teams |
-| **DNS_NETWORK_ARCHITECTURE** | DNS network design | Network/DNS engineers |
+| **[CLIENT_ARCHITECTURE](ARCHITECTURE/CLIENT_ARCHITECTURE.md)** | Client codebase | Client developers |
+| **[REQUIREMENTS_MATRIX](ARCHITECTURE/REQUIREMENTS_MATRIX.md)** | Detailed specs | Detailed requirements |
+| **[TENANT_ISOLATION_ARCHITECTURE](ARCHITECTURE/TENANT_ISOLATION_ARCHITECTURE.md)** | Multi-tenancy | Security teams |
+| **[DNS_NETWORK_ARCHITECTURE](ARCHITECTURE/DNS_NETWORK_ARCHITECTURE.md)** | DNS network design | Network/DNS engineers |
 
 ### References
 
 | Document | Purpose | Best For |
 |----------|---------|----------|
-| **NETWORK_LAYERS_OSI_MODEL** | L1-L7 details | Protocol engineers |
-| **DATA_SOURCES** | Metric citations | Documentation writers |
+| **[NETWORK_LAYERS_OSI_MODEL](ARCHITECTURE/NETWORK_LAYERS_OSI_MODEL.md)** | L1-L7 details | Protocol engineers |
+| **[DATA_SOURCES](ARCHITECTURE/DATA_SOURCES.md)** | Metric citations | Documentation writers |
+| **[PROTOCOL_STACK](ARCHITECTURE/PROTOCOL_STACK.md)** | Protocol stack architecture | Protocol engineers |
 
 ---
 
@@ -213,34 +222,38 @@ This repository contains comprehensive architecture documentation for CloudBridg
 
 ### New Documents Added
 
-1. **CLIENT_ARCHITECTURE.md**
+1. **[CLIENT_ARCHITECTURE.md](ARCHITECTURE/CLIENT_ARCHITECTURE.md)**
    - Complete CloudBridge Relay Client documentation
    - Analysis of 24,365 LOC client codebase
    - 8 core components fully documented
    - Troubleshooting and diagnostics guide
 
-2. **REQUIREMENTS_MATRIX.md**
+2. **[REQUIREMENTS_MATRIX.md](ARCHITECTURE/REQUIREMENTS_MATRIX.md)**
    - Component requirements and capabilities matrix
    - Feature roadmap (Q4 2025, Q1 2026)
    - Prerequisites and blocking dependencies
    - 5-6 test scenarios per component
 
-3. **REQUIREMENTS_MATRIX_GUIDE.md**
+3. **[REQUIREMENTS_MATRIX_GUIDE.md](ARCHITECTURE/REQUIREMENTS_MATRIX_GUIDE.md)**
    - Quick navigation guide for the matrix
    - By role, by component, by feature
    - Blocking dependencies analysis
    - Real-world examples
 
-4. **DNS_NETWORK_ARCHITECTURE.md**
+4. **[DNS_NETWORK_ARCHITECTURE.md](ARCHITECTURE/DNS_NETWORK_ARCHITECTURE.md)**
    - Authoritative/recursive roles, zones, records, caching
    - Anycast design and failover considerations
    - DNSSEC plan and integration with Control Plane
 
+5. **[PROTOCOL_STACK.md](ARCHITECTURE/PROTOCOL_STACK.md)**
+   - Complete protocol stack architecture
+   - Implementation specifications and layer details
+
 ### Updated Documents
 
-- **START_HERE.md** - Now mentions client documentation
-- **PROJECT_OVERVIEW.md** - Added Client as Step 0
-- **REQUIREMENTS_MATRIX_GUIDE.md** - Enhanced with client navigation
+- **[START_HERE.md](ARCHITECTURE/START_HERE.md)** - Now mentions client documentation
+- **[PROJECT_OVERVIEW.md](ARCHITECTURE/PROJECT_OVERVIEW.md)** - Added Client as Step 0
+- **[REQUIREMENTS_MATRIX_GUIDE.md](ARCHITECTURE/REQUIREMENTS_MATRIX_GUIDE.md)** - Enhanced with client navigation
 
 ### Format Changes
 
@@ -335,17 +348,18 @@ git push origin docs/my-update
 
 | Question | Document |
 |----------|----------|
-| ...the overall architecture | **COMPLETE ARCHITECTURE GUIDE** |
-| ...how clients connect | **CLIENT ARCHITECTURE** |
-| ...what each component needs | **REQUIREMENTS MATRIX** |
-| ...what's being built next | **REQUIREMENTS MATRIX** (Roadmap) |
-| ...what's blocking progress | **REQUIREMENTS MATRIX GUIDE** (Blocking) |
-| ...multi-tenancy | **TENANT ISOLATION ARCHITECTURE** |
-| ...the 8-step pipeline | **ARCHITECTURE_FLOW** |
-| ...protocols and layers | **NETWORK_LAYERS_OSI_MODEL** |
-| ...where metrics come from | **DATA_SOURCES** |
-| ...what to read based on my role | **INDEX** |
-| ...DNS network design and anycast | **DNS_NETWORK_ARCHITECTURE** |
+| ...the overall architecture | **[COMPLETE ARCHITECTURE GUIDE](ARCHITECTURE/COMPLETE_ARCHITECTURE_GUIDE.md)** |
+| ...how clients connect | **[CLIENT ARCHITECTURE](ARCHITECTURE/CLIENT_ARCHITECTURE.md)** |
+| ...what each component needs | **[REQUIREMENTS MATRIX](ARCHITECTURE/REQUIREMENTS_MATRIX.md)** |
+| ...what's being built next | **[REQUIREMENTS MATRIX](ARCHITECTURE/REQUIREMENTS_MATRIX.md)** (Roadmap) |
+| ...what's blocking progress | **[REQUIREMENTS MATRIX GUIDE](ARCHITECTURE/REQUIREMENTS_MATRIX_GUIDE.md)** (Blocking) |
+| ...multi-tenancy | **[TENANT ISOLATION ARCHITECTURE](ARCHITECTURE/TENANT_ISOLATION_ARCHITECTURE.md)** |
+| ...the 8-step pipeline | **[ARCHITECTURE_FLOW](ARCHITECTURE/ARCHITECTURE_FLOW.md)** |
+| ...protocols and layers | **[NETWORK_LAYERS_OSI_MODEL](ARCHITECTURE/NETWORK_LAYERS_OSI_MODEL.md)** |
+| ...where metrics come from | **[DATA_SOURCES](ARCHITECTURE/DATA_SOURCES.md)** |
+| ...what to read based on my role | **[INDEX](ARCHITECTURE/INDEX.md)** |
+| ...DNS network design and anycast | **[DNS_NETWORK_ARCHITECTURE](ARCHITECTURE/DNS_NETWORK_ARCHITECTURE.md)** |
+| ...protocol stack architecture | **[PROTOCOL_STACK](ARCHITECTURE/PROTOCOL_STACK.md)** |
 
 ---
 
@@ -406,9 +420,9 @@ Dashboard (Step 7-8) - Visualize & optimize
 
 ### Documentation Questions
 
-- Check **INDEX.md** for role-based navigation
-- Use **REQUIREMENTS_MATRIX_GUIDE.md** to find specific topics
-- Review **START_HERE.md** for getting oriented
+- Check **[INDEX.md](ARCHITECTURE/INDEX.md)** for role-based navigation
+- Use **[REQUIREMENTS_MATRIX_GUIDE.md](ARCHITECTURE/REQUIREMENTS_MATRIX_GUIDE.md)** to find specific topics
+- Review **[START_HERE.md](ARCHITECTURE/START_HERE.md)** for getting oriented
 
 ### Contributing Updates
 
