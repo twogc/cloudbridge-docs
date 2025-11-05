@@ -15,7 +15,6 @@ This repository contains comprehensive architecture documentation for CloudBridg
 - **9 system components** fully documented
 - **40+ features** with implementation status
 - **40+ test scenarios** and use cases
-- **Google Docs/Word ready** format
 
 ### What's Inside
 
