@@ -1,7 +1,7 @@
 # CloudBridge Architecture Documentation - Start Here
 
 **Location:** `/`  
-**Updated:** November 4, 2025  
+**Updated:** November 5, 2025  
 **Status:** Complete Reference Set
 
 ---
@@ -18,6 +18,7 @@ This folder contains complete architecture documentation for CloudBridge platfor
 4. **INDEX** - Document index by role
 5. **COMPLETE ARCHITECTURE GUIDE** - Full architecture overview
 6. **DATA SOURCES** - Where all metrics come from
+7. **DNS NETWORK ARCHITECTURE** - DNS design, anycast, DNSSEC (NEW)
 
 Then read based on your role (see below).
 
@@ -263,6 +264,7 @@ Then read based on your role (see below).
 3. Study: **TENANT ISOLATION ARCHITECTURE** (15 min)
 4. Reference: **REQUIREMENTS MATRIX** (component needs & futures)
 5. Deep dive: **NETWORK LAYERS OSI MODEL** (10 min)
+6. DNS: **DNS NETWORK ARCHITECTURE** (anycast, DNSSEC roadmap) (10 min)
 6. Cite from: **DATA SOURCES** (when documenting)
 
 #### An Operations Engineer
@@ -272,6 +274,7 @@ Then read based on your role (see below).
 4. Study: **PROJECT OVERVIEW** (deployment section) (5 min)
 5. Troubleshoot: **ARCHITECTURE FLOW** (failure scenarios)
 6. Security: **TENANT ISOLATION ARCHITECTURE** (isolation section)
+7. DNS: **DNS NETWORK ARCHITECTURE** (zones, records, failover) (10 min)
 
 #### A Security/Compliance Officer
 1. Start: **REQUIREMENTS MATRIX GUIDE** (dependencies & blockers)
@@ -288,6 +291,7 @@ Then read based on your role (see below).
 4. Study: **ARCHITECTURE FLOW** (request flow) (10 min)
 5. Multi-tenancy: **TENANT ISOLATION ARCHITECTURE** (15 min)
 6. Deep dive: **NETWORK LAYERS OSI MODEL** (10 min)
+7. DNS specifics: **DNS NETWORK ARCHITECTURE** (integration with Control Plane)
 
 ---
 
@@ -343,6 +347,8 @@ Then read based on your role (see below).
     |       |
     |       +---> **NETWORK LAYERS OSI MODEL** (L1-L7)
     |       |
+    |       +---> **DNS NETWORK ARCHITECTURE** (Anycast, DNSSEC, integration)
+    |       |
     |       +---> **DATA SOURCES** (All References)
     |
     +---> **DATA SOURCES** (Citations for all metrics)
@@ -351,6 +357,7 @@ Then read based on your role (see below).
 **New in this version:**
 - **REQUIREMENTS MATRIX** - Components and features with complete requirements
 - **REQUIREMENTS MATRIX GUIDE** - Quick navigation for the matrix
+- **DNS NETWORK ARCHITECTURE** - DNS design, anycast, DNSSEC plan
 
 ---
 
@@ -437,6 +444,7 @@ Then read based on your role (see below).
 10. **DATA SOURCES** - Metric citations and sources
 11. **REQUIREMENTS MATRIX** - Component requirements and roadmap
 12. **README** - Legacy navigation
+13. **DNS NETWORK ARCHITECTURE** - DNS design, anycast, DNSSEC, Control Plane integration (NEW)
 
  
 
@@ -492,7 +500,7 @@ Then read based on your role (see below).
 ---
 
 **Status:** Complete and Current  
-**Last Updated:** November 4, 2025  
+**Last Updated:** November 5, 2025  
 **Audience:** All technical roles  
 **Next Review:** Q4 2025
 
