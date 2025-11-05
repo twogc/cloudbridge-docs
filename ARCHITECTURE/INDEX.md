@@ -1,7 +1,7 @@
 # CloudBridge Architecture Documentation Index
 
-**Version:** 3.0  
-**Updated:** November 4, 2025  
+**Version:** 3.1
+**Updated:** November 5, 2025
 **Status:** Complete Architecture Reference
 
 ---
@@ -192,9 +192,43 @@
 
 ---
 
+#### 6. **DNS NETWORK ARCHITECTURE**
+**Purpose:** CloudBridge DNS Network component deep dive
+
+**Contents:**
+- Geographic intelligence and routing
+- DNS-over-HTTPS (DoH) and DNS-over-TLS (DoT)
+- DNSSEC validation
+- AI-powered optimization
+- Multi-region replication
+- High availability architecture
+- Performance characteristics
+- Security features
+- Monitoring and observability
+- Integration guide
+
+**Best for:**
+- Understanding DNS resolution
+- Geographic routing optimization
+- DNS security implementation
+- Performance tuning
+- Multi-region deployment
+- Client integration
+
+**Key Sections:**
+- Geographic Routing Engine
+- AI Integration Layer
+- Multi-Region Replication
+- Security Architecture (DoH/DoT/DNSSEC)
+- Performance Characteristics
+- API Endpoints
+- Best Practices
+
+---
+
 ### SECONDARY DOCUMENTS (Reference)
 
-#### 6. **README**
+#### 7. **README**
 **Purpose:** Navigation guide to architecture documents
 
 **Contents:**
@@ -351,23 +385,25 @@ Step 8: Operations Visibility
 ```
                 **COMPLETE ARCHITECTURE GUIDE** (Central Hub)
                          |
-        _________________|___________________
-        |                                   |
-        v                                   v
-   **PROJECT OVERVIEW**            **ARCHITECTURE FLOW**
-   (Components & PoPs)            (Request Pipeline)
-        |                                   |
-        |                                   |
-        v                                   v
-   TENANT_ISOLATION_                 NETWORK_LAYERS_
-   ARCHITECTURE.md                   OSI_MODEL.md
-   (Multi-tenancy)                   (OSI Layers)
-        |                                   |
-        |___________________________________|
-                      |
-                      v
-                  **README**
-                (Navigation)
+        _________________|_______________________________
+        |                |                              |
+        v                v                              v
+   **PROJECT         **ARCHITECTURE                DNS_NETWORK_
+   OVERVIEW**         FLOW**                       ARCHITECTURE
+   (Components)      (Pipeline)                    (DNS Layer)
+        |                |                              |
+        |                |                              |
+        v                v                              v
+   TENANT_          NETWORK_                       (Integration
+   ISOLATION_       LAYERS_                         Guide)
+   ARCHITECTURE     OSI_MODEL
+   (Multi-tenancy)  (OSI Layers)
+        |                |
+        |________________|
+                |
+                v
+            **README**
+           (Navigation)
 ```
 
 ---
@@ -418,6 +454,6 @@ Step 8: Operations Visibility
 ---
 
 **Document Status:** Current and Complete
-**Last Verified:** November 4, 2025
+**Last Verified:** November 5, 2025
 **Audience:** All technical roles
 

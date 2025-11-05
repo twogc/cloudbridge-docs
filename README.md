@@ -78,6 +78,12 @@ This repository contains comprehensive architecture documentation for CloudBridg
       • Protocol details
       • Data flow diagrams
 
+  DNS_NETWORK_ARCHITECTURE.md
+    DNS network architecture
+      • Resolution flow, zones, records
+      • Anycast, DNSSEC roadmap
+      • Integration with Control Plane
+
   DATA_SOURCES.md
     Metric citations and verification
       • Where all metrics come from
@@ -168,6 +174,7 @@ This repository contains comprehensive architecture documentation for CloudBridg
 | **CLIENT_ARCHITECTURE** | Client codebase | Client developers |
 | **REQUIREMENTS_MATRIX** | Detailed specs | Detailed requirements |
 | **TENANT_ISOLATION_ARCHITECTURE** | Multi-tenancy | Security teams |
+| **DNS_NETWORK_ARCHITECTURE** | DNS network design | Network/DNS engineers |
 
 ### References
 
@@ -199,6 +206,11 @@ This repository contains comprehensive architecture documentation for CloudBridg
    - By role, by component, by feature
    - Blocking dependencies analysis
    - Real-world examples
+
+4. **DNS_NETWORK_ARCHITECTURE.md**
+   - Authoritative/recursive roles, zones, records, caching
+   - Anycast design and failover considerations
+   - DNSSEC plan and integration with Control Plane
 
 ### Updated Documents
 
@@ -309,6 +321,7 @@ git push origin docs/my-update
 | ...protocols and layers | **NETWORK_LAYERS_OSI_MODEL** |
 | ...where metrics come from | **DATA_SOURCES** |
 | ...what to read based on my role | **INDEX** |
+| ...DNS network design and anycast | **DNS_NETWORK_ARCHITECTURE** |
 
 ---
 
