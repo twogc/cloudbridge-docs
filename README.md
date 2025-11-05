@@ -440,10 +440,13 @@ Dashboard (Step 7-8) - Visualize & optimize
 
 ---
 
-##  License
+## License
 
-CloudBridge Architecture Documentation
-Copyright 2025 2GC (Two Global Cloud)
+This documentation is licensed under the **MIT License**.
+
+See [LICENSE](LICENSE) file for full license text.
+
+**Copyright (c) 2025 2GC (Two Global Cloud)**
 
 ---
 
