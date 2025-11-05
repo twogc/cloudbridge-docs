@@ -4,7 +4,7 @@ This directory contains comprehensive architectural documentation for the CloudB
 
 ## Core Documents
 
-### 1. **PROJECT OVERVIEW**
+### 1. **[PROJECT OVERVIEW](PROJECT_OVERVIEW.md)**
 
 Comprehensive overview of the entire CloudBridge ecosystem including all 8 components.
 
@@ -38,7 +38,7 @@ Comprehensive overview of the entire CloudBridge ecosystem including all 8 compo
 
 ---
 
-### 2. **NETWORK LAYERS OSI MODEL**
+### 2. **[NETWORK LAYERS OSI MODEL](NETWORK_LAYERS_OSI_MODEL.md)**
 
 Deep dive into the OSI model implementation (L1-L7 layers).
 
@@ -69,33 +69,38 @@ Deep dive into the OSI model implementation (L1-L7 layers).
 
 ## Related Documentation
 
-### ECOSYSTEM_OVERVIEW.md
+### Primary Architecture Documents
 
-Full ecosystem analysis with metrics and component relationships.
+- **[START HERE](START_HERE.md)** - Navigation guide and entry point
+- **[Complete Architecture Guide](COMPLETE_ARCHITECTURE_GUIDE.md)** - Full system architecture overview
+- **[Architecture Flow](ARCHITECTURE_FLOW.md)** - Detailed 8-step request processing pipeline
+- **[Tenant Isolation Architecture](TENANT_ISOLATION_ARCHITECTURE.md)** - Complete 5-layer isolation model
+- **[Protocol Stack](PROTOCOL_STACK.md)** - Complete protocol layer specifications
+- **[DNS Network Architecture](DNS_NETWORK_ARCHITECTURE.md)** - DNS design, anycast, DNSSEC
+- **[Client Architecture](CLIENT_ARCHITECTURE.md)** - CloudBridge Relay Client documentation
 
-### BUILD_FIXES_SUMMARY.md
+### Reference Documents
 
-Build system status and type definitions.
-
-### DOCUMENTATION_UPDATE_SUMMARY.md
-
-Documentation updates and verification status.
+- **[Requirements Matrix](REQUIREMENTS_MATRIX.md)** - Component requirements and capabilities
+- **[Requirements Matrix Guide](REQUIREMENTS_MATRIX_GUIDE.md)** - Quick navigation for the matrix
+- **[Data Sources](DATA_SOURCES.md)** - Metric definitions and verification
+- **[INDEX](INDEX.md)** - Role-based navigation and document index
 
 ---
 
 ## Quick Navigation
 
 **For Administrators:**
-Start with **PROJECT OVERVIEW**, then reference **NETWORK LAYERS OSI MODEL** for specific layer details.
+Start with **[PROJECT OVERVIEW](PROJECT_OVERVIEW.md)**, then reference **[NETWORK LAYERS OSI MODEL](NETWORK_LAYERS_OSI_MODEL.md)** for specific layer details.
 
 **For Developers:**
-Read **NETWORK LAYERS OSI MODEL** first for protocol details, then **PROJECT OVERVIEW** for integration points.
+Read **[NETWORK LAYERS OSI MODEL](NETWORK_LAYERS_OSI_MODEL.md)** first for protocol details, then **[PROJECT OVERVIEW](PROJECT_OVERVIEW.md)** for integration points. See also **[CLIENT ARCHITECTURE](CLIENT_ARCHITECTURE.md)** for client implementation.
 
 **For Operations:**
-Focus on **PROJECT OVERVIEW** deployment topology and operational runbooks, plus **NETWORK LAYERS OSI MODEL** monitoring section.
+Focus on **[PROJECT OVERVIEW](PROJECT_OVERVIEW.md)** deployment topology and operational runbooks, plus **[NETWORK LAYERS OSI MODEL](NETWORK_LAYERS_OSI_MODEL.md)** monitoring section. See **[ARCHITECTURE FLOW](ARCHITECTURE_FLOW.md)** for request processing flow.
 
 **For Security Teams:**
-Read the Security Architecture sections in both documents.
+Read the Security Architecture sections in both documents. See **[TENANT ISOLATION ARCHITECTURE](TENANT_ISOLATION_ARCHITECTURE.md)** for complete multi-tenancy model.
 
 ---
 
@@ -116,7 +121,9 @@ Read the Security Architecture sections in both documents.
 
 ---
 
-**Last Updated:** November 3, 2025  
+---
+
+**Last Updated:** November 5, 2025  
 **Status:** Current and Accurate  
 **Audience:** All technical roles
 

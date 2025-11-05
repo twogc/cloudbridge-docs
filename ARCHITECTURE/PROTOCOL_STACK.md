@@ -13,6 +13,8 @@ CloudBridge использует **пять специализированных
 
 **Ключевой принцип**: *Right protocol for the right job* — каждый протокол оптимизирован для своего сценария использования.
 
+See **[Network Layers OSI Model](NETWORK_LAYERS_OSI_MODEL.md)** for OSI layer implementation details and **[Complete Architecture Guide](COMPLETE_ARCHITECTURE_GUIDE.md)** for full system architecture.
+
 ---
 
 ## Table of Contents
@@ -463,14 +465,14 @@ masque:
 │  (Behind NAT)                                  (Behind NAT) │
 │                                                             │
 │  Step 1: Gather Candidates                                  │
-│  ┌─────────────┐                              ┌───────────┐ │
-│  │ Host:       │                              │ Host:     │ │
-│  │ 10.0.0.5    │                              │ 10.0.1.8  │ │
-│  │             │                              │           │ │
-│  │ Server Reflex (via STUN):                 │ Server     │ │
-│  │ 203.0.113.5:41234                          │ Reflex:   │ │
-│  │             │                              │ 198.51... │ │
-│  └─────────────┘                              └───────────┘ │
+│  ┌──────────────────────────┐                 ┌───────────┐ │
+│  │ Host:                    │                 │ Host:     │ │
+│  │ 10.0.0.5                 │                 │ 10.0.1.8  │ │
+│  │                          │                 │           │ │
+│  │ Server Reflex (via STUN):│                 │ Server    │ │
+│  │ 203.0.113.5:41234        │                 │ Reflex:   │ │
+│  │                          │                 │ 198.51... │ │
+│  └──────────────────────────┘                 └───────────┘ │
 │         │                                            │      │
 │         │ Step 2: Exchange via Signaling Server      │      │
 │         │           (WebSocket/CloudBridge)          │      │
@@ -1416,7 +1418,14 @@ wg show wg0 dump | grep handshake
 **Last Review**: November 5, 2025
 **Next Review**: February 2026
 
-**Related Documents**:
-- [DNS Network Architecture](DNS_NETWORK_ARCHITECTURE.md)
-- [Security Architecture](SECURITY_ARCHITECTURE.md)
-- [Deployment Architecture](DEPLOYMENT_ARCHITECTURE.md)
+## Related Documentation
+
+- **[Network Layers OSI Model](NETWORK_LAYERS_OSI_MODEL.md)** - OSI model implementation details (L1-L7)
+- **[Complete Architecture Guide](COMPLETE_ARCHITECTURE_GUIDE.md)** - Full system architecture overview
+- **[Architecture Flow](ARCHITECTURE_FLOW.md)** - Request processing pipeline with protocol details
+- **[DNS Network Architecture](DNS_NETWORK_ARCHITECTURE.md)** - DNS design, anycast, DNSSEC
+- **[Client Architecture](CLIENT_ARCHITECTURE.md)** - How clients use these protocols
+- **[Tenant Isolation Architecture](TENANT_ISOLATION_ARCHITECTURE.md)** - Multi-tenancy and security
+- **[Project Overview](PROJECT_OVERVIEW.md)** - All 8 components with detailed descriptions
+- **[Requirements Matrix](REQUIREMENTS_MATRIX.md)** - Component requirements and capabilities
+- **[Data Sources](DATA_SOURCES.md)** - Metric definitions and verification
