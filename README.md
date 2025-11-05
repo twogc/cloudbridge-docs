@@ -97,6 +97,31 @@ This repository contains comprehensive architecture documentation for CloudBridg
 
   README.md
      Legacy navigation reference
+
+ LAB/
+  Experimental_QUIC_Laboratory_Research_Report.md
+    QUIC protocol lab research results
+      • Methodology, setup, raw findings
+
+  Experimental_QUIC_Testing_Report.md
+    Consolidated experimental testing outcomes for QUIC
+      • Test matrix, KPIs, conclusions
+
+  QUIC_Laboratory_Research_Report.md
+    QUIC laboratory research (baseline)
+      • Latency, loss, congestion profiles
+
+  QUIC_Performance_Comparison_Report.md
+    Comparative performance analysis for QUIC variants
+      • Throughput/latency comparison charts
+
+  MASQUE_Laboratory_Research_Report.md
+    MASQUE protocol lab research
+      • Tunneling performance, overhead, scenarios
+
+  PHASE1_PHASE3_TESTING_REPORT.md
+    Phase 1–3 testing program summary
+      • Objectives, methods, results, next steps
 ```
 
 ---
