@@ -12,13 +12,14 @@ This folder contains complete architecture documentation for CloudBridge platfor
 
 ### Reading Order
 
-1. **START HERE** (this document) - Navigation guide
-2. **CLIENT ARCHITECTURE** - CloudBridge Relay Client (NEW)
-3. **REQUIREMENTS MATRIX GUIDE** - Find what you need (NEW)
-4. **INDEX** - Document index by role
-5. **COMPLETE ARCHITECTURE GUIDE** - Full architecture overview
-6. **DATA SOURCES** - Where all metrics come from
-7. **DNS NETWORK ARCHITECTURE** - DNS design, anycast, DNSSEC (NEW)
+1. **[START HERE](START_HERE.md)** (this document) - Navigation guide
+2. **[CLIENT ARCHITECTURE](CLIENT_ARCHITECTURE.md)** - CloudBridge Relay Client (NEW)
+3. **[REQUIREMENTS MATRIX GUIDE](REQUIREMENTS_MATRIX_GUIDE.md)** - Find what you need (NEW)
+4. **[INDEX](INDEX.md)** - Document index by role
+5. **[COMPLETE ARCHITECTURE GUIDE](COMPLETE_ARCHITECTURE_GUIDE.md)** - Full architecture overview
+6. **[DATA SOURCES](DATA_SOURCES.md)** - Where all metrics come from
+7. **[DNS NETWORK ARCHITECTURE](DNS_NETWORK_ARCHITECTURE.md)** - DNS design, anycast, DNSSEC (NEW)
+8. **[PROTOCOL STACK](PROTOCOL_STACK.md)** - Protocol stack architecture (NEW)
 
 Then read based on your role (see below).
 
@@ -28,7 +29,7 @@ Then read based on your role (see below).
 
 ### Primary Reference Documents
 
-#### 1. **CLIENT ARCHITECTURE** (NEW)
+#### 1. **[CLIENT ARCHITECTURE](CLIENT_ARCHITECTURE.md)** (NEW)
 **Purpose:** Complete documentation of CloudBridge Relay Client
 
 **Contains:**
@@ -56,7 +57,7 @@ Then read based on your role (see below).
 
 ---
 
-#### 2. **INDEX**
+#### 2. **[INDEX](INDEX.md)**
 **Purpose:** Navigation hub by role
 
 **Contents:**
@@ -69,7 +70,7 @@ Then read based on your role (see below).
 
 ---
 
-#### 3. **COMPLETE ARCHITECTURE GUIDE**
+#### 3. **[COMPLETE ARCHITECTURE GUIDE](COMPLETE_ARCHITECTURE_GUIDE.md)**
 **Purpose:** Single comprehensive reference
 
 **Contains:**
@@ -83,7 +84,7 @@ Then read based on your role (see below).
 
 ---
 
-#### 4. **TENANT ISOLATION ARCHITECTURE**
+#### 4. **[TENANT ISOLATION ARCHITECTURE](TENANT_ISOLATION_ARCHITECTURE.md)**
 **Purpose:** Multi-tenancy deep dive
 
 **Covers:**
@@ -101,7 +102,7 @@ Then read based on your role (see below).
 
 ---
 
-#### 5. **PROJECT OVERVIEW**
+#### 5. **[PROJECT OVERVIEW](PROJECT_OVERVIEW.md)**
 **Purpose:** 8 components with correct ordering
 
 **Describes:**
@@ -125,7 +126,7 @@ Then read based on your role (see below).
 
 ---
 
-#### 6. **ARCHITECTURE FLOW**
+#### 6. **[ARCHITECTURE FLOW](ARCHITECTURE_FLOW.md)**
 **Purpose:** Request processing pipeline details
 
 **Shows:**
@@ -142,7 +143,7 @@ Then read based on your role (see below).
 
 ---
 
-#### 7. **NETWORK LAYERS OSI MODEL**
+#### 7. **[NETWORK LAYERS OSI MODEL](NETWORK_LAYERS_OSI_MODEL.md)**
 **Purpose:** OSI model implementation (L1-L7)
 
 **Details:**
@@ -160,9 +161,24 @@ Then read based on your role (see below).
 
 ---
 
+#### 8. **[PROTOCOL STACK](PROTOCOL_STACK.md)** (NEW)
+**Purpose:** Complete protocol stack architecture and implementation
+
+**Details:**
+- Full protocol stack from physical to application layer
+- Detailed implementation specifications for each layer
+- Protocol interactions and dependencies
+- Configuration and deployment considerations
+
+**Plus:** Complete protocol specifications, integration points, performance characteristics
+
+**Start here if:** You need comprehensive protocol stack details or implementation specifications
+
+---
+
 ### Reference Documents
 
-#### 8. **DATA SOURCES**
+#### 9. **[DATA SOURCES](DATA_SOURCES.md)**
 **Purpose:** Citation and verification of all metrics
 
 **Contains:**
@@ -184,7 +200,7 @@ Then read based on your role (see below).
 
 ---
 
-#### 9. **REQUIREMENTS MATRIX** (NEW)
+#### 10. **[REQUIREMENTS MATRIX](REQUIREMENTS_MATRIX.md)** (NEW)
 **Purpose:** Component requirements, capabilities, and feature roadmap
 
 **Contains - For All 8 Components:**
@@ -220,7 +236,7 @@ Then read based on your role (see below).
 
 ---
 
-#### 10. **REQUIREMENTS MATRIX GUIDE** (NEW)
+#### 11. **[REQUIREMENTS MATRIX GUIDE](REQUIREMENTS_MATRIX_GUIDE.md)** (NEW)
 **Purpose:** Quick navigation for the Requirements Matrix
 
 **Contains:**
@@ -243,7 +259,7 @@ Then read based on your role (see below).
 
 ---
 
-#### 11. **README**
+#### 12. **README**
 **Purpose:** Quick navigation for previous location
 
 **Contains:**
@@ -259,39 +275,41 @@ Then read based on your role (see below).
 ### If you are...
 
 #### An Architect
-1. Start: **REQUIREMENTS MATRIX GUIDE** (5 min - overview)
-2. Read: **COMPLETE ARCHITECTURE GUIDE** (5 min)
-3. Study: **TENANT ISOLATION ARCHITECTURE** (15 min)
-4. Reference: **REQUIREMENTS MATRIX** (component needs & futures)
-5. Deep dive: **NETWORK LAYERS OSI MODEL** (10 min)
-6. DNS: **DNS NETWORK ARCHITECTURE** (anycast, DNSSEC roadmap) (10 min)
-6. Cite from: **DATA SOURCES** (when documenting)
+1. Start: **[REQUIREMENTS MATRIX GUIDE](REQUIREMENTS_MATRIX_GUIDE.md)** (5 min - overview)
+2. Read: **[COMPLETE ARCHITECTURE GUIDE](COMPLETE_ARCHITECTURE_GUIDE.md)** (5 min)
+3. Study: **[TENANT ISOLATION ARCHITECTURE](TENANT_ISOLATION_ARCHITECTURE.md)** (15 min)
+4. Reference: **[REQUIREMENTS MATRIX](REQUIREMENTS_MATRIX.md)** (component needs & futures)
+5. Deep dive: **[NETWORK LAYERS OSI MODEL](NETWORK_LAYERS_OSI_MODEL.md)** (10 min)
+6. Protocol stack: **[PROTOCOL STACK](PROTOCOL_STACK.md)** (15 min)
+7. DNS: **[DNS NETWORK ARCHITECTURE](DNS_NETWORK_ARCHITECTURE.md)** (anycast, DNSSEC roadmap) (10 min)
+8. Cite from: **[DATA SOURCES](DATA_SOURCES.md)** (when documenting)
 
 #### An Operations Engineer
-1. Start: **REQUIREMENTS MATRIX GUIDE** (find your component)
-2. Read: **ARCHITECTURE FLOW** (10 min)
-3. Reference: **REQUIREMENTS MATRIX** (component capabilities & use cases)
-4. Study: **PROJECT OVERVIEW** (deployment section) (5 min)
-5. Troubleshoot: **ARCHITECTURE FLOW** (failure scenarios)
-6. Security: **TENANT ISOLATION ARCHITECTURE** (isolation section)
-7. DNS: **DNS NETWORK ARCHITECTURE** (zones, records, failover) (10 min)
+1. Start: **[REQUIREMENTS MATRIX GUIDE](REQUIREMENTS_MATRIX_GUIDE.md)** (find your component)
+2. Read: **[ARCHITECTURE FLOW](ARCHITECTURE_FLOW.md)** (10 min)
+3. Reference: **[REQUIREMENTS MATRIX](REQUIREMENTS_MATRIX.md)** (component capabilities & use cases)
+4. Study: **[PROJECT OVERVIEW](PROJECT_OVERVIEW.md)** (deployment section) (5 min)
+5. Troubleshoot: **[ARCHITECTURE FLOW](ARCHITECTURE_FLOW.md)** (failure scenarios)
+6. Security: **[TENANT ISOLATION ARCHITECTURE](TENANT_ISOLATION_ARCHITECTURE.md)** (isolation section)
+7. DNS: **[DNS NETWORK ARCHITECTURE](DNS_NETWORK_ARCHITECTURE.md)** (zones, records, failover) (10 min)
 
 #### A Security/Compliance Officer
-1. Start: **REQUIREMENTS MATRIX GUIDE** (dependencies & blockers)
-2. Read: **TENANT ISOLATION ARCHITECTURE** (20 min)
-3. Reference: **REQUIREMENTS MATRIX** (prerequisites & dependencies)
-4. Study: **NETWORK LAYERS OSI MODEL** (L6-L7) (10 min)
-5. Verify: **COMPLETE ARCHITECTURE GUIDE** (compliance section)
-6. Cite: **DATA SOURCES** (all metrics)
+1. Start: **[REQUIREMENTS MATRIX GUIDE](REQUIREMENTS_MATRIX_GUIDE.md)** (dependencies & blockers)
+2. Read: **[TENANT ISOLATION ARCHITECTURE](TENANT_ISOLATION_ARCHITECTURE.md)** (20 min)
+3. Reference: **[REQUIREMENTS MATRIX](REQUIREMENTS_MATRIX.md)** (prerequisites & dependencies)
+4. Study: **[NETWORK LAYERS OSI MODEL](NETWORK_LAYERS_OSI_MODEL.md)** (L6-L7) (10 min)
+5. Verify: **[COMPLETE ARCHITECTURE GUIDE](COMPLETE_ARCHITECTURE_GUIDE.md)** (compliance section)
+6. Cite: **[DATA SOURCES](DATA_SOURCES.md)** (all metrics)
 
 #### A Developer/Engineer
-1. Start: **REQUIREMENTS MATRIX GUIDE** (find your component)
-2. Reference: **REQUIREMENTS MATRIX** (inputs, outputs, blockers, futures)
-3. Read: **COMPLETE ARCHITECTURE GUIDE** (10 min)
-4. Study: **ARCHITECTURE FLOW** (request flow) (10 min)
-5. Multi-tenancy: **TENANT ISOLATION ARCHITECTURE** (15 min)
-6. Deep dive: **NETWORK LAYERS OSI MODEL** (10 min)
-7. DNS specifics: **DNS NETWORK ARCHITECTURE** (integration with Control Plane)
+1. Start: **[REQUIREMENTS MATRIX GUIDE](REQUIREMENTS_MATRIX_GUIDE.md)** (find your component)
+2. Reference: **[REQUIREMENTS MATRIX](REQUIREMENTS_MATRIX.md)** (inputs, outputs, blockers, futures)
+3. Read: **[COMPLETE ARCHITECTURE GUIDE](COMPLETE_ARCHITECTURE_GUIDE.md)** (10 min)
+4. Study: **[ARCHITECTURE FLOW](ARCHITECTURE_FLOW.md)** (request flow) (10 min)
+5. Multi-tenancy: **[TENANT ISOLATION ARCHITECTURE](TENANT_ISOLATION_ARCHITECTURE.md)** (15 min)
+6. Deep dive: **[NETWORK LAYERS OSI MODEL](NETWORK_LAYERS_OSI_MODEL.md)** (10 min)
+7. Protocol stack: **[PROTOCOL STACK](PROTOCOL_STACK.md)** (implementation details) (15 min)
+8. DNS specifics: **[DNS NETWORK ARCHITECTURE](DNS_NETWORK_ARCHITECTURE.md)** (integration with Control Plane)
 
 ---
 
@@ -347,6 +365,8 @@ Then read based on your role (see below).
     |       |
     |       +---> **NETWORK LAYERS OSI MODEL** (L1-L7)
     |       |
+    |       +---> **PROTOCOL STACK** (Protocol stack architecture)
+    |       |
     |       +---> **DNS NETWORK ARCHITECTURE** (Anycast, DNSSEC, integration)
     |       |
     |       +---> **DATA SOURCES** (All References)
@@ -358,6 +378,7 @@ Then read based on your role (see below).
 - **REQUIREMENTS MATRIX** - Components and features with complete requirements
 - **REQUIREMENTS MATRIX GUIDE** - Quick navigation for the matrix
 - **DNS NETWORK ARCHITECTURE** - DNS design, anycast, DNSSEC plan
+- **PROTOCOL STACK** - Complete protocol stack architecture and implementation
 
 ---
 
@@ -366,43 +387,46 @@ Then read based on your role (see below).
 ### "I need to understand..."
 
 **...what each component needs (inputs/outputs)**
-→ **REQUIREMENTS MATRIX** (Section for your component)
+→ **[REQUIREMENTS MATRIX](REQUIREMENTS_MATRIX.md)** (Section for your component)
 
 **...what features are coming and what blocks them**
-→ **REQUIREMENTS MATRIX GUIDE** (Futures section)
-→ **REQUIREMENTS MATRIX** (Futures/Prerequisites sections)
+→ **[REQUIREMENTS MATRIX GUIDE](REQUIREMENTS_MATRIX_GUIDE.md)** (Futures section)
+→ **[REQUIREMENTS MATRIX](REQUIREMENTS_MATRIX.md)** (Futures/Prerequisites sections)
 
 **...how to test if a component is working**
-→ **REQUIREMENTS MATRIX** (Use Cases section for your component)
+→ **[REQUIREMENTS MATRIX](REQUIREMENTS_MATRIX.md)** (Use Cases section for your component)
 
 **...what's blocking my feature development**
-→ **REQUIREMENTS MATRIX GUIDE** (Finding Blocking Dependencies)
-→ **REQUIREMENTS MATRIX** (Prerequisites for Futures)
+→ **[REQUIREMENTS MATRIX GUIDE](REQUIREMENTS_MATRIX_GUIDE.md)** (Finding Blocking Dependencies)
+→ **[REQUIREMENTS MATRIX](REQUIREMENTS_MATRIX.md)** (Prerequisites for Futures)
 
 **...the Q4 2025 and Q1 2026 roadmap**
-→ **REQUIREMENTS MATRIX** (Implementation Roadmap section)
-→ **REQUIREMENTS MATRIX GUIDE** (Key Statistics - Blocking Items)
+→ **[REQUIREMENTS MATRIX](REQUIREMENTS_MATRIX.md)** (Implementation Roadmap section)
+→ **[REQUIREMENTS MATRIX GUIDE](REQUIREMENTS_MATRIX_GUIDE.md)** (Key Statistics - Blocking Items)
 
 **...the request processing flow**
-→ **ARCHITECTURE FLOW**
+→ **[ARCHITECTURE FLOW](ARCHITECTURE_FLOW.md)**
 
 **...how multi-tenancy works**
-→ **TENANT ISOLATION ARCHITECTURE**
+→ **[TENANT ISOLATION ARCHITECTURE](TENANT_ISOLATION_ARCHITECTURE.md)**
 
 **...the system components**
-→ **PROJECT OVERVIEW**
+→ **[PROJECT OVERVIEW](PROJECT_OVERVIEW.md)**
 
 **...network protocols and OSI layers**
-→ **NETWORK LAYERS OSI MODEL**
+→ **[NETWORK LAYERS OSI MODEL](NETWORK_LAYERS_OSI_MODEL.md)**
+
+**...the complete protocol stack**
+→ **[PROTOCOL STACK](PROTOCOL_STACK.md)**
 
 **...where a metric comes from**
-→ **DATA SOURCES**
+→ **[DATA SOURCES](DATA_SOURCES.md)**
 
 **...the complete architecture**
-→ **COMPLETE ARCHITECTURE GUIDE**
+→ **[COMPLETE ARCHITECTURE GUIDE](COMPLETE_ARCHITECTURE_GUIDE.md)**
 
 **...what to read based on my role**
-→ **INDEX**
+→ **[INDEX](INDEX.md)**
 
 ---
 
@@ -432,19 +456,20 @@ Then read based on your role (see below).
 
 ## Document Set Overview
 
-1. **START HERE** - Navigation guide and entry point
-2. **CLIENT ARCHITECTURE** - CloudBridge Relay Client documentation (NEW)
-3. **REQUIREMENTS MATRIX GUIDE** - Quick navigation for the matrix (NEW)
-4. **INDEX** - Navigation by role
-5. **COMPLETE ARCHITECTURE GUIDE** - Central reference
-6. **TENANT ISOLATION ARCHITECTURE** - Multi-tenancy deep dive
-7. **PROJECT OVERVIEW** - 8 components and system overview
-8. **ARCHITECTURE FLOW** - Request processing pipeline
-9. **NETWORK LAYERS OSI MODEL** - L1-L7 implementation details
-10. **DATA SOURCES** - Metric citations and sources
-11. **REQUIREMENTS MATRIX** - Component requirements and roadmap
-12. **README** - Legacy navigation
-13. **DNS NETWORK ARCHITECTURE** - DNS design, anycast, DNSSEC, Control Plane integration (NEW)
+1. **[START HERE](START_HERE.md)** - Navigation guide and entry point
+2. **[CLIENT ARCHITECTURE](CLIENT_ARCHITECTURE.md)** - CloudBridge Relay Client documentation (NEW)
+3. **[REQUIREMENTS MATRIX GUIDE](REQUIREMENTS_MATRIX_GUIDE.md)** - Quick navigation for the matrix (NEW)
+4. **[INDEX](INDEX.md)** - Navigation by role
+5. **[COMPLETE ARCHITECTURE GUIDE](COMPLETE_ARCHITECTURE_GUIDE.md)** - Central reference
+6. **[TENANT ISOLATION ARCHITECTURE](TENANT_ISOLATION_ARCHITECTURE.md)** - Multi-tenancy deep dive
+7. **[PROJECT OVERVIEW](PROJECT_OVERVIEW.md)** - 8 components and system overview
+8. **[ARCHITECTURE FLOW](ARCHITECTURE_FLOW.md)** - Request processing pipeline
+9. **[NETWORK LAYERS OSI MODEL](NETWORK_LAYERS_OSI_MODEL.md)** - L1-L7 implementation details
+10. **[PROTOCOL STACK](PROTOCOL_STACK.md)** - Protocol stack architecture and implementation (NEW)
+11. **[DATA SOURCES](DATA_SOURCES.md)** - Metric citations and sources
+12. **[REQUIREMENTS MATRIX](REQUIREMENTS_MATRIX.md)** - Component requirements and roadmap
+13. **[DNS NETWORK ARCHITECTURE](DNS_NETWORK_ARCHITECTURE.md)** - DNS design, anycast, DNSSEC, Control Plane integration (NEW)
+14. **README** - Legacy navigation
 
  
 
@@ -455,22 +480,22 @@ Then read based on your role (see below).
 ### How to Update Architecture Docs
 
 1. **Changing a metric?**
-   - Update: **DATA SOURCES** (the source)
+   - Update: **[DATA SOURCES](DATA_SOURCES.md)** (the source)
    - Update: All docs that reference it
    - Add: Verification method
 
 2. **Adding a new component?**
-   - Update: **PROJECT OVERVIEW** (component description)
-   - Update: **ARCHITECTURE FLOW** (if in pipeline)
-   - Update: **COMPLETE ARCHITECTURE GUIDE**
-   - Add to: **DATA SOURCES** (LOC, specs)
-   - Update: **INDEX** (metrics section)
+   - Update: **[PROJECT OVERVIEW](PROJECT_OVERVIEW.md)** (component description)
+   - Update: **[ARCHITECTURE FLOW](ARCHITECTURE_FLOW.md)** (if in pipeline)
+   - Update: **[COMPLETE ARCHITECTURE GUIDE](COMPLETE_ARCHITECTURE_GUIDE.md)**
+   - Add to: **[DATA SOURCES](DATA_SOURCES.md)** (LOC, specs)
+   - Update: **[INDEX](INDEX.md)** (metrics section)
 
 3. **Changing isolation model?**
-   - Update: **TENANT ISOLATION ARCHITECTURE** (primary)
-   - Update: **COMPLETE ARCHITECTURE GUIDE** (overview)
-   - Update: **NETWORK LAYERS OSI MODEL** (if layer-specific)
-   - Update: **DATA SOURCES** (if new specs)
+   - Update: **[TENANT ISOLATION ARCHITECTURE](TENANT_ISOLATION_ARCHITECTURE.md)** (primary)
+   - Update: **[COMPLETE ARCHITECTURE GUIDE](COMPLETE_ARCHITECTURE_GUIDE.md)** (overview)
+   - Update: **[NETWORK LAYERS OSI MODEL](NETWORK_LAYERS_OSI_MODEL.md)** (if layer-specific)
+   - Update: **[DATA SOURCES](DATA_SOURCES.md)** (if new specs)
 
 ---
 
@@ -488,14 +513,14 @@ Then read based on your role (see below).
 ## Questions or Issues?
 
 **For documentation questions:**
-- Check **DATA SOURCES** for metric citations
-- Check **INDEX** for role-based navigation
+- Check **[DATA SOURCES](DATA_SOURCES.md)** for metric citations
+- Check **[INDEX](INDEX.md)** for role-based navigation
 - Check specific document table of contents
 
 **For architecture questions:**
-- Review **COMPLETE ARCHITECTURE GUIDE**
-- Check **ARCHITECTURE FLOW** for request flow
-- Review **TENANT ISOLATION ARCHITECTURE** for security
+- Review **[COMPLETE ARCHITECTURE GUIDE](COMPLETE_ARCHITECTURE_GUIDE.md)**
+- Check **[ARCHITECTURE FLOW](ARCHITECTURE_FLOW.md)** for request flow
+- Review **[TENANT ISOLATION ARCHITECTURE](TENANT_ISOLATION_ARCHITECTURE.md)** for security
 
 ---
 
