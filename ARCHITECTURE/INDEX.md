@@ -1,6 +1,6 @@
 # CloudBridge Architecture Documentation Index
 
-**Version:** 3.1
+**Version:** 3.2
 **Updated:** November 5, 2025
 **Status:** Complete Architecture Reference
 
@@ -13,8 +13,9 @@
 **Architects & Designers:**
 1. Start: **COMPLETE ARCHITECTURE GUIDE**
 2. Then: [**PROJECT OVERVIEW**](**PROJECT OVERVIEW**)
-3. Deep dive: [**NETWORK LAYERS OSI MODEL**](**NETWORK LAYERS OSI MODEL**)
-4. Security: [**TENANT ISOLATION ARCHITECTURE**](**TENANT ISOLATION ARCHITECTURE**)
+3. Protocols: [**PROTOCOL STACK ARCHITECTURE**](**PROTOCOL STACK ARCHITECTURE**)
+4. Deep dive: [**NETWORK LAYERS OSI MODEL**](**NETWORK LAYERS OSI MODEL**)
+5. Security: [**TENANT ISOLATION ARCHITECTURE**](**TENANT ISOLATION ARCHITECTURE**)
 
 **Operations & DevOps:**
 1. Start: [**ARCHITECTURE FLOW**](**ARCHITECTURE FLOW**) - Request flow
@@ -31,8 +32,9 @@
 **Developers & Integration:**
 1. Start: **COMPLETE ARCHITECTURE GUIDE**
 2. Then: [**ARCHITECTURE FLOW**](**ARCHITECTURE FLOW**)
-3. Deep dive: [**NETWORK LAYERS OSI MODEL**](**NETWORK LAYERS OSI MODEL**)
-4. Multi-tenancy: [**TENANT ISOLATION ARCHITECTURE**](**TENANT ISOLATION ARCHITECTURE**)
+3. Protocols: [**PROTOCOL STACK ARCHITECTURE**](**PROTOCOL STACK ARCHITECTURE**)
+4. Deep dive: [**NETWORK LAYERS OSI MODEL**](**NETWORK LAYERS OSI MODEL**)
+5. Multi-tenancy: [**TENANT ISOLATION ARCHITECTURE**](**TENANT ISOLATION ARCHITECTURE**)
 
 ---
 
@@ -226,9 +228,46 @@
 
 ---
 
+#### 7. **PROTOCOL STACK ARCHITECTURE**
+**Purpose:** Five-protocol architecture deep dive (QUIC, MASQUE, WebRTC/ICE, WireGuard, WebSocket)
+
+**Contents:**
+- Protocol overview and layering
+- QUIC: Primary transport with BBRv3
+- MASQUE: Corporate network bypass (CONNECT-UDP/IP)
+- WebRTC/ICE: P2P direct connections with NAT traversal
+- WireGuard: Secure P2P tunnels for IoT
+- WebSocket: Control plane signaling
+- Protocol selection decision tree
+- Performance benchmarks (latency, throughput, CPU)
+- Security considerations per protocol
+- Future roadmap (WebTransport, Multipath QUIC, Post-Quantum)
+
+**Best for:**
+- Understanding protocol choices
+- Network architecture decisions
+- Performance optimization
+- Security implementation
+- Corporate firewall bypass
+- P2P connectivity troubleshooting
+- IoT/embedded device integration
+
+**Key Sections:**
+- Five Protocol Stack Diagram
+- QUIC Deep Dive (0-RTT, BBRv3, Connection Migration)
+- MASQUE Use Cases (Corporate Bypass)
+- WebRTC/ICE Process Flow (NAT Traversal)
+- WireGuard for IoT
+- WebSocket Signaling Protocol
+- Protocol Selection Decision Tree
+- Performance Comparison Matrix
+- Security & Encryption Comparison
+
+---
+
 ### SECONDARY DOCUMENTS (Reference)
 
-#### 7. **README**
+#### 8. **README**
 **Purpose:** Navigation guide to architecture documents
 
 **Contents:**
@@ -338,8 +377,12 @@ Step 8: Operations Visibility
 
 | Layer | Technology | Purpose |
 |-------|-----------|---------|
-| Transport | QUIC (RFC 9000) + BBRv3 | P2P relay |
-| Discovery | GeoDNS | Service discovery |
+| Transport | QUIC (RFC 9000) + BBRv3 | Primary P2P relay |
+| Proxying | MASQUE (RFC 9298/9484) | Corporate bypass |
+| P2P Direct | WebRTC/ICE + STUN/TURN | NAT traversal |
+| Tunneling | WireGuard | IoT/embedded P2P |
+| Signaling | WebSocket (WSS) | Control plane |
+| Discovery | GeoDNS (DoH/DoT) | Service discovery |
 | Auth | Zitadel OIDC | Tenant authentication |
 | Protection | TensorFlow + XDP/eBPF | DDoS mitigation |
 | Intelligence | TensorFlow + PyTorch | ML optimization |
@@ -386,24 +429,24 @@ Step 8: Operations Visibility
                 **COMPLETE ARCHITECTURE GUIDE** (Central Hub)
                          |
         _________________|_______________________________
-        |                |                              |
-        v                v                              v
-   **PROJECT         **ARCHITECTURE                DNS_NETWORK_
-   OVERVIEW**         FLOW**                       ARCHITECTURE
-   (Components)      (Pipeline)                    (DNS Layer)
-        |                |                              |
-        |                |                              |
-        v                v                              v
-   TENANT_          NETWORK_                       (Integration
-   ISOLATION_       LAYERS_                         Guide)
-   ARCHITECTURE     OSI_MODEL
-   (Multi-tenancy)  (OSI Layers)
-        |                |
-        |________________|
-                |
-                v
-            **README**
-           (Navigation)
+        |                |                |             |
+        v                v                v             v
+   **PROJECT         **ARCHITECTURE   DNS_NETWORK_  PROTOCOL_
+   OVERVIEW**         FLOW**         ARCHITECTURE   STACK
+   (Components)      (Pipeline)      (DNS Layer)   (5 Protocols)
+        |                |                |             |
+        |                |                |             |
+        v                v                v             v
+   TENANT_          NETWORK_          (Integration  (Protocol
+   ISOLATION_       LAYERS_            Guide)        Selection)
+   ARCHITECTURE     OSI_MODEL             |             |
+   (Multi-tenancy)  (OSI Layers)          |             |
+        |                |                |             |
+        |________________|________________|_____________|
+                         |
+                         v
+                     **README**
+                    (Navigation)
 ```
 
 ---
@@ -413,6 +456,7 @@ Step 8: Operations Visibility
 - 8 Components
 - 7 OSI Layers
 - 5 Isolation Layers
+- 5 Network Protocols (QUIC, MASQUE, WebRTC/ICE, WireGuard, WebSocket)
 - 3 PoP Locations
 - 300+ Metrics
 - 99.99% Availability SLO

@@ -81,11 +81,11 @@ Test Configuration:
 - Streams: 1
 
 Results:
-✅ BBRv2 initialization: Successful
-✅ Connection establishment: Successful
-✅ Experimental components: Loaded correctly
-✅ No errors: Observed
-✅ Test completion: Successful
+BBRv2 initialization: Successful
+Connection establishment: Successful
+Experimental components: Loaded correctly
+No errors: Observed
+Test completion: Successful
 ```
 
 ### Test 2: ACK Frequency Optimization
@@ -99,11 +99,11 @@ Test Configuration:
 - Streams: 1
 
 Results:
-✅ ACK frequency optimization: Successful
-✅ Connection establishment: Successful
-✅ Experimental components: Loaded correctly
-✅ No errors: Observed
-✅ Test completion: Successful
+ACK frequency optimization: Successful
+Connection establishment: Successful
+Experimental components: Loaded correctly
+No errors: Observed
+Test completion: Successful
 ```
 
 ### Test 3: FEC for Datagrams
@@ -118,11 +118,11 @@ Test Configuration:
 - Streams: 1
 
 Results:
-✅ FEC initialization: Successful
-✅ Connection establishment: Successful
-✅ Experimental components: Loaded correctly
-✅ No errors: Observed
-✅ Test completion: Successful
+FEC initialization: Successful
+Connection establishment: Successful
+Experimental components: Loaded correctly
+No errors: Observed
+Test completion: Successful
 ```
 
 ### Test 4: qlog Tracing
@@ -136,11 +136,11 @@ Test Configuration:
 - Streams: 1
 
 Results:
-✅ qlog directory creation: Successful
-✅ Connection establishment: Successful
-✅ Experimental components: Loaded correctly
-✅ No errors: Observed
-✅ Test completion: Successful
+qlog directory creation: Successful
+Connection establishment: Successful
+Experimental components: Loaded correctly
+No errors: Observed
+Test completion: Successful
 ```
 
 ### Test 5: Combined Experimental Features
@@ -157,12 +157,12 @@ Test Configuration:
 - Streams: 1
 
 Results:
-✅ All features initialization: Successful
-✅ Connection establishment: Successful
-✅ Experimental components: Loaded correctly
-✅ Feature interoperability: Successful
-✅ No errors: Observed
-✅ Test completion: Successful
+All features initialization: Successful
+Connection establishment: Successful
+Experimental components: Loaded correctly
+Feature interoperability: Successful
+No errors: Observed
+Test completion: Successful
 ```
 
 ## Performance Analysis

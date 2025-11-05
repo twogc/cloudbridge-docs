@@ -446,10 +446,10 @@ else:
 ### SLA Compliance
 | Metric | Target | CUBIC | BBRv2 | Status |
 |--------|--------|-------|-------|--------|
-| RTT P95 | < 100ms | 89.7ms | 67.2ms | ✅ Both |
-| Loss Rate | < 1% | 0.8% | 0.6% | ✅ Both |
-| Goodput | > 50 Mbps | 78.5 Mbps | 94.3 Mbps | ✅ Both |
-| CPU Usage | < 50% | 35.7% | 42.3% | ✅ Both |
+| RTT P95 | < 100ms | 89.7ms | 67.2ms | Both |
+| Loss Rate | < 1% | 0.8% | 0.6% | Both |
+| Goodput | > 50 Mbps | 78.5 Mbps | 94.3 Mbps | Both |
+| CPU Usage | < 50% | 35.7% | 42.3% | Both |
 
 ### Performance Grades
 - **A+ (Excellent):** BBRv2 at high RTT/load
