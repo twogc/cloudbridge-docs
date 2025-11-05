@@ -11,6 +11,8 @@
 
 CloudBridge DNS Network provides intelligent, geo-aware DNS resolution with AI-powered routing optimization. The system ensures optimal Point of Presence (PoP) selection for CloudBridge relay clients through a combination of geographic proximity, network latency, and real-time load metrics.
 
+This is **Step 1** in the [8-step architecture pipeline](ARCHITECTURE_FLOW.md). See **[Complete Architecture Guide](COMPLETE_ARCHITECTURE_GUIDE.md)** for full system overview.
+
 ---
 
 ## Key Capabilities
@@ -155,6 +157,7 @@ Score = (Geographic Distance × 60%) +
 
 ### DDoS Protection
 - **Rate Limiting:** Per-client IP quotas
+- See **[Complete Architecture Guide](COMPLETE_ARCHITECTURE_GUIDE.md)** for DDoS Protection component (Step 3)
 - **Query Filtering:** Malformed request rejection
 - **Amplification Prevention:** Response size limits
 - **Geographic Filtering:** Optional country blocking
@@ -225,6 +228,8 @@ Score = (Geographic Distance × 60%) +
 ---
 
 ## Monitoring & Observability
+
+See **[Data Sources](DATA_SOURCES.md)** for metric definitions and **[Requirements Matrix](REQUIREMENTS_MATRIX.md)** for Monitoring component specifications.
 
 ### Metrics Exported
 
@@ -467,6 +472,21 @@ CloudBridge DNS Network provides enterprise-grade DNS resolution with:
 - **Production Ready** - 97% complete, 85% test coverage
 
 **Status:** Ready for production deployment
+
+---
+
+---
+
+## Related Documentation
+
+- **[Architecture Flow](ARCHITECTURE_FLOW.md)** - Complete 8-step request processing pipeline (DNS is Step 1)
+- **[Complete Architecture Guide](COMPLETE_ARCHITECTURE_GUIDE.md)** - Full system architecture overview
+- **[Project Overview](PROJECT_OVERVIEW.md)** - All 8 components with detailed descriptions
+- **[Protocol Stack](PROTOCOL_STACK.md)** - Complete protocol layer specifications
+- **[Network Layers OSI Model](NETWORK_LAYERS_OSI_MODEL.md)** - L1-L7 implementation details
+- **[Requirements Matrix](REQUIREMENTS_MATRIX.md)** - DNS Network component requirements and capabilities
+- **[Data Sources](DATA_SOURCES.md)** - Metric definitions and verification
+- **[Client Architecture](CLIENT_ARCHITECTURE.md)** - How clients interact with DNS Network
 
 ---
 
