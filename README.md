@@ -446,7 +446,7 @@ This documentation is licensed under the **MIT License**.
 
 See [LICENSE](LICENSE) file for full license text.
 
-**Copyright (c) 2025 2GC (Two Global Cloud)**
+**Copyright (c) 2025 2GC CloudBridge Global Network**
 
 ---
 
