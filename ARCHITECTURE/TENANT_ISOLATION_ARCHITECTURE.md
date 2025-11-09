@@ -1,10 +1,10 @@
-# CloudBridge Multi-Tenant Architecture and Isolation Model
+# Multi-Tenant Architecture and Isolation Model
 
-**Version:** 2.0  
-**Updated:** November 4, 2025  
+**Version:** 2.0\
+**Updated:** November 4, 2025\
 **Status:** Complete Architecture Reference
 
----
+***
 
 ## Executive Summary
 
@@ -12,9 +12,9 @@ CloudBridge implements enterprise-grade multi-tenancy with five distinct isolati
 
 **Isolation Guarantee:** ZERO cross-tenant access across network, application, resource, and data layers.
 
-See **[Complete Architecture Guide](COMPLETE_ARCHITECTURE_GUIDE.md)** for the full system architecture and **[Architecture Flow](ARCHITECTURE_FLOW.md)** for the 8-step request processing pipeline.
+See [**Complete Architecture Guide**](COMPLETE_ARCHITECTURE_GUIDE.md) for the full system architecture and [**Architecture Flow**](ARCHITECTURE_FLOW.md) for the 8-step request processing pipeline.
 
----
+***
 
 ## Multi-Tenancy Architecture Overview
 
@@ -47,18 +47,9 @@ graph TB
     TA_CONFIG -->|Enforce via| POLICY
     TB_CONFIG -->|Enforce via| POLICY
 
-    style TA_PEER fill:#fff0e6
-    style TB_PEER fill:#f0f0ff
-    style TA_CONFIG fill:#fff0e6
-    style TB_CONFIG fill:#f0f0ff
-    style TA_SUBNET fill:#fff0e6
-    style TB_SUBNET fill:#f0f0ff
-    style ZITADEL fill:#ffe6e6
-    style IPAM fill:#e6ffe6
-    style POLICY fill:#e6f0ff
 ```
 
----
+***
 
 ## Five Isolation Layers
 
@@ -123,12 +114,13 @@ Isolation Mechanism:
 ```
 
 **Inheritance Model:**
-- Default-deny on all pods
-- Whitelist allowed sources/destinations
-- DNS access inherited to all tenants (global exception)
-- Tenant-specific exceptions override defaults
 
----
+* Default-deny on all pods
+* Whitelist allowed sources/destinations
+* DNS access inherited to all tenants (global exception)
+* Tenant-specific exceptions override defaults
+
+***
 
 ### Layer 2: Application-Level Isolation
 
@@ -166,6 +158,7 @@ Request Flow:
 ```
 
 **Token Validation (Every Request):**
+
 ```
 Input: JWT token from client
 Process:
@@ -179,13 +172,14 @@ Output: Validated tenant context or 401 Unauthorized
 ```
 
 **Inheritance Model:**
-- Tenant ID flows from Zitadel through all components
-- Permissions inherited by all services
-- Roles inherited and cascaded
-- All API calls must include valid token
-- Service-to-service mTLS carries tenant context
 
----
+* Tenant ID flows from Zitadel through all components
+* Permissions inherited by all services
+* Roles inherited and cascaded
+* All API calls must include valid token
+* Service-to-service mTLS carries tenant context
+
+***
 
 ### Layer 3: Resource Isolation
 
@@ -244,13 +238,14 @@ Tenant B Configuration:
 ```
 
 **Inheritance Model:**
-- Per-tenant quota applies to namespace
-- All pods in namespace share quota
-- Exceeding quota blocks new pod creation
-- Rate limits inherited by all services
-- Burst capacity auto-cascades to child services
 
----
+* Per-tenant quota applies to namespace
+* All pods in namespace share quota
+* Exceeding quota blocks new pod creation
+* Rate limits inherited by all services
+* Burst capacity auto-cascades to child services
+
+***
 
 ### Layer 4: Data Isolation
 
@@ -411,13 +406,14 @@ With SERIALIZABLE:
 ```
 
 **Inheritance Model:**
-- Subnet inherited by all peers of tenant
-- IP allocation inherits tenant restrictions
-- Permissions inherited from tenant config
-- Cleanup rules inherited by all peers
-- Database filters applied at query layer
 
----
+* Subnet inherited by all peers of tenant
+* IP allocation inherits tenant restrictions
+* Permissions inherited from tenant config
+* Cleanup rules inherited by all peers
+* Database filters applied at query layer
+
+***
 
 ### Layer 5: Operational Isolation
 
@@ -524,13 +520,14 @@ Grafana Dashboard Isolation:
 ```
 
 **Inheritance Model:**
-- Audit log filters inherited
-- Metrics labels cascaded
-- Retention policies inherited
-- Alert rules inherited by tenant
-- Cleanup triggers inherited from tenant config
 
----
+* Audit log filters inherited
+* Metrics labels cascaded
+* Retention policies inherited
+* Alert rules inherited by tenant
+* Cleanup triggers inherited from tenant config
+
+***
 
 ## Complete Request Flow with Isolation
 
@@ -563,31 +560,31 @@ sequenceDiagram
     Note over Client,DB: Entire flow isolated<br/>to single tenant context
 ```
 
----
+***
 
 ## Isolation Attributes Matrix
 
-| Layer | Attribute | Value | Inheritance | Enforcement |
-|-------|-----------|-------|-------------|------------|
-| Network | VRF ID | Per-tenant (1001+) | Cascaded to all routes | Kernel-level |
-| Network | Subnet | Per-tenant (/24) | Cascaded to peers | Calico policies |
-| Network | Default-Deny | All pods | Inherited by all | iptables rules |
-| Auth | JWT Token | Per-peer with tenant claim | Cascaded to services | HMAC signature |
-| Auth | Token TTL | Configurable (default 1h) | Inherited by renewals | Token expiry check |
-| Auth | Permissions | JWT claims | Inherited by services | Per-request validation |
-| Resource | CPU Quota | Per-tenant namespace | Inherited by all pods | Kubernetes |
-| Resource | Memory Quota | Per-tenant namespace | Inherited by all pods | Kubernetes |
-| Resource | RPS Limit | Per-tenant config | Cascaded to all services | Token bucket |
-| Resource | Burst | 1.5x baseline | Inherited by all | Queue backpressure |
-| Data | Subnet | Deterministic (SHA256) | Inherited by peers | IPAM allocation |
-| Data | IP Allocation | Per-peer, tenant-isolated | Inherited by services | Database constraint |
-| Data | Retention | Per-tenant policy | Inherited by data items | Cleanup job |
-| Audit | Log Level | Per-tenant config | Inherited by all events | Filter at write |
-| Audit | Retention | 90 days (tiered) | Applied to all logs | Rotation schedule |
-| Metrics | Labels | tenant_id + dimensions | Cascaded to all series | Label validation |
-| Metrics | Cardinality | 100k per tenant | Enforced by scraper | Rate limiting |
+| Layer    | Attribute     | Value                      | Inheritance              | Enforcement            |
+| -------- | ------------- | -------------------------- | ------------------------ | ---------------------- |
+| Network  | VRF ID        | Per-tenant (1001+)         | Cascaded to all routes   | Kernel-level           |
+| Network  | Subnet        | Per-tenant (/24)           | Cascaded to peers        | Calico policies        |
+| Network  | Default-Deny  | All pods                   | Inherited by all         | iptables rules         |
+| Auth     | JWT Token     | Per-peer with tenant claim | Cascaded to services     | HMAC signature         |
+| Auth     | Token TTL     | Configurable (default 1h)  | Inherited by renewals    | Token expiry check     |
+| Auth     | Permissions   | JWT claims                 | Inherited by services    | Per-request validation |
+| Resource | CPU Quota     | Per-tenant namespace       | Inherited by all pods    | Kubernetes             |
+| Resource | Memory Quota  | Per-tenant namespace       | Inherited by all pods    | Kubernetes             |
+| Resource | RPS Limit     | Per-tenant config          | Cascaded to all services | Token bucket           |
+| Resource | Burst         | 1.5x baseline              | Inherited by all         | Queue backpressure     |
+| Data     | Subnet        | Deterministic (SHA256)     | Inherited by peers       | IPAM allocation        |
+| Data     | IP Allocation | Per-peer, tenant-isolated  | Inherited by services    | Database constraint    |
+| Data     | Retention     | Per-tenant policy          | Inherited by data items  | Cleanup job            |
+| Audit    | Log Level     | Per-tenant config          | Inherited by all events  | Filter at write        |
+| Audit    | Retention     | 90 days (tiered)           | Applied to all logs      | Rotation schedule      |
+| Metrics  | Labels        | tenant\_id + dimensions    | Cascaded to all series   | Label validation       |
+| Metrics  | Cardinality   | 100k per tenant            | Enforced by scraper      | Rate limiting          |
 
----
+***
 
 ## Inheritance Hierarchy
 
@@ -660,7 +657,7 @@ Global CloudBridge
       └─ Pods: 25
 ```
 
----
+***
 
 ## Security Validation Checklist
 
@@ -706,21 +703,21 @@ Operational Layer:
   [✓] Cleanup jobs running
 ```
 
----
+***
 
 ## Performance Impact of Isolation
 
-| Isolation Mechanism | Latency Impact | Throughput Impact | Notes |
-|-------------------|---|---|---|
+| Isolation Mechanism       | Latency Impact       | Throughput Impact   | Notes                    |
+| ------------------------- | -------------------- | ------------------- | ------------------------ |
 | SERIALIZABLE transactions | +50μs per allocation | -5% peak throughput | Worth it for correctness |
-| Network policy evaluation | +2μs per packet | -1% throughput | Negligible |
-| JWT validation | +10μs per request | -2% throughput | Cached public keys |
-| VRF lookup | +5μs per packet | -1% throughput | Kernel optimized |
-| Query filtering | +5μs per query | Negligible | Index on tenant_id |
-| Audit logging | +100μs (async) | Negligible | Async write |
-| **Total Impact** | **+172μs** | **-9%** | **Acceptable trade-off** |
+| Network policy evaluation | +2μs per packet      | -1% throughput      | Negligible               |
+| JWT validation            | +10μs per request    | -2% throughput      | Cached public keys       |
+| VRF lookup                | +5μs per packet      | -1% throughput      | Kernel optimized         |
+| Query filtering           | +5μs per query       | Negligible          | Index on tenant\_id      |
+| Audit logging             | +100μs (async)       | Negligible          | Async write              |
+| **Total Impact**          | **+172μs**           | **-9%**             | **Acceptable trade-off** |
 
----
+***
 
 ## Failure Scenarios and Recovery
 
@@ -801,7 +798,7 @@ Recovery Time:
 4. Resume full operation: < 2 minutes
 ```
 
----
+***
 
 ## Compliance and Certifications
 
@@ -834,28 +831,27 @@ Isolation Provides Compliance For:
    └─ Integrity: Audit logs + immutability
 ```
 
----
+***
 
----
+***
 
 ## Related Documentation
 
-- **[Complete Architecture Guide](COMPLETE_ARCHITECTURE_GUIDE.md)** - Full system architecture overview
-- **[Architecture Flow](ARCHITECTURE_FLOW.md)** - Detailed 8-step request processing pipeline
-- **[Client Architecture](CLIENT_ARCHITECTURE.md)** - CloudBridge Relay Client documentation
-- **[Project Overview](PROJECT_OVERVIEW.md)** - All 8 components with detailed descriptions
-- **[Protocol Stack](PROTOCOL_STACK.md)** - Complete protocol layer specifications
-- **[Network Layers OSI Model](NETWORK_LAYERS_OSI_MODEL.md)** - L1-L7 implementation details
-- **[DNS Network Architecture](DNS_NETWORK_ARCHITECTURE.md)** - DNS design, anycast, DNSSEC
-- **[Data Sources](DATA_SOURCES.md)** - Metric definitions and verification
-- **[Requirements Matrix](REQUIREMENTS_MATRIX.md)** - Component requirements and feature roadmap
-- **[Requirements Matrix Guide](REQUIREMENTS_MATRIX_GUIDE.md)** - Quick navigation guide
-- **[INDEX](INDEX.md)** - Role-based navigation and document index
-- **[START HERE](START_HERE.md)** - Navigation guide and entry point
+* [**Complete Architecture Guide**](COMPLETE_ARCHITECTURE_GUIDE.md) - Full system architecture overview
+* [**Architecture Flow**](ARCHITECTURE_FLOW.md) - Detailed 8-step request processing pipeline
+* [**Client Architecture**](CLIENT_ARCHITECTURE.md) - CloudBridge Relay Client documentation
+* [**Project Overview**](PROJECT_OVERVIEW.md) - All 8 components with detailed descriptions
+* [**Protocol Stack**](PROTOCOL_STACK.md) - Complete protocol layer specifications
+* [**Network Layers OSI Model**](NETWORK_LAYERS_OSI_MODEL.md) - L1-L7 implementation details
+* [**DNS Network Architecture**](DNS_NETWORK_ARCHITECTURE.md) - DNS design, anycast, DNSSEC
+* [**Data Sources**](DATA_SOURCES.md) - Metric definitions and verification
+* [**Requirements Matrix**](REQUIREMENTS_MATRIX.md) - Component requirements and feature roadmap
+* [**Requirements Matrix Guide**](REQUIREMENTS_MATRIX_GUIDE.md) - Quick navigation guide
+* [**INDEX**](INDEX.md) - Role-based navigation and document index
+* [**START HERE**](START_HERE.md) - Navigation guide and entry point
 
----
+***
 
-**Document Status:** Current and Complete  
-**Last Verified:** November 5, 2025  
+**Document Status:** Current and Complete\
+**Last Verified:** November 5, 2025\
 **Audience:** Security teams, architects, compliance officers
-

@@ -1,25 +1,25 @@
-# CloudBridge Network Layers - OSI Model L1-L7
+# Network Layers - OSI Model L1-L7
 
-**Version:** 2.0  
-**Updated:** November 3, 2025  
+**Version:** 2.0\
+**Updated:** November 3, 2025\
 **Status:** Architecture Reference - Code-Free
 
 ## Overview
 
 CloudBridge network architecture spans all seven OSI layers with optimized implementations at each level. The architecture delivers sub-millisecond latency, high throughput, and global anycast routing through multi-region Points of Presence (PoPs).
 
-See **[Protocol Stack](PROTOCOL_STACK.md)** for detailed protocol specifications and **[Complete Architecture Guide](COMPLETE_ARCHITECTURE_GUIDE.md)** for full system architecture.
+See [**Protocol Stack**](PROTOCOL_STACK.md) for detailed protocol specifications and [**Complete Architecture Guide**](COMPLETE_ARCHITECTURE_GUIDE.md) for full system architecture.
 
 ### Architecture Characteristics
 
-- Multi-layer optimization across L1-L7 OSI model
-- BBRv3 congestion control with 50% jitter reduction
-- Zero-trust security with TLS 1.3 and mTLS
-- Zitadel OIDC authentication integration
-- BGP-based anycast routing with automatic failover
-- Global PoPs with edge computing capabilities
+* Multi-layer optimization across L1-L7 OSI model
+* BBRv3 congestion control with 50% jitter reduction
+* Zero-trust security with TLS 1.3 and mTLS
+* Zitadel OIDC authentication integration
+* BGP-based anycast routing with automatic failover
+* Global PoPs with edge computing capabilities
 
----
+***
 
 ## Layer Architecture Overview
 
@@ -39,17 +39,9 @@ graph TD
     L4 --> L3
     L3 --> L2
     L2 --> L1
-    
-    style L7 fill:#ff9999
-    style L6 fill:#ffcc99
-    style L5 fill:#ffff99
-    style L4 fill:#99ff99
-    style L3 fill:#99ffcc
-    style L2 fill:#99ccff
-    style L1 fill:#cc99ff
 ```
 
----
+***
 
 ## L1: Physical Layer
 
@@ -57,10 +49,10 @@ graph TD
 
 ### Components
 
-- VPC Infrastructure: Virtual Private Cloud in AWS/Yandex Cloud
-- Virtual Network Interfaces: Elastic Network Interfaces with multiple IP addresses
-- Fiber Optics: International backbone connectivity
-- Link Aggregation: Bonded interfaces for redundancy
+* VPC Infrastructure: Virtual Private Cloud in AWS/Yandex Cloud
+* Virtual Network Interfaces: Elastic Network Interfaces with multiple IP addresses
+* Fiber Optics: International backbone connectivity
+* Link Aggregation: Bonded interfaces for redundancy
 
 ### Architecture
 
@@ -76,21 +68,16 @@ graph LR
     VPC1 ---|100 Gbps| FIBER
     VPC2 ---|100 Gbps| FIBER
     VPC3 ---|100 Gbps| FIBER
-    
-    style VPC1 fill:#e6f3ff
-    style VPC2 fill:#e6f3ff
-    style VPC3 fill:#e6f3ff
-    style FIBER fill:#fff0e6
 ```
 
 ### Key Features
 
-- Multi-region PoP deployment
-- Redundant connectivity between PoPs
-- Sub-millisecond backbone optimization
-- DDoS mitigation at physical layer
+* Multi-region PoP deployment
+* Redundant connectivity between PoPs
+* Sub-millisecond backbone optimization
+* DDoS mitigation at physical layer
 
----
+***
 
 ## L2: Data Link Layer
 
@@ -98,10 +85,10 @@ graph LR
 
 ### Components
 
-- Ethernet Switching: L2 MAC address learning
-- VLAN Tagging: 802.1Q network segmentation
-- VXLAN/Geneve: Overlay network encapsulation
-- MAC Address Management: Dynamic table management
+* Ethernet Switching: L2 MAC address learning
+* VLAN Tagging: 802.1Q network segmentation
+* VXLAN/Geneve: Overlay network encapsulation
+* MAC Address Management: Dynamic table management
 
 ### Architecture
 
@@ -116,21 +103,16 @@ graph TB
     VLAN --> SWITCH
     OVERLAY --> VLAN
     SWITCH --> UNDERLAY["Underlay Network<br/>Routing"]
-    
-    style SWITCH fill:#e6ffe6
-    style VLAN fill:#e6ffe6
-    style OVERLAY fill:#e6ffe6
-    style UNDERLAY fill:#fff0e6
 ```
 
 ### Key Features
 
-- Per-tenant VLAN isolation
-- Overlay networks for elastic scaling
-- Broadcast/multicast optimization
-- Loop prevention via STP/RSTP
+* Per-tenant VLAN isolation
+* Overlay networks for elastic scaling
+* Broadcast/multicast optimization
+* Loop prevention via STP/RSTP
 
----
+***
 
 ## L3: Network Layer
 
@@ -139,27 +121,31 @@ graph TB
 ### Components
 
 **IP Routing:**
-- Linux kernel routing tables with dynamic updates
-- Equal-Cost Multi-Path (ECMP) load balancing
-- Policy-based routing for traffic engineering
+
+* Linux kernel routing tables with dynamic updates
+* Equal-Cost Multi-Path (ECMP) load balancing
+* Policy-based routing for traffic engineering
 
 **BGP Anycast Routing:**
-- Autonomous System AS64512
-- Anycast address announcement from multiple PoPs
-- Sub-second failover via BGP reconvergence
-- Route policy enforcement
+
+* Autonomous System AS64512
+* Anycast address announcement from multiple PoPs
+* Sub-second failover via BGP reconvergence
+* Route policy enforcement
 
 **XDP/eBPF:**
-- Kernel-bypass packet processing
-- Programmable packet filtering
-- Custom load balancing decisions
-- In-kernel L4 connection tracking
+
+* Kernel-bypass packet processing
+* Programmable packet filtering
+* Custom load balancing decisions
+* In-kernel L4 connection tracking
 
 **Calico CNI:**
-- Kubernetes pod-to-pod networking
-- Network policies for microsegmentation
-- BGP integration for external routes
-- IP-in-IP or VXLAN encapsulation
+
+* Kubernetes pod-to-pod networking
+* Network policies for microsegmentation
+* BGP integration for external routes
+* IP-in-IP or VXLAN encapsulation
 
 ### Architecture
 
@@ -185,12 +171,12 @@ graph TB
 
 ### Key Features
 
-- Anycast load distribution across PoPs
-- Automatic failover when PoPs unavailable
-- Traffic steering based on source/destination
-- IPv4 and IPv6 dual-stack support
+* Anycast load distribution across PoPs
+* Automatic failover when PoPs unavailable
+* Traffic steering based on source/destination
+* IPv4 and IPv6 dual-stack support
 
----
+***
 
 ## L4: Transport Layer
 
@@ -199,23 +185,26 @@ graph TB
 ### Components
 
 **QUIC Protocol (RFC 9000):**
-- Connection multiplexing: Multiple streams per connection
-- 0-RTT: Zero Round-Trip Time session resumption
-- Connection migration: Seamless mobility
-- Datagram support: For time-sensitive applications
-- Built-in encryption at transport layer
+
+* Connection multiplexing: Multiple streams per connection
+* 0-RTT: Zero Round-Trip Time session resumption
+* Connection migration: Seamless mobility
+* Datagram support: For time-sensitive applications
+* Built-in encryption at transport layer
 
 **BBRv3 Congestion Control:**
-- Utilization-based algorithm
-- 50% jitter reduction (0.0018ms to 0.0009ms)
-- 5.79x bufferbloat improvement
-- Maintained throughput (+0.2%)
-- Environment variable: CBR_CC=bbrv3
+
+* Utilization-based algorithm
+* 50% jitter reduction (0.0018ms to 0.0009ms)
+* 5.79x bufferbloat improvement
+* Maintained throughput (+0.2%)
+* Environment variable: CBR\_CC=bbrv3
 
 **Legacy Transport:**
-- TCP: Backward compatibility
-- UDP: Lightweight connectionless
-- SCTP: Ordered multi-stream delivery
+
+* TCP: Backward compatibility
+* UDP: Lightweight connectionless
+* SCTP: Ordered multi-stream delivery
 
 ### Architecture
 
@@ -241,12 +230,12 @@ graph TB
 
 ### Key Features
 
-- Connection multiplexing reduces setup overhead
-- 0-RTT enables instant resumption
-- Connection migration supports seamless handover
-- Datagram mode for ultra-low latency
+* Connection multiplexing reduces setup overhead
+* 0-RTT enables instant resumption
+* Connection migration supports seamless handover
+* Datagram mode for ultra-low latency
 
----
+***
 
 ## L5: Session Layer
 
@@ -255,21 +244,24 @@ graph TB
 ### Components
 
 **MASQUE (RFC 9297):**
-- HTTP-based tunneling protocol
-- Encapsulates traffic in HTTP requests/responses
-- Seamless CDN integration
-- Proxy-compatible tunneling
+
+* HTTP-based tunneling protocol
+* Encapsulates traffic in HTTP requests/responses
+* Seamless CDN integration
+* Proxy-compatible tunneling
 
 **WireGuard VPN:**
-- Modern cryptographic VPN
-- Site-to-site VPN tunnels
-- Client-to-PoP VPN access
-- Perfect Forward Secrecy (PFS)
+
+* Modern cryptographic VPN
+* Site-to-site VPN tunnels
+* Client-to-PoP VPN access
+* Perfect Forward Secrecy (PFS)
 
 **Connection Handover:**
-- Seamless network transitions
-- TLS early data (0-RTT) resumption
-- Transparent PoP failover
+
+* Seamless network transitions
+* TLS early data (0-RTT) resumption
+* Transparent PoP failover
 
 ### Architecture
 
@@ -292,11 +284,11 @@ graph TB
 
 ### Key Features
 
-- Tunneling protocols support direct/proxied connections
-- VPN encryption with modern cryptography
-- Automatic failover during transitions
+* Tunneling protocols support direct/proxied connections
+* VPN encryption with modern cryptography
+* Automatic failover during transitions
 
----
+***
 
 ## L6: Presentation Layer
 
@@ -305,23 +297,26 @@ graph TB
 ### Components
 
 **TLS 1.3 Encryption (RFC 8446):**
-- Modern encryption standard
-- Forward secrecy: Past secure even if keys compromised
-- Single RTT connection establishment
-- 0-RTT session resumption
-- Cipher suites: TLS_AES_256_GCM_SHA384, TLS_CHACHA20_POLY1305_SHA256
+
+* Modern encryption standard
+* Forward secrecy: Past secure even if keys compromised
+* Single RTT connection establishment
+* 0-RTT session resumption
+* Cipher suites: TLS\_AES\_256\_GCM\_SHA384, TLS\_CHACHA20\_POLY1305\_SHA256
 
 **Mutual TLS (mTLS):**
-- Bidirectional authentication
-- Certificate pinning for critical paths
-- Automatic certificate rotation via ACME
-- X.509 validation with OCSP revocation checking
+
+* Bidirectional authentication
+* Certificate pinning for critical paths
+* Automatic certificate rotation via ACME
+* X.509 validation with OCSP revocation checking
 
 **JWT Token Management:**
-- Zitadel-issued JWT tokens
-- Token validation via HMAC signature
-- Token claims: Subject, Audience, Expiration
-- Automatic renewal before expiration
+
+* Zitadel-issued JWT tokens
+* Token validation via HMAC signature
+* Token claims: Subject, Audience, Expiration
+* Automatic renewal before expiration
 
 ### Architecture
 
@@ -344,11 +339,11 @@ graph TB
 
 ### Key Features
 
-- Encryption protects against eavesdropping
-- Mutual authentication prevents man-in-the-middle
-- JWT tokens enable zero-trust architecture
+* Encryption protects against eavesdropping
+* Mutual authentication prevents man-in-the-middle
+* JWT tokens enable zero-trust architecture
 
----
+***
 
 ## L7: Application Layer
 
@@ -357,28 +352,32 @@ graph TB
 ### Components
 
 **gRPC Services:**
-- High-performance RPC framework
-- Protocol Buffers for serialization
-- Streaming support: Unary, server, client, bidirectional
-- Service mesh integration
+
+* High-performance RPC framework
+* Protocol Buffers for serialization
+* Streaming support: Unary, server, client, bidirectional
+* Service mesh integration
 
 **REST APIs:**
-- RESTful HTTP endpoints
-- OpenAPI 3.0 specification
-- JSON payload encoding
+
+* RESTful HTTP endpoints
+* OpenAPI 3.0 specification
+* JSON payload encoding
 
 **Zitadel Identity Provider:**
-- OpenID Connect (OIDC) implementation
-- OAuth2 authorization flows
-- Service account authentication
-- Personal Access Token (PAT) generation
-- Multi-factor authentication (MFA)
+
+* OpenID Connect (OIDC) implementation
+* OAuth2 authorization flows
+* Service account authentication
+* Personal Access Token (PAT) generation
+* Multi-factor authentication (MFA)
 
 **Web Dashboard:**
-- Real-time metrics visualization
-- Network topology diagram
-- Traffic analytics and performance graphs
-- Configuration management UI
+
+* Real-time metrics visualization
+* Network topology diagram
+* Traffic analytics and performance graphs
+* Configuration management UI
 
 ### Architecture
 
@@ -404,12 +403,12 @@ graph TB
 
 ### Key Features
 
-- gRPC enables low-latency service communication
-- Zitadel provides centralized auth and authorization
-- REST APIs enable external tool integration
-- Web UI provides operational visibility
+* gRPC enables low-latency service communication
+* Zitadel provides centralized auth and authorization
+* REST APIs enable external tool integration
+* Web UI provides operational visibility
 
----
+***
 
 ## Complete Data Flow: Client to PoP
 
@@ -435,63 +434,63 @@ sequenceDiagram
     L4_QUIC-->>Client: Encrypted Response (L4)
 ```
 
----
+***
 
 ## Security Architecture
 
 ### Authentication and Authorization
 
-- Zitadel OIDC: User authentication with MFA
-- JWT Tokens: Service-to-service identification
-- mTLS: Mutual authentication between PoPs
-- Certificate Pinning: Critical path protection
+* Zitadel OIDC: User authentication with MFA
+* JWT Tokens: Service-to-service identification
+* mTLS: Mutual authentication between PoPs
+* Certificate Pinning: Critical path protection
 
 ### Encryption
 
-- Transport: TLS 1.3 for all traffic
-- Application: Additional encryption for sensitive data
-- VPN: WireGuard for remote client encryption
+* Transport: TLS 1.3 for all traffic
+* Application: Additional encryption for sensitive data
+* VPN: WireGuard for remote client encryption
 
 ### Network Segmentation
 
-- VLANs (L2): Per-tenant isolation
-- Network Policies (L3): Calico-based microsegmentation
-- Firewall Rules (L3): Stateful filtering at PoP ingress
+* VLANs (L2): Per-tenant isolation
+* Network Policies (L3): Calico-based microsegmentation
+* Firewall Rules (L3): Stateful filtering at PoP ingress
 
 ### DDoS Protection
 
-See **[Complete Architecture Guide](COMPLETE_ARCHITECTURE_GUIDE.md)** for DDoS Protection component (Step 3) details.
+See [**Complete Architecture Guide**](COMPLETE_ARCHITECTURE_GUIDE.md) for DDoS Protection component (Step 3) details.
 
-- Physical Layer Filtering: Upstream ISP mitigation
-- XDP/eBPF Filters (L3): Kernel-space rate limiting
-- BGP Flowspec: Dynamic attack mitigation
+* Physical Layer Filtering: Upstream ISP mitigation
+* XDP/eBPF Filters (L3): Kernel-space rate limiting
+* BGP Flowspec: Dynamic attack mitigation
 
----
+***
 
 ## Performance Optimization
 
 ### BBRv3 Algorithm Benefits
 
-- Jitter Reduction: 50% improvement
-- Bufferbloat: 5.79x improvement
-- Throughput: Maintained at +0.2%
-- Fairness: Equitable bandwidth sharing
+* Jitter Reduction: 50% improvement
+* Bufferbloat: 5.79x improvement
+* Throughput: Maintained at +0.2%
+* Fairness: Equitable bandwidth sharing
 
 ### Connection Optimization
 
-- 0-RTT Resume: Instant resumption for returning clients
-- Connection Multiplexing (QUIC): Multiple streams reduce overhead
-- Keep-Alive: Periodic heartbeats maintain state
-- Pipelining: Multiple requests without wait
+* 0-RTT Resume: Instant resumption for returning clients
+* Connection Multiplexing (QUIC): Multiple streams reduce overhead
+* Keep-Alive: Periodic heartbeats maintain state
+* Pipelining: Multiple requests without wait
 
 ### Caching Strategy
 
-- DNS Caching: Reduced lookup latency
-- Connection Pooling: Reuse TLS connections
-- HTTP Caching: Standard header support
-- Application Caching: Per-application data caching
+* DNS Caching: Reduced lookup latency
+* Connection Pooling: Reuse TLS connections
+* HTTP Caching: Standard header support
+* Application Caching: Per-application data caching
 
----
+***
 
 ## Monitoring by Layer
 
@@ -517,41 +516,40 @@ graph TB
     GRAFANA --> ALERTS["AlertManager<br/>Threshold Alerts"]
 ```
 
----
+***
 
 ## Technology Stack Summary
 
-| Layer | Technology | Version | Status | Performance |
-|-------|-----------|---------|--------|-------------|
-| L1 | VPC Infrastructure | AWS/Yandex | Deployed | Multi-region |
-| L2 | VXLAN | RFC 7348 | Deployed | 1000+ Mbps |
-| L3 | BGP | RFC 4271 | Deployed | Sub-second failover |
-| L3 | XDP/eBPF | Kernel 5.10+ | Deployed | Ultra-low latency |
-| L4 | QUIC | RFC 9000 | Deployed | 0-RTT enabled |
-| L4 | BBRv3 | Latest | Deployed | 50% jitter reduction |
-| L5 | MASQUE | RFC 9297 | Deployed | HTTP tunneling |
-| L5 | WireGuard | 1.0 | Deployed | Modern crypto |
-| L6 | TLS | 1.3 (RFC 8446) | Deployed | 1-RTT handshake |
-| L7 | gRPC | 1.50+ | Deployed | High performance |
-| L7 | Zitadel | November 2025 | Deployed | Full OIDC/OAuth2 |
+| Layer | Technology         | Version        | Status   | Performance          |
+| ----- | ------------------ | -------------- | -------- | -------------------- |
+| L1    | VPC Infrastructure | AWS/Yandex     | Deployed | Multi-region         |
+| L2    | VXLAN              | RFC 7348       | Deployed | 1000+ Mbps           |
+| L3    | BGP                | RFC 4271       | Deployed | Sub-second failover  |
+| L3    | XDP/eBPF           | Kernel 5.10+   | Deployed | Ultra-low latency    |
+| L4    | QUIC               | RFC 9000       | Deployed | 0-RTT enabled        |
+| L4    | BBRv3              | Latest         | Deployed | 50% jitter reduction |
+| L5    | MASQUE             | RFC 9297       | Deployed | HTTP tunneling       |
+| L5    | WireGuard          | 1.0            | Deployed | Modern crypto        |
+| L6    | TLS                | 1.3 (RFC 8446) | Deployed | 1-RTT handshake      |
+| L7    | gRPC               | 1.50+          | Deployed | High performance     |
+| L7    | Zitadel            | November 2025  | Deployed | Full OIDC/OAuth2     |
 
----
+***
 
 ## Related Documentation
 
-- **[Protocol Stack](PROTOCOL_STACK.md)** - Complete protocol layer specifications and implementation details
-- **[Complete Architecture Guide](COMPLETE_ARCHITECTURE_GUIDE.md)** - Full system architecture overview
-- **[Project Overview](PROJECT_OVERVIEW.md)** - All 8 components with detailed descriptions
-- **[Architecture Flow](ARCHITECTURE_FLOW.md)** - Request processing pipeline with layer details
-- **[Tenant Isolation Architecture](TENANT_ISOLATION_ARCHITECTURE.md)** - Network isolation and multi-tenancy
-- **[DNS Network Architecture](DNS_NETWORK_ARCHITECTURE.md)** - DNS design and anycast routing
-- **[Client Architecture](CLIENT_ARCHITECTURE.md)** - How clients interact with network layers
-- **[Requirements Matrix](REQUIREMENTS_MATRIX.md)** - Component requirements and capabilities
-- **[Data Sources](DATA_SOURCES.md)** - Metric definitions and verification
+* [**Protocol Stack**](PROTOCOL_STACK.md) - Complete protocol layer specifications and implementation details
+* [**Complete Architecture Guide**](COMPLETE_ARCHITECTURE_GUIDE.md) - Full system architecture overview
+* [**Project Overview**](PROJECT_OVERVIEW.md) - All 8 components with detailed descriptions
+* [**Architecture Flow**](ARCHITECTURE_FLOW.md) - Request processing pipeline with layer details
+* [**Tenant Isolation Architecture**](TENANT_ISOLATION_ARCHITECTURE.md) - Network isolation and multi-tenancy
+* [**DNS Network Architecture**](DNS_NETWORK_ARCHITECTURE.md) - DNS design and anycast routing
+* [**Client Architecture**](CLIENT_ARCHITECTURE.md) - How clients interact with network layers
+* [**Requirements Matrix**](REQUIREMENTS_MATRIX.md) - Component requirements and capabilities
+* [**Data Sources**](DATA_SOURCES.md) - Metric definitions and verification
 
----
+***
 
-**Document Status:** Current and Accurate  
-**Last Verified:** November 5, 2025  
+**Document Status:** Current and Accurate\
+**Last Verified:** November 5, 2025\
 **Next Review:** Q4 2025 or new major features
-
