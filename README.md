@@ -57,6 +57,12 @@ CloudBridge is a next-generation global network platform that provides scalable,
 - Review [**DNS NETWORK ARCHITECTURE**](ARCHITECTURE/DNS_NETWORK_ARCHITECTURE.md) for DNS design
 - Study [**PROTOCOL STACK**](ARCHITECTURE/PROTOCOL_STACK.md) for protocol details
 
+**Researchers & Protocol Engineers**
+- Start with [**Laboratory Reports Overview**](LAB/README.md) for research documentation
+- Review [**QUIC Protocol Laboratory Research Report**](LAB/QUIC_Laboratory_Research_Report.md) for QUIC analysis
+- Study [**MASQUE Protocol Laboratory Research Report**](LAB/MASQUE_Laboratory_Research_Report.md) for tunneling research
+- Check [**Phase 1 & Phase 3 Testing Report**](LAB/PHASE1_PHASE3_TESTING_REPORT.md) for testing results
+
 ---
 
 ## Documentation Structure
@@ -87,14 +93,17 @@ Technical references and detailed specifications:
 
 ### Laboratory Reports
 
-Research and testing documentation:
+Comprehensive laboratory and experimental reports supporting CloudBridge networking research and engineering decisions:
 
-- [**Experimental QUIC Laboratory Research Report**](LAB/Experimental_QUIC_Laboratory_Research_Report.md)
-- [**Experimental QUIC Features Testing Report**](LAB/Experimental_QUIC_Testing_Report.md)
-- [**MASQUE Protocol Laboratory Research Report**](LAB/MASQUE_Laboratory_Research_Report.md)
-- [**Phase 1 & Phase 3 Testing Report**](LAB/PHASE1_PHASE3_TESTING_REPORT.md)
-- [**QUIC Protocol Laboratory Research Report**](LAB/QUIC_Laboratory_Research_Report.md)
-- [**QUIC Performance Comparison Report**](LAB/QUIC_Performance_Comparison_Report.md)
+| Document | Purpose | Best For |
+|----------|---------|----------|
+| [**Laboratory Reports Overview**](LAB/README.md) | Research documentation index | Getting started with lab reports |
+| [**Phase 1 & Phase 3 Testing Report**](LAB/PHASE1_PHASE3_TESTING_REPORT.md) | Phase testing summary | Understanding test objectives and results |
+| [**QUIC Protocol Laboratory Research Report**](LAB/QUIC_Laboratory_Research_Report.md) | Baseline QUIC research | Protocol mechanics and transport tuning |
+| [**Experimental QUIC Laboratory Research Report**](LAB/Experimental_QUIC_Laboratory_Research_Report.md) | Foundational QUIC research | QUIC behavior under controlled conditions |
+| [**Experimental QUIC Features Testing Report**](LAB/Experimental_QUIC_Testing_Report.md) | Experimental QUIC outcomes | QUIC scenarios and operational recommendations |
+| [**QUIC Performance Comparison Report**](LAB/QUIC_Performance_Comparison_Report.md) | QUIC performance analysis | Throughput vs. latency trade-offs |
+| [**MASQUE Protocol Laboratory Research Report**](LAB/MASQUE_Laboratory_Research_Report.md) | MASQUE tunneling research | Relay scenarios and encapsulation overhead |
 
 ---
 
@@ -136,6 +145,7 @@ Research and testing documentation:
 - **Client Development**: [CLIENT ARCHITECTURE](ARCHITECTURE/CLIENT_ARCHITECTURE.md)
 - **DNS**: [DNS NETWORK ARCHITECTURE](ARCHITECTURE/DNS_NETWORK_ARCHITECTURE.md)
 - **Requirements**: [REQUIREMENTS MATRIX](ARCHITECTURE/REQUIREMENTS_MATRIX.md), [REQUIREMENTS MATRIX GUIDE](ARCHITECTURE/REQUIREMENTS_MATRIX_GUIDE.md)
+- **Laboratory Research**: [LABORATORY REPORTS OVERVIEW](LAB/README.md) - QUIC, MASQUE, and performance testing reports
 
 ### By Use Case
 
@@ -143,6 +153,8 @@ Research and testing documentation:
 - **Understanding request flow**: [ARCHITECTURE FLOW](ARCHITECTURE/ARCHITECTURE_FLOW.md)
 - **Implementing a client**: [CLIENT ARCHITECTURE](ARCHITECTURE/CLIENT_ARCHITECTURE.md) → [PROTOCOL STACK](ARCHITECTURE/PROTOCOL_STACK.md)
 - **Troubleshooting**: [ARCHITECTURE FLOW](ARCHITECTURE/ARCHITECTURE_FLOW.md) → [NETWORK LAYERS OSI MODEL](ARCHITECTURE/NETWORK_LAYERS_OSI_MODEL.md)
+- **Researching protocols**: [LABORATORY REPORTS OVERVIEW](LAB/README.md) → [QUIC Laboratory Research](LAB/QUIC_Laboratory_Research_Report.md) → [MASQUE Research](LAB/MASQUE_Laboratory_Research_Report.md)
+- **Performance analysis**: [QUIC Performance Comparison](LAB/QUIC_Performance_Comparison_Report.md) → [Phase Testing Report](LAB/PHASE1_PHASE3_TESTING_REPORT.md)
 
 ---
 
