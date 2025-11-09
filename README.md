@@ -8,7 +8,7 @@
 
 ## Welcome
 
-Welcome to the 2GC **CloudBridge Global Network** documentation. This documentation provides comprehensive guides, architecture details, and technical specifications for understanding, deploying, and operating the CloudBridge platform.
+Welcome to the **2GC** **CloudBridge Global Network** documentation. This documentation provides comprehensive guides, architecture details, and technical specifications for understanding, deploying, and operating the CloudBridge platform.
 
 CloudBridge is a next-generation global network platform that provides scalable, secure, and high-performance P2P transport capabilities with advanced features including AI-driven optimization, DDoS protection, multi-tenant isolation, and comprehensive monitoring.
 
