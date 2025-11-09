@@ -1,282 +1,148 @@
-# CloudBridge Request Processing Flow
+# Request Processing Flow
 
-**Version:** 1.0  
-**Updated:** November 3, 2025  
+**Version:** 1.0\
+**Updated:** November 3, 2025\
 **Purpose:** Visual guide to component interaction order
 
----
-
-## Client Request Journey
-
-```
-┌─────────────────────────────────────────────────────────────┐
-│ Client (End User or Application)                            │
-│ Makes QUIC/HTTP request to relay.cloudbridge.global         │
-└──────────────────────────┬──────────────────────────────────┘
-                           │
-                           ▼
-┌─────────────────────────────────────────────────────────────┐
-│ STEP 1: DNS RESOLUTION                                      │
-│ CloudBridge DNS Network                                     │
-│ ─────────────────────────────────────────────────────────   │
-│ • GeoDNS locates nearest PoP based on client location       │
-│ • Returns anycast IP address (multiple PoPs can answer)     │
-│ • Handles failover if primary PoP is down                   │
-│ • Caches results locally with TTL                           │
-│                                                             │
-│ Component: CloudBridge DNS Network                          │
-│ Performance: Sub-millisecond response time                  │
-└──────────────────────────┬──────────────────────────────────┘
-                           │ (IP address of nearest PoP)
-                           ▼
-┌─────────────────────────────────────────────────────────────┐
-│ STEP 2: CREDENTIAL VALIDATION                               │
-│ CloudBridge Control Plane (Zitadel OIDC)                    │
-│ ─────────────────────────────────────────────────────────   │
-│ • Client authenticates with Control Plane                   │
-│ • Validates credentials via Zitadel OIDC/OAuth2             │
-│ • Issues JWT token for PoP access                           │
-│ • Enforces tenant quotas and rate limits                    │
-│ • Checks multi-factor authentication if required            │
-│                                                             │
-│ Component: CloudBridge Control Plane                        │
-│ Features: Service accounts, PAT generation, RBAC, ABAC      │
-│ Performance: < 100ms validation                             │
-└──────────────────────────┬──────────────────────────────────┘
-                           │ (JWT token issued)
-                           ▼
-┌─────────────────────────────────────────────────────────────┐
-│ STEP 3: THREAT DETECTION & MITIGATION                       │
-│ CloudBridge DDoS Protection                                 │
-│ ─────────────────────────────────────────────────────────   │
-│ • Analyzes incoming traffic patterns                        │
-│ • ML-based anomaly detection checks for threats             │
-│ • Detects volumetric attacks, protocol anomalies            │
-│ • Validates client JWT token authenticity                   │
-│ • Enforces rate limiting policies                           │
-│ • Activates XDP/eBPF filters if attack detected             │
-│ • Blocks malicious sources via BGP Flowspec                 │
-│                                                             │
-│ Component: CloudBridge DDoS Protection                      │
-│ Capacity: 800,000 requests/second                           │
-│ Detection latency: < 100ms                                  │
-│ False positive rate: < 0.5%                                 │
-└──────────────────────────┬──────────────────────────────────┘
-                           │ (Clean traffic approved)
-                           ▼
-┌─────────────────────────────────────────────────────────────┐
-│ STEP 4: DATA TRANSMISSION                                   │
-│ CloudBridge Scalable Relay (PoPs)                           │
-│ ─────────────────────────────────────────────────────────   │
-│ • QUIC protocol with BBRv3 congestion control               │
-│ • Optional MASQUE tunneling through HTTP proxies            │
-│ • WireGuard VPN tunnels for end-to-end encryption           │
-│ • Connection multiplexing (multiple streams)                │
-│ • 0-RTT session resumption                                  │
-│ • Connection migration for seamless handover                │
-│                                                             │
-│ PoP Locations: Moscow, Frankfurt, Amsterdam                 │
-│ Latency: < 1ms (P2P), < 5ms (via 1 PoP)                     │
-│ Component: CloudBridge Scalable Relay                       │
-│ Per PoP Throughput: 100 Gbps aggregate                      │
-└──────────────────────────┬──────────────────────────────────┘
-                           │ (Data flowing through network)
-                           ▼
-┌─────────────────────────────────────────────────────────────┐
-│ STEP 5: METRICS COLLECTION                                  │
-│ CloudBridge Monitoring                                      │
-│ ─────────────────────────────────────────────────────────   │
-│ • All PoPs export performance metrics                       │
-│ • QUIC and protocol statistics collected                    │
-│ • BBRv3 congestion window state tracked                     │
-│ • Error rates, packet loss, latency recorded                │
-│ • Throughput measurements aggregated                        │
-│ • Health check results compiled                             │
-│                                                             │
-│ Component: CloudBridge Monitoring                           │
-│ Framework: Prometheus + Grafana                             │
-│ Total Metrics: 300+                                         │
-│ Collection Interval: 15 seconds                             │
-│ Data Retention: 30 days                                     │
-└──────────────────────────┬──────────────────────────────────┘
-                           │ (Metrics to analysis layer)
-                           ▼
-┌─────────────────────────────────────────────────────────────┐
-│ STEP 6: TRAFFIC ANALYSIS & OPTIMIZATION                     │
-│ CloudBridge AI Service                                      │
-│ ─────────────────────────────────────────────────────────   │
-│ • Analyzes real-time traffic patterns                       │
-│ • Detects network anomalies via ML                          │
-│ • Forecasts load for next 24 hours                          │
-│ • Identifies congestion trends                              │
-│ • Calculates optimal route recommendations                  │
-│ • Predicts client latency experience                        │
-│ • Auto-retrains models nightly                              │
-│                                                             │
-│ Component: CloudBridge AI Service                           │
-│ Frameworks: TensorFlow 2.12, PyTorch 2.0                    │
-│ Processing: 9-phase neural network pipeline                 │
-│ Inference Latency: < 100ms per request                      │
-│ Features: 500+ network characteristics                      │
-└──────────────────────────┬──────────────────────────────────┘
-                           │ (Optimization hints)
-                           ▼
-┌─────────────────────────────────────────────────────────────┐
-│ STEP 7: FEEDBACK LOOP & OPTIMIZATION                        │
-│                                                             │
-│ • AI sends optimization hints back to Relay PoPs            │
-│ • Load balancing weights adjusted                           │
-│ • BGP route preferences updated                             │
-│ • Congestion avoidance recommendations applied              │
-│ • Connection pooling strategies adjusted                    │
-│                                                             │
-│ • Control Plane distributes policy updates                  │
-│ • New rate limiting rules deployed                          │
-│ • Tenant quota adjustments propagated                       │
-│ • Security policies synchronized                            │
-└──────────────────────────┬──────────────────────────────────┘
-                           │ (Continuous optimization)
-                           ▼
-┌─────────────────────────────────────────────────────────────┐
-│ STEP 8: OPERATIONS & VISIBILITY                             │
-│ CloudBridge Dashboard & Alerts                              │
-│ ─────────────────────────────────────────────────────────   │
-│ • Dashboard displays real-time metrics                      │
-│ • Network topology visualization                            │
-│ • Traffic analytics and performance graphs                  │
-│ • Alert generation for threshold breaches                   │
-│ • Anomaly detection alerts sent to operations               │
-│ • Notifications via email, Slack, PagerDuty                 │
-│                                                             │
-│ Component: CloudBridge Dashboard                            │
-│ Technology: Next.js 15 + React frontend                     │
-│ Pre-built Dashboards: 12+                                   │
-│ Real-time Update Interval: 5 seconds                        │
-│ Concurrent Users Supported: 1000+                           │
-└─────────────────────────────────────────────────────────────┘
-```
+***
 
 ### Component Documentation Links
 
 **Step 1 - DNS Resolution:**
-- **[DNS Network Architecture](DNS_NETWORK_ARCHITECTURE.md)** - DNS design, anycast, DNSSEC implementation
+
+* [**DNS Network Architecture**](DNS_NETWORK_ARCHITECTURE.md) - DNS design, anycast, DNSSEC implementation
 
 **Step 2 - Credential Validation:**
-- **[Complete Architecture Guide](COMPLETE_ARCHITECTURE_GUIDE.md)** - Control Plane overview
-- **[Tenant Isolation Architecture](TENANT_ISOLATION_ARCHITECTURE.md)** - Multi-tenancy and JWT authentication
+
+* [**Complete Architecture Guide**](COMPLETE_ARCHITECTURE_GUIDE.md) - Control Plane overview
+* [**Tenant Isolation Architecture**](TENANT_ISOLATION_ARCHITECTURE.md) - Multi-tenancy and JWT authentication
 
 **Step 3 - Threat Detection:**
-- **[Complete Architecture Guide](COMPLETE_ARCHITECTURE_GUIDE.md)** - DDoS Protection overview
-- **[Requirements Matrix](REQUIREMENTS_MATRIX.md)** - DDoS component capabilities and specifications
+
+* [**Complete Architecture Guide**](COMPLETE_ARCHITECTURE_GUIDE.md) - DDoS Protection overview
+* [**Requirements Matrix**](REQUIREMENTS_MATRIX.md) - DDoS component capabilities and specifications
 
 **Step 4 - Data Transmission:**
-- **[Protocol Stack](PROTOCOL_STACK.md)** - Complete protocol layer specifications
-- **[Network Layers OSI Model](NETWORK_LAYERS_OSI_MODEL.md)** - L1-L7 implementation details
-- **[Project Overview](PROJECT_OVERVIEW.md)** - Scalable Relay component details
+
+* [**Protocol Stack**](PROTOCOL_STACK.md) - Complete protocol layer specifications
+* [**Network Layers OSI Model**](NETWORK_LAYERS_OSI_MODEL.md) - L1-L7 implementation details
+* [**Project Overview**](PROJECT_OVERVIEW.md) - Scalable Relay component details
 
 **Step 5 - Metrics Collection:**
-- **[Data Sources](DATA_SOURCES.md)** - Metric definitions and verification
-- **[Requirements Matrix](REQUIREMENTS_MATRIX.md)** - Monitoring component specifications
+
+* [**Data Sources**](DATA_SOURCES.md) - Metric definitions and verification
+* [**Requirements Matrix**](REQUIREMENTS_MATRIX.md) - Monitoring component specifications
 
 **Step 6 - Traffic Analysis:**
-- **[Complete Architecture Guide](COMPLETE_ARCHITECTURE_GUIDE.md)** - AI Service overview
-- **[Requirements Matrix](REQUIREMENTS_MATRIX.md)** - AI Service capabilities and ML pipeline
+
+* [**Complete Architecture Guide**](COMPLETE_ARCHITECTURE_GUIDE.md) - AI Service overview
+* [**Requirements Matrix**](REQUIREMENTS_MATRIX.md) - AI Service capabilities and ML pipeline
 
 **Step 7 - Feedback Loop:**
-- See Step 2 (Control Plane) and Step 4 (Relay) documentation above
+
+* See Step 2 (Control Plane) and Step 4 (Relay) documentation above
 
 **Step 8 - Operations & Visibility:**
-- **[Complete Architecture Guide](COMPLETE_ARCHITECTURE_GUIDE.md)** - Dashboard overview
-- **[Requirements Matrix](REQUIREMENTS_MATRIX.md)** - Dashboard features and capabilities
 
----
+* [**Complete Architecture Guide**](COMPLETE_ARCHITECTURE_GUIDE.md) - Dashboard overview
+* [**Requirements Matrix**](REQUIREMENTS_MATRIX.md) - Dashboard features and capabilities
+
+***
 
 ## Component Interaction Matrix
 
-| Source | Target | Data | Purpose | Frequency |
-|--------|--------|------|---------|-----------|
-| Client | DNS | Query | Resolve nearest PoP | Per session |
-| DNS | Control Plane | IP of selected PoP | Guide client | Per request |
-| Client | Control Plane | Credentials | Request JWT | Per session |
-| Control Plane | DDoS | Client JWT | Validate access | Per request |
-| Client | DDoS | Traffic | Check threats | Per packet |
-| DDoS | Relay | Clean traffic | Forward data | Continuous |
-| Relay | Monitoring | Metrics | Report stats | Every 15s |
-| Monitoring | AI Service | Traffic data | Analyze patterns | Real-time |
-| AI Service | Relay | Hints | Optimize routes | Every 5m |
-| Control Plane | Relay | Policies | Enforce rules | On update |
-| All Components | Dashboard | Status | Display UI | Every 5s |
-| Monitoring | Alerting | Metrics | Generate alerts | On threshold |
+| Source         | Target        | Data               | Purpose             | Frequency    |
+| -------------- | ------------- | ------------------ | ------------------- | ------------ |
+| Client         | DNS           | Query              | Resolve nearest PoP | Per session  |
+| DNS            | Control Plane | IP of selected PoP | Guide client        | Per request  |
+| Client         | Control Plane | Credentials        | Request JWT         | Per session  |
+| Control Plane  | DDoS          | Client JWT         | Validate access     | Per request  |
+| Client         | DDoS          | Traffic            | Check threats       | Per packet   |
+| DDoS           | Relay         | Clean traffic      | Forward data        | Continuous   |
+| Relay          | Monitoring    | Metrics            | Report stats        | Every 15s    |
+| Monitoring     | AI Service    | Traffic data       | Analyze patterns    | Real-time    |
+| AI Service     | Relay         | Hints              | Optimize routes     | Every 5m     |
+| Control Plane  | Relay         | Policies           | Enforce rules       | On update    |
+| All Components | Dashboard     | Status             | Display UI          | Every 5s     |
+| Monitoring     | Alerting      | Metrics            | Generate alerts     | On threshold |
 
----
+***
 
 ## Security at Each Step
 
 **DNS Resolution (Step 1):**
-- DNSSEC protection against cache poisoning
-- Rate limiting to prevent DNS amplification
+
+* DNSSEC protection against cache poisoning
+* Rate limiting to prevent DNS amplification
 
 **Credential Validation (Step 2):**
-- Zitadel OIDC for secure authentication
-- JWT signatures verified using HMAC
-- Multi-factor authentication enforcement
-- Tenant isolation via ACLs
-- See: [Tenant Isolation Architecture](TENANT_ISOLATION_ARCHITECTURE.md)
+
+* Zitadel OIDC for secure authentication
+* JWT signatures verified using HMAC
+* Multi-factor authentication enforcement
+* Tenant isolation via ACLs
+* See: [Tenant Isolation Architecture](TENANT_ISOLATION_ARCHITECTURE.md)
 
 **DDoS Protection (Step 3):**
-- Volumetric attack detection via ML
-- Protocol anomaly detection
-- Behavioral analysis against baseline
-- BGP Flowspec dynamic blocking
+
+* Volumetric attack detection via ML
+* Protocol anomaly detection
+* Behavioral analysis against baseline
+* BGP Flowspec dynamic blocking
 
 **Data Transmission (Step 4):**
-- TLS 1.3 encryption in-flight
-- mTLS between PoPs for service-to-service
-- Perfect Forward Secrecy via ECDHE
-- AES-256-GCM content encryption
-- See: [Protocol Stack](PROTOCOL_STACK.md), [Network Layers](NETWORK_LAYERS_OSI_MODEL.md)
+
+* TLS 1.3 encryption in-flight
+* mTLS between PoPs for service-to-service
+* Perfect Forward Secrecy via ECDHE
+* AES-256-GCM content encryption
+* See: [Protocol Stack](PROTOCOL_STACK.md), [Network Layers](NETWORK_LAYERS_OSI_MODEL.md)
 
 **Metrics Collection (Step 5):**
-- Authenticated collection via TLS
-- No sensitive data exported
-- Prometheus scrape authentication
-- Encrypted storage of metrics
-- See: [Data Sources](DATA_SOURCES.md) for metric definitions
+
+* Authenticated collection via TLS
+* No sensitive data exported
+* Prometheus scrape authentication
+* Encrypted storage of metrics
+* See: [Data Sources](DATA_SOURCES.md) for metric definitions
 
 **AI Analysis (Step 6):**
-- Isolated ML inference
-- No personally identifiable information processed
-- Model versioning and audit trail
-- Secure updates via signed channels
+
+* Isolated ML inference
+* No personally identifiable information processed
+* Model versioning and audit trail
+* Secure updates via signed channels
 
 **Feedback Loop (Step 7):**
-- Signed policy updates from Control Plane
-- BGP authentication via MD5
-- Rate limiting enforcement checks
-- Quota validation
+
+* Signed policy updates from Control Plane
+* BGP authentication via MD5
+* Rate limiting enforcement checks
+* Quota validation
 
 **Dashboard (Step 8):**
-- HTTPS/TLS 1.3 for all connections
-- JWT token validation per request
-- RBAC authorization checks
-- Audit logging of all operations
 
----
+* HTTPS/TLS 1.3 for all connections
+* JWT token validation per request
+* RBAC authorization checks
+* Audit logging of all operations
+
+***
 
 ## Performance Characteristics by Step
 
-| Step | Component | Latency | Throughput | Error Rate |
-|------|-----------|---------|-----------|-----------|
-| 1 | DNS | < 1ms | 100k QPS | 0% |
-| 2 | Control Plane | < 100ms | 10k auth/s | 0.1% |
-| 3 | DDoS | < 100ms | 800k RPS | 0.5% |
-| 4 | Relay | < 5ms (avg) | 100 Gbps | 0.01% |
-| 5 | Monitoring | < 15s | 1M metrics/s | 0% |
-| 6 | AI Service | < 100ms | 10k inference/s | 1% |
-| 7 | Feedback | < 5s | 100 updates/s | 0% |
-| 8 | Dashboard | < 2s load | 1000 users | 0.1% |
+| Step | Component     | Latency     | Throughput      | Error Rate |
+| ---- | ------------- | ----------- | --------------- | ---------- |
+| 1    | DNS           | < 1ms       | 100k QPS        | 0%         |
+| 2    | Control Plane | < 100ms     | 10k auth/s      | 0.1%       |
+| 3    | DDoS          | < 100ms     | 800k RPS        | 0.5%       |
+| 4    | Relay         | < 5ms (avg) | 100 Gbps        | 0.01%      |
+| 5    | Monitoring    | < 15s       | 1M metrics/s    | 0%         |
+| 6    | AI Service    | < 100ms     | 10k inference/s | 1%         |
+| 7    | Feedback      | < 5s        | 100 updates/s   | 0%         |
+| 8    | Dashboard     | < 2s load   | 1000 users      | 0.1%       |
 
----
+***
 
 ## Request Timeline Example
 
@@ -303,7 +169,7 @@ T+215ms:  Operations team sees connection in real-time
 Total: 215ms from client request to full observability
 ```
 
----
+***
 
 ## Failure & Recovery Scenarios
 
@@ -346,24 +212,23 @@ Total: 215ms from client request to full observability
 6. New predictions resume
 7. No impact on data transmission
 
----
+***
 
----
+***
 
 ## Related Documentation
 
-- **[Complete Architecture Guide](COMPLETE_ARCHITECTURE_GUIDE.md)** - Full system architecture overview
-- **[Project Overview](PROJECT_OVERVIEW.md)** - All 8 components detailed
-- **[DNS Network Architecture](DNS_NETWORK_ARCHITECTURE.md)** - DNS design and anycast details
-- **[Protocol Stack](PROTOCOL_STACK.md)** - Complete protocol layer specifications
-- **[Network Layers OSI Model](NETWORK_LAYERS_OSI_MODEL.md)** - L1-L7 implementation details
-- **[Tenant Isolation Architecture](TENANT_ISOLATION_ARCHITECTURE.md)** - Multi-tenancy and security
-- **[Requirements Matrix](REQUIREMENTS_MATRIX.md)** - Component requirements and capabilities
-- **[Data Sources](DATA_SOURCES.md)** - Metric citations and verification
+* [**Complete Architecture Guide**](COMPLETE_ARCHITECTURE_GUIDE.md) - Full system architecture overview
+* [**Project Overview**](PROJECT_OVERVIEW.md) - All 8 components detailed
+* [**DNS Network Architecture**](DNS_NETWORK_ARCHITECTURE.md) - DNS design and anycast details
+* [**Protocol Stack**](PROTOCOL_STACK.md) - Complete protocol layer specifications
+* [**Network Layers OSI Model**](NETWORK_LAYERS_OSI_MODEL.md) - L1-L7 implementation details
+* [**Tenant Isolation Architecture**](TENANT_ISOLATION_ARCHITECTURE.md) - Multi-tenancy and security
+* [**Requirements Matrix**](REQUIREMENTS_MATRIX.md) - Component requirements and capabilities
+* [**Data Sources**](DATA_SOURCES.md) - Metric citations and verification
 
----
+***
 
-**Document Status:** Current and Accurate  
-**Last Verified:** November 5, 2025  
+**Document Status:** Current and Accurate\
+**Last Verified:** November 5, 2025\
 **Audience:** Architecture teams, operations staff
-
