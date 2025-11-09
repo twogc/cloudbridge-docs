@@ -162,11 +162,7 @@ graph TB
     XDP --> ROUTING
     CALICO --> ROUTING
     ROUTING --> L2["L2 Data Link"]
-    
-    style BGP fill:#ffe6f3
-    style XDP fill:#ffe6f3
-    style CALICO fill:#ffe6f3
-    style ROUTING fill:#ffe6f3
+
 ```
 
 ### Key Features
@@ -221,11 +217,6 @@ graph TB
     TCP --> L3["L3 Network"]
     UDP --> L3
     BBRv3 --> L3
-    
-    style QUIC fill:#f3f3e6
-    style BBRv3 fill:#f3f3e6
-    style TCP fill:#f3f3e6
-    style UDP fill:#f3f3e6
 ```
 
 ### Key Features
@@ -276,10 +267,6 @@ graph TB
     MASQUE --> L4["L4 Transport"]
     WIREGUARD --> L4
     HANDOVER --> L4
-    
-    style MASQUE fill:#f0e6ff
-    style WIREGUARD fill:#f0e6ff
-    style HANDOVER fill:#f0e6ff
 ```
 
 ### Key Features
@@ -331,10 +318,6 @@ graph TB
     TLS --> MTLS
     MTLS --> JWT
     JWT --> L5["L5 Session"]
-    
-    style TLS fill:#e6f0ff
-    style MTLS fill:#e6f0ff
-    style JWT fill:#e6f0ff
 ```
 
 ### Key Features
@@ -394,11 +377,6 @@ graph TB
     REST --> L6
     ZITADEL --> L6
     DASHBOARD --> L6
-    
-    style GRPC fill:#ffe6e6
-    style REST fill:#ffe6e6
-    style ZITADEL fill:#ffe6e6
-    style DASHBOARD fill:#ffe6e6
 ```
 
 ### Key Features
