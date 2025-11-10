@@ -1,7 +1,7 @@
 # Network Layers - OSI Model L1-L7
 
-**Version:** 2.0\
-**Updated:** November 3, 2025\
+**Version:** 3.0
+**Updated:** November 10, 2025
 **Status:** Architecture Reference - Code-Free
 
 ## Overview

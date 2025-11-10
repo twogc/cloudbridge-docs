@@ -198,11 +198,66 @@ Phase 3 (2027):     25+ PoPs (Global enterprise scale)
 - **Key Rotation:** Automatic every 60 days
 
 ### DDoS Protection
+
+**Mechanisms:**
 - **Rate Limiting:** Per-client IP quotas
-- See **[Complete Architecture Guide](COMPLETE_ARCHITECTURE_GUIDE.md)** for DDoS Protection component (Step 3)
 - **Query Filtering:** Malformed request rejection
 - **Amplification Prevention:** Response size limits
 - **Geographic Filtering:** Optional country blocking
+- **BGP Flowspec:** Dynamic traffic filtering at network edge
+
+See **[Complete Architecture Guide](COMPLETE_ARCHITECTURE_GUIDE.md)** for DDoS Protection component (Step 3)
+
+**BGP Flowspec Attack Mitigation:**
+
+```mermaid
+graph TB
+    subgraph "DDoS Detection"
+        DETECTOR["Attack Detector<br/>Analyzes traffic patterns<br/>Triggers on threshold exceeded"]
+    end
+
+    subgraph "Flowspec Generation"
+        FLOWSPEC_GEN["Flowspec Generator<br/>Creates BGP Flowspec rules<br/>Based on attack signature"]
+    end
+
+    subgraph "BGP Distribution (ASN 64512)"
+        subgraph "Moscow PoP"
+            MOS_BGP["BGP Router"]
+        end
+        subgraph "Frankfurt PoP"
+            FRANK_BGP["BGP Router"]
+        end
+        subgraph "Amsterdam PoP"
+            AMS_BGP["BGP Router"]
+        end
+        MOS_BGP ---|Announces<br/>Flowspec Rules| FRANK_BGP
+        FRANK_BGP ---|Announces<br/>Flowspec Rules| AMS_BGP
+    end
+
+    subgraph "Internet Upstream"
+        ISP["Upstream ISP<br/>Filters traffic<br/>Per Flowspec rules"]
+    end
+
+    subgraph "Protected Service"
+        PROTECTED["CloudBridge DNS<br/>Only clean traffic<br/>Reaches servers"]
+    end
+
+    DETECTOR -->|Detects Attack| FLOWSPEC_GEN
+    FLOWSPEC_GEN -->|Sends Rules| MOS_BGP
+    MOS_BGP -->|BGP Flowspec| ISP
+    FRANK_BGP -->|BGP Flowspec| ISP
+    AMS_BGP -->|BGP Flowspec| ISP
+    ISP -->|Filtered Traffic| PROTECTED
+```
+
+**Flowspec Rule Examples:**
+
+| Attack Type | Flowspec Action | Location |
+|-------------|---|---|
+| High-Rate UDP Queries | Rate limit to 100 qps | ISP edge |
+| DNSSEC amplification | Block responses >512B | ISP edge |
+| Spoofed Source IPs | Drop packets | ISP edge |
+| Geographic anomalies | Rate limit by region | All PoPs |
 
 ### Authentication
 - **API Access:** Bearer token or API key
@@ -228,12 +283,62 @@ Phase 3 (2027):     25+ PoPs (Global enterprise scale)
 - **Anycast IP:** All PoPs announce same DNS IP (203.0.113.1)
 
 ### BGP Routing (Anycast)
+
+**Configuration:**
 - **Autonomous System:** ASN 64512 (Private Range)
 - **Routing Protocol:** Border Gateway Protocol (RFC 4271)
 - **Prefix Announcement:** Each PoP announces DNS IP range
 - **BGP Convergence:** <30 seconds on topology change
 - **BGP Authentication:** MD5 session protection
 - **BGP Flowspec:** Dynamic traffic filtering on DDoS
+
+**Anycast Distribution Topology:**
+
+```mermaid
+graph TB
+    subgraph "Global Internet"
+        CLIENT1["Client 1<br/>US-East"]
+        CLIENT2["Client 2<br/>Europe"]
+        CLIENT3["Client 3<br/>Asia"]
+    end
+
+    subgraph "CloudBridge Anycast Network (ASN 64512)"
+        subgraph "Moscow PoP"
+            MOS_BGP["BGP Router<br/>AS 64512"]
+            MOS_DNS["DNS Servers<br/>203.0.113.1"]
+            MOS_BGP -->|Announces| MOS_DNS
+        end
+
+        subgraph "Frankfurt PoP"
+            FRANK_BGP["BGP Router<br/>AS 64512"]
+            FRANK_DNS["DNS Servers<br/>203.0.113.1"]
+            FRANK_BGP -->|Announces| FRANK_DNS
+        end
+
+        subgraph "Amsterdam PoP"
+            AMS_BGP["BGP Router<br/>AS 64512"]
+            AMS_DNS["DNS Servers<br/>203.0.113.1"]
+            AMS_BGP -->|Announces| AMS_DNS
+        end
+
+        MOS_BGP ---|BGP Session<br/>MD5 Auth| FRANK_BGP
+        FRANK_BGP ---|BGP Session<br/>MD5 Auth| AMS_BGP
+        AMS_BGP ---|BGP Session<br/>MD5 Auth| MOS_BGP
+    end
+
+    CLIENT1 -->|Queries 203.0.113.1<br/>Routed to nearest PoP| MOS_DNS
+    CLIENT2 -->|Queries 203.0.113.1<br/>Routed to nearest PoP| FRANK_DNS
+    CLIENT3 -->|Queries 203.0.113.1<br/>Routed to nearest PoP| MOS_DNS
+```
+
+**How Anycast Routing Works:**
+
+1. **Single Anycast IP:** All DNS servers announce the same IP address (203.0.113.1)
+2. **Multiple Announcements:** Each PoP's BGP router announces this IP via BGP
+3. **Client-Side Routing:** BGP on the internet routes client queries to the geographically nearest PoP
+4. **Automatic Failover:** If a PoP becomes unhealthy, it withdraws its BGP announcement
+5. **Zero Client Configuration:** Clients always query 203.0.113.1 - BGP handles routing
+6. **BGP Convergence:** <30 seconds for all routers to update after a PoP failure
 
 ### Failover
 - **Detection:** Health checks every 30s
