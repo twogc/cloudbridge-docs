@@ -176,34 +176,38 @@ graph TB
 
 ### 3. CloudBridge DNS Network (Intelligence/Discovery)
 
-**Purpose:** Geographic DNS and service discovery with 94% PoP selection accuracy.
+**Purpose:** Geographic DNS and service discovery with 94% PoP selection accuracy using Anycast and BGP routing.
 
 **Technology Stack:**
 
 * Language: Go + Python
 * Protocol: DNS + HTTP APIs
+* Routing: BGP with ASN 64512 for Anycast distribution
 
 **Features:**
 
-* GeoDNS: Client location-based routing
-* Anycast DNS: Multiple PoPs announce same IP
+* GeoDNS: Client location-based routing with latency optimization
+* Anycast DNS: Multiple PoPs announce same IP over BGP (ASN 64512)
+* BGP Routing: Global traffic distribution with automatic failover
 * Service Discovery: Dynamic service registration
-* Health Checking: Real-time endpoint status
-* DNSSEC: Signed DNS responses
-* Rate Limiting: Query rate control
+* Health Checking: Real-time endpoint status monitoring
+* DNSSEC: Signed DNS responses for security
+* Rate Limiting: Query rate control per client
+* BGP Flowspec: Dynamic traffic filtering and rerouting
 
 **Performance:**
 
-* 94% Accuracy: Selects closest PoP
-* Sub-millisecond Response Time: Cached responses
-* 99.99% Availability: Redundant nameservers
-* Failover: Automatic reroute on PoP down
+* 94% Accuracy: Selects closest PoP based on geographic location
+* Sub-millisecond Response Time: Cached responses and BGP propagation
+* 99.99% Availability: Redundant nameservers with BGP failover
+* BGP Convergence: < 30 seconds on PoP failure
+* Automatic Rerouting: BGP dynamic routing on service degradation
 
 **Integration Points:**
 
-* CloudBridge Relay: Endpoint registration
-* CloudBridge AI: Traffic prediction feedback
-* CloudBridge DDoS: Query pattern analysis
+* CloudBridge Relay: Endpoint registration for Anycast
+* CloudBridge AI: Traffic prediction feedback for BGP optimization
+* CloudBridge DDoS: Query pattern analysis and BGP Flowspec rules
 
 ***
 
@@ -591,6 +595,33 @@ graph TB
 
 ***
 
+## Global PoP Infrastructure
+
+**Anycast Distribution:**
+
+* Each PoP announces the same IP address (203.0.113.1 for DNS)
+* BGP routing (ASN 64512) distributes traffic to nearest PoP
+* Clients always connect to geographically closest server
+* Automatic failover when PoP becomes unavailable
+
+**PoP Locations:**
+
+| Location | AS64512 Prefix | DNS IP | Relay Ports | Status |
+|----------|---|---|---|---|
+| Moscow (RU) | 203.0.113.0/25 | 203.0.113.1 | 9090, 8443 | Primary |
+| Frankfurt (DE) | 203.0.113.128/25 | 203.0.113.1 | 9090, 8443 | Active |
+| Amsterdam (NL) | 203.0.113.0/25 | 203.0.113.1 | 9090, 8443 | Active |
+
+**BGP Configuration:**
+
+* Autonomous System Number (ASN): 64512 (Private Range)
+* BGP Convergence Time: < 30 seconds on failure
+* BGP Flowspec: Dynamic traffic filtering (DDoS mitigation)
+* MD5 Authentication: BGP session protection
+* Graceful Shutdown: Gradual traffic migration on maintenance
+
+***
+
 ## Security Architecture
 
 ### Defense in Depth
@@ -603,10 +634,13 @@ graph TB
 
 **Layer 2: Network Security**
 
-* BGP authentication via MD5
+* BGP routing with ASN 64512 for Anycast distribution
+* BGP authentication via MD5 (session protection)
+* BGP Flowspec for dynamic DDoS filtering
 * VLAN isolation per tenant
 * Network policies via Calico
 * Stateful firewall at PoP ingress
+* Anycast IP reachability protection
 
 **Layer 3: Encryption**
 
