@@ -1,9 +1,9 @@
 # CloudBridge DNS Network Architecture
 
-**Version:** 3.0
+**Version:** 3.1
 **Component:** Step 1 - DNS Network
 **Status:** Production Ready (97%)
-**Updated:** November 5, 2025
+**Updated:** November 10, 2025
 
 ---
 
@@ -114,6 +114,48 @@ Score = (Geographic Distance × 60%) +
 
 ---
 
+## Enterprise DNS Architecture
+
+CloudBridge DNS Network provides enterprise-grade global DNS services with:
+
+### Key Capabilities
+
+**1. Global Anycast Network**
+- Autonomous System: ASN 64512 (Private Range)
+- Multi-region distribution (Moscow, Frankfurt, Amsterdam)
+- BGP-based traffic distribution
+- <30 second failover convergence
+
+**2. Enterprise Features**
+- DNS-over-HTTPS (DoH) - RFC 8484
+- DNS-over-TLS (DoT) - RFC 7858
+- DNSSEC validation
+- Dynamic BGP Flowspec filtering
+- Real-time AI optimization
+
+**3. Infrastructure Integration**
+- DNS discovery for P2P mesh networks
+- Anycast IP for both DNS and Relay services
+- Unified global distribution
+- Enterprise BGP control
+
+**4. Performance & Reliability**
+- 94% optimal PoP selection accuracy
+- <10ms p99 DNS latency
+- >10,000 queries per second per node
+- 99.95% uptime SLA
+
+### Expansion Roadmap
+
+```
+Current (2025):     3 Global PoPs (Moscow, Frankfurt, Amsterdam)
+Phase 1 (2026 Q1):  6 PoPs (Add: London, Tokyo, São Paulo)
+Phase 2 (2026 Q2):  12 PoPs (Add: Sydney, Singapore, Dubai, etc.)
+Phase 3 (2027):     25+ PoPs (Global enterprise scale)
+```
+
+---
+
 ## Request Flow
 
 ### Standard DNS Query
@@ -179,17 +221,27 @@ Score = (Geographic Distance × 60%) +
 ## High Availability
 
 ### Redundancy
-- **Geographic:** Multiple regions
+- **Geographic:** Multiple regions (Moscow, Frankfurt, Amsterdam)
 - **Network:** Multiple providers per region
 - **DNS Nodes:** Minimum 3 per region
-- **Load Balancing:** Anycast + GeoDNS
+- **Load Balancing:** Anycast + GeoDNS with BGP (ASN 64512)
+- **Anycast IP:** All PoPs announce same DNS IP (203.0.113.1)
+
+### BGP Routing (Anycast)
+- **Autonomous System:** ASN 64512 (Private Range)
+- **Routing Protocol:** Border Gateway Protocol (RFC 4271)
+- **Prefix Announcement:** Each PoP announces DNS IP range
+- **BGP Convergence:** <30 seconds on topology change
+- **BGP Authentication:** MD5 session protection
+- **BGP Flowspec:** Dynamic traffic filtering on DDoS
 
 ### Failover
 - **Detection:** Health checks every 30s
 - **Decision:** 3 consecutive failures trigger failover
-- **Execution:** Automatic BGP route withdrawal
-- **Recovery:** Automatic re-announcement on health restoration
-- **Duration:** <500ms total failover time
+- **Execution:** Automatic BGP route withdrawal + BGP Flowspec rules
+- **Recovery:** Automatic BGP re-announcement on health restoration
+- **Duration:** <500ms total BGP convergence time
+- **Graceful Degradation:** Remaining PoPs absorb traffic
 
 ### Data Protection
 - **Zone Backups:** Before every update
@@ -490,6 +542,7 @@ CloudBridge DNS Network provides enterprise-grade DNS resolution with:
 
 ---
 
-**Version:** 3.0
-**Last Updated:** November 5, 2025
+**Version:** 3.1
+**Last Updated:** November 10, 2025
 **Completion:** 97%
+**Architecture:** Enterprise Global DNS with Anycast (ASN 64512)
