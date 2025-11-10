@@ -850,23 +850,23 @@ Per-tenant WireGuard interface:
 
 ### 5.2 Partial/In-Progress Features
 
-⏳ **MASQUE Protocol (40% complete)**
+PENDING **MASQUE Protocol (40% complete)**
 - HTTP/3 tunneling
 - Proxy support for restricted networks
 - Ongoing integration with QUIC layer
 
-⏳ **SLO Controller (30% complete)**
+PENDING **SLO Controller (30% complete)**
 - Service level objective tracking
 - SLA monitoring
 - Alert generation
 
-⏳ **Synthetic Probes (30% complete)**
+PENDING **Synthetic Probes (30% complete)**
 - Network diagnostics
 - Latency measurement
 - Packet loss testing
 - Jitter analysis
 
-⏳ **Dashboard Integration (50% complete)**
+PENDING **Dashboard Integration (50% complete)**
 - Client metrics reporting
 - Connection visualization
 - Performance graphs

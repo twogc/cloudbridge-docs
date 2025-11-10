@@ -234,8 +234,6 @@ Relay ──[QUIC]──> AI Routing Engine
 - Custom BBRv3 implementation (not in standard quic-go yet)
 
 **Code Reference**:
-- [cmd/relay/enhanced_quic.go](../../cloudbridge-scalable-relay/cmd/relay/enhanced_quic.go) - Enhanced QUIC with BBRv3
-- [internal/quic/](../../cloudbridge-scalable-relay/internal/quic/) - QUIC management, congestion control
 
 ### When NOT to Use QUIC
 
@@ -409,8 +407,6 @@ Mobile App ──[MASQUE]──> CloudBridge ──> P2P Mesh
 ### Implementation
 
 **Code Reference**:
-- [cmd/relay/masque_support.go](../../cloudbridge-scalable-relay/cmd/relay/masque_support.go) - MASQUE server
-- [internal/masque/](../../cloudbridge-scalable-relay/internal/masque/) - CONNECT-UDP/IP implementation
 
 **Configuration**:
 ```yaml
@@ -614,8 +610,6 @@ Mobile App ──[TURN]──> CloudBridge Relay ──[TURN]──> IoT Device
 ### Implementation
 
 **Server-side (Go)**:
-- [internal/api/ice_handlers.go](../../cloudbridge-scalable-relay/internal/api/ice_handlers.go) - ICE credential generation
-- [internal/api/handlers/ice_credentials_pion.go](../../cloudbridge-scalable-relay/internal/api/handlers/ice_credentials_pion.go) - Pion WebRTC integration
 
 **STUN/TURN Server**: `coturn` (industry standard)
 
@@ -771,7 +765,6 @@ wgServer.SetMTU(randomBetween(1280, 1420))
 **Library**: `wireguard-go` (userspace WireGuard implementation)
 
 **Code Reference**:
-- [internal/api/wireguard_simple.go](../../cloudbridge-scalable-relay/internal/api/wireguard_simple.go) - WireGuard tunnel management
 
 **Key Management**:
 ```go
@@ -1021,7 +1014,6 @@ Server broadcasts to all peers in mesh:
 ### Implementation
 
 **Server-side**:
-- [internal/api/websocket_server_simple.go](../../cloudbridge-scalable-relay/internal/api/websocket_server_simple.go) - WebSocket server implementation
 - Uses `gorilla/websocket` library (industry standard)
 
 **Client-side**:

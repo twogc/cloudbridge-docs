@@ -1,8 +1,8 @@
 # CloudBridge Architecture Documentation Index
 
-**Version:** 3.2
-**Updated:** November 5, 2025
-**Status:** Complete Architecture Reference
+**Version:** 3.1
+**Updated:** November 10, 2025
+**Status:** Complete Architecture Reference with Implementation Details
 
 ---
 
@@ -75,29 +75,34 @@
 **Purpose:** Deep dive into multi-tenancy and isolation mechanisms
 
 **Contents:**
-- Five isolation layers (Network, Application, Resource, Data, Operational)
-- Isolation attributes and inheritance
-- Peer management with tenant context
-- IPAM (IP Address Management)
-- JWT token structure and validation
-- Kubernetes NetworkPolicies
-- Calico VRF configuration
-- Database schema with tenant isolation
-- Audit logging and metrics
+- Five isolation layers with detailed enforcement mechanisms
+- Multi-Tenant IPAM engine with per-tenant subnets
+- Network Policies Engine with zero-trust enforcement
+- Tenant context isolation and separation
+- Authentication and authorization via JWT
+- Server Connection Manager for P2P connections
+- Hole Punching with NAT traversal
+- Resource quotas and rate limiting per tenant
+- Audit logging and compliance tracking
+- Isolation verification procedures
 
 **Best for:**
-- Understanding multi-tenancy
-- Security architecture
-- Compliance requirements
-- Access control design
-- Troubleshooting isolation issues
+- Understanding multi-tenancy implementation
+- Security architecture and enforcement
+- Compliance requirements (GDPR, HIPAA, PCI-DSS)
+- Access control design and troubleshooting
+- Verifying tenant isolation guarantees
+- P2P connection architecture
 
 **Key Sections:**
-- Layer 1: Network Isolation (Kubernetes + Calico)
-- Layer 2: Application-Level Isolation (Zitadel + JWT)
-- Layer 3: Resource Isolation (ResourceQuotas + Rate Limiting)
-- Layer 4: Data Isolation (IPAM + Database)
-- Layer 5: Operational Isolation (Audit + Metrics)
+- Layer 1: Network Isolation (IPAM-Based Subnets)
+- Layer 2: Network Policy Enforcement (Zero-Trust)
+- Layer 3: Tenant Context Isolation (Per-Tenant Data)
+- Layer 4: Authentication and Authorization (JWT)
+- Layer 5: Logical Separation (Relay Routing)
+- Isolation Verification Tests
+- Tenant Lifecycle Management
+- Security Properties and Defense in Depth
 - Isolation Attributes Matrix
 - Inheritance Hierarchy
 
@@ -266,6 +271,34 @@
 
 ---
 
+## Implementation Reference
+
+### For Developers Building and Testing
+
+When implementing enterprise mesh features, refer to these documents for actual code and testing procedures:
+
+#### Implementation Completion Summary
+- **File:** INTEGRATION_COMPLETE.md (in repository root)
+- **Contents:** Full summary of implemented components, files created, API endpoints, quick start guide
+- **Use case:** Understanding what was implemented and quick testing procedures
+
+#### Implementation Architecture Details
+- **File:** IMPLEMENTATION_SUMMARY.md (in repository root)
+- **Contents:** Detailed architecture, component interaction, configuration guide, deployment procedures
+- **Use case:** Understanding how components work together and architectural decisions
+
+#### Testing Procedures
+- **File:** TESTING_GUIDE.md (in repository root)
+- **Contents:** Unit test procedures, integration tests, load testing, performance benchmarks
+- **Use case:** Writing tests and validating implementation against requirements
+
+#### Implementation Checklist
+- **File:** IMPLEMENTATION_CHECKLIST.md (in repository root)
+- **Contents:** Detailed task-by-task checklist, verification procedures, sign-off tracking
+- **Use case:** Verifying all components are working correctly before production deployment
+
+---
+
 ### SECONDARY DOCUMENTS (Reference)
 
 #### 8. **README**
@@ -337,38 +370,42 @@ Step 8: Operations Visibility
 
 ### Five Isolation Layers
 
-1. **Network Layer (L1-L3)**
-   - Kubernetes NetworkPolicies (default-deny)
-   - Calico VRF per tenant
-   - Subnet isolation (10.x.0.0/24 per tenant)
+1. **Network Layer (IPAM-Based)**
+   - Multi-Tenant IPAM with per-tenant subnets (e.g., 10.100.77.0/24)
+   - IP address allocation per peer with TTL-based expiration
+   - Automatic IP pool defragmentation
+   - Cross-subnet packet blocking at relay
 
-2. **Application Layer (L7)**
-   - Zitadel OIDC authentication
-   - JWT token with tenant_id claim
-   - Per-request tenant validation
+2. **Network Policy Layer (Zero-Trust)**
+   - Network Policies Engine with default DENY configuration
+   - Per-peer, per-protocol, per-port granular control
+   - Policy rule evaluation before packet forwarding
+   - Sub-100 microsecond decision latency
 
-3. **Resource Layer**
-   - Kubernetes ResourceQuotas
-   - Rate limiting per tenant
-   - Burst capacity enforcement
+3. **Tenant Context Isolation**
+   - Separate TenantIPAMContext per tenant
+   - Separate TenantNetworkPolicy per tenant
+   - Independent policy rule evaluation
+   - Thread-safe per-tenant operations
 
-4. **Data Layer**
-   - IPAM with per-tenant subnets
-   - Per-peer IP allocation
-   - Database row-level security
-   - SERIALIZABLE transactions
+4. **Authentication and Authorization**
+   - JWT validation on every connection
+   - Tenant ID extraction from JWT claims
+   - Peer ID and role validation
+   - Token signature verification
 
-5. **Operational Layer**
-   - Audit logging (90-day retention)
-   - Metrics labeled with tenant_id
-   - RBAC on dashboards
-   - Violation alerts
+5. **Logical Separation (Relay Routing)**
+   - Stream handlers route to tenant-specific logic
+   - Metrics collected per-tenant with tenant context
+   - Audit logs scoped to tenant
+   - Server discovery limited to same tenant
 
 ### Isolation Inheritance
 
-- Global defaults -> Tenant config -> Peers
-- Network policies inherited by all pods
-- Rate limits inherited by all services
+- Tenant configuration inherited by all peers
+- IPAM policies inherited by all connections
+- Network policies inherited by all flows
+- Rate limits inherited by all sessions
 - Audit rules inherited by all events
 - Metrics labels cascaded to all series
 
@@ -490,11 +527,20 @@ Step 8: Operations Visibility
 
 ## Getting Started
 
+### For Understanding Architecture
+
 1. Read: **[COMPLETE ARCHITECTURE GUIDE](COMPLETE_ARCHITECTURE_GUIDE.md)** (5 minutes)
 2. Understand: Request processing pipeline - **[ARCHITECTURE FLOW](ARCHITECTURE_FLOW.md)** (5 minutes)
 3. Learn: Multi-tenancy isolation - **[TENANT ISOLATION ARCHITECTURE](TENANT_ISOLATION_ARCHITECTURE.md)** (10 minutes)
 4. Review: Component interactions - **[PROJECT OVERVIEW](PROJECT_OVERVIEW.md)** (10 minutes)
 5. Deep dive: Specific area of interest
+
+### For Building and Testing
+
+1. Review: **INTEGRATION_COMPLETE.md** - What was implemented (5 minutes)
+2. Understand: **IMPLEMENTATION_SUMMARY.md** - How components work (15 minutes)
+3. Test: **TESTING_GUIDE.md** - Validation procedures (varies)
+4. Verify: **IMPLEMENTATION_CHECKLIST.md** - Sign off on implementation (varies)
 
 ---
 
@@ -515,6 +561,7 @@ Step 8: Operations Visibility
 ---
 
 **Document Status:** Current and Complete
-**Last Verified:** November 5, 2025
+**Last Verified:** November 10, 2025
 **Audience:** All technical roles
+**Implementation Status:** Enterprise mesh integration complete (see Implementation Reference section)
 
