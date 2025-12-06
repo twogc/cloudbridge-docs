@@ -8,5 +8,5 @@ description: >-
 
 | File                                                                                  | Purpose                           |
 | ------------------------------------------------------------------------------------- | --------------------------------- |
-| [.](./ "mention")                                                                     | Component summary and key metrics |
+| [PROJECT\_OVERVIEW.md](OVERVIEW/PROJECT_OVERVIEW.md "mention")                        | Component summary and key metrics |
 | [COMPLETE\_ARCHITECTURE\_GUIDE.md](OVERVIEW/COMPLETE_ARCHITECTURE_GUIDE.md "mention") | End-to-end architecture guide     |
