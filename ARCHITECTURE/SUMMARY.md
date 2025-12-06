@@ -1,6 +1,7 @@
 # Table of contents
 
-* [Architecture Overview](README.md)
+* [CloudBridge Architecture Documentation](README.md)
+* [Architecture Overview](<README (2).md>)
   * [CloudBridge Complete Architecture Guide](OVERVIEW/COMPLETE_ARCHITECTURE_GUIDE.md)
   * [Global Network - Project Overview](OVERVIEW/PROJECT_OVERVIEW.md)
 * [REFERENCE](reference/README.md)
