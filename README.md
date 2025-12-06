@@ -24,38 +24,38 @@ CloudBridge is a next-generation global network platform that provides scalable,
 | -------------------------------------------------------------------------- | --------------------- | --------------------- |
 | [**START HERE**](ARCHITECTURE/START_HERE.md)                               | Navigation and guide  | First-time readers    |
 | [**INDEX**](ARCHITECTURE/INDEX.md)                                         | Role-based navigation | Finding your path     |
-| [**REQUIREMENTS MATRIX GUIDE**](ARCHITECTURE/REQUIREMENTS_MATRIX_GUIDE.md) | Quick search tool     | Finding specific info |
+| [**REQUIREMENTS MATRIX GUIDE**](ARCHITECTURE/REFERENCE/REQUIREMENTS_MATRIX_GUIDE.md) | Quick search tool     | Finding specific info |
 
 ### For Different Roles
 
 **Administrators & Decision Makers**
 
-* Start with [**PROJECT OVERVIEW**](ARCHITECTURE/PROJECT_OVERVIEW.md) for system overview
-* Review [**COMPLETE ARCHITECTURE GUIDE**](ARCHITECTURE/COMPLETE_ARCHITECTURE_GUIDE.md) for full context
+* Start with [**PROJECT OVERVIEW**](ARCHITECTURE/OVERVIEW/PROJECT_OVERVIEW.md) for system overview
+* Review [**COMPLETE ARCHITECTURE GUIDE**](ARCHITECTURE/OVERVIEW/COMPLETE_ARCHITECTURE_GUIDE.md) for full context
 
 **Developers**
 
-* Begin with [**CLIENT ARCHITECTURE**](ARCHITECTURE/CLIENT_ARCHITECTURE.md) for client implementation
-* Deep dive into [**PROTOCOL STACK**](ARCHITECTURE/PROTOCOL_STACK.md) for protocol details
-* Review [**ARCHITECTURE FLOW**](ARCHITECTURE/ARCHITECTURE_FLOW.md) for request processing
+* Begin with [**CLIENT ARCHITECTURE**](ARCHITECTURE/COMPONENTS/CLIENT_ARCHITECTURE.md) for client implementation
+* Deep dive into [**PROTOCOL STACK**](ARCHITECTURE/CORE/PROTOCOL_STACK.md) for protocol details
+* Review [**ARCHITECTURE FLOW**](ARCHITECTURE/CORE/ARCHITECTURE_FLOW.md) for request processing
 
 **Operations & DevOps**
 
-* Focus on [**PROJECT OVERVIEW**](ARCHITECTURE/PROJECT_OVERVIEW.md) deployment sections
-* Study [**ARCHITECTURE FLOW**](ARCHITECTURE/ARCHITECTURE_FLOW.md) for operational understanding
-* Reference [**NETWORK LAYERS OSI MODEL**](ARCHITECTURE/NETWORK_LAYERS_OSI_MODEL.md) for troubleshooting
+* Focus on [**PROJECT OVERVIEW**](ARCHITECTURE/OVERVIEW/PROJECT_OVERVIEW.md) deployment sections
+* Study [**ARCHITECTURE FLOW**](ARCHITECTURE/CORE/ARCHITECTURE_FLOW.md) for operational understanding
+* Reference [**NETWORK LAYERS OSI MODEL**](ARCHITECTURE/CORE/NETWORK_LAYERS_OSI_MODEL.md) for troubleshooting
 
 **Security Teams**
 
-* Review [**TENANT ISOLATION ARCHITECTURE**](ARCHITECTURE/TENANT_ISOLATION_ARCHITECTURE.md) for security model
-* Study security sections in [**COMPLETE ARCHITECTURE GUIDE**](ARCHITECTURE/COMPLETE_ARCHITECTURE_GUIDE.md)
-* Check [**DNS NETWORK ARCHITECTURE**](ARCHITECTURE/DNS_NETWORK_ARCHITECTURE.md) for DNS security
+* Review [**TENANT ISOLATION ARCHITECTURE**](ARCHITECTURE/COMPONENTS/TENANT_ISOLATION_ARCHITECTURE.md) for security model
+* Study security sections in [**COMPLETE ARCHITECTURE GUIDE**](ARCHITECTURE/OVERVIEW/COMPLETE_ARCHITECTURE_GUIDE.md)
+* Check [**DNS NETWORK ARCHITECTURE**](ARCHITECTURE/COMPONENTS/DNS_NETWORK_ARCHITECTURE.md) for DNS security
 
 **Network Engineers**
 
-* Deep dive into [**NETWORK LAYERS OSI MODEL**](ARCHITECTURE/NETWORK_LAYERS_OSI_MODEL.md) for OSI layers
-* Review [**DNS NETWORK ARCHITECTURE**](ARCHITECTURE/DNS_NETWORK_ARCHITECTURE.md) for DNS design
-* Study [**PROTOCOL STACK**](ARCHITECTURE/PROTOCOL_STACK.md) for protocol details
+* Deep dive into [**NETWORK LAYERS OSI MODEL**](ARCHITECTURE/CORE/NETWORK_LAYERS_OSI_MODEL.md) for OSI layers
+* Review [**DNS NETWORK ARCHITECTURE**](ARCHITECTURE/COMPONENTS/DNS_NETWORK_ARCHITECTURE.md) for DNS design
+* Study [**PROTOCOL STACK**](ARCHITECTURE/CORE/PROTOCOL_STACK.md) for protocol details
 
 **Researchers & Protocol Engineers**
 
@@ -74,14 +74,14 @@ The core architectural documentation provides comprehensive coverage of the Clou
 
 | Document                                                                           | Purpose                     | Best For                   |
 | ---------------------------------------------------------------------------------- | --------------------------- | -------------------------- |
-| [**COMPLETE ARCHITECTURE GUIDE**](ARCHITECTURE/COMPLETE_ARCHITECTURE_GUIDE.md)     | Central reference           | Understanding whole system |
-| [**PROJECT OVERVIEW**](ARCHITECTURE/PROJECT_OVERVIEW.md)                           | 9 components overview       | Component descriptions     |
-| [**ARCHITECTURE FLOW**](ARCHITECTURE/ARCHITECTURE_FLOW.md)                         | 8-step pipeline             | Request processing         |
-| [**CLIENT ARCHITECTURE**](ARCHITECTURE/CLIENT_ARCHITECTURE.md)                     | Client codebase             | Client developers          |
-| [**TENANT ISOLATION ARCHITECTURE**](ARCHITECTURE/TENANT_ISOLATION_ARCHITECTURE.md) | Multi-tenancy model         | Security teams             |
-| [**DNS NETWORK ARCHITECTURE**](ARCHITECTURE/DNS_NETWORK_ARCHITECTURE.md)           | DNS network design          | Network/DNS engineers      |
-| [**PROTOCOL STACK**](ARCHITECTURE/PROTOCOL_STACK.md)                               | Protocol stack architecture | Protocol engineers         |
-| [**NETWORK LAYERS OSI MODEL**](ARCHITECTURE/NETWORK_LAYERS_OSI_MODEL.md)           | L1-L7 details               | Protocol engineers         |
+| [**COMPLETE ARCHITECTURE GUIDE**](ARCHITECTURE/OVERVIEW/COMPLETE_ARCHITECTURE_GUIDE.md)     | Central reference           | Understanding whole system |
+| [**PROJECT OVERVIEW**](ARCHITECTURE/OVERVIEW/PROJECT_OVERVIEW.md)                           | 9 components overview       | Component descriptions     |
+| [**ARCHITECTURE FLOW**](ARCHITECTURE/CORE/ARCHITECTURE_FLOW.md)                         | 8-step pipeline             | Request processing         |
+| [**CLIENT ARCHITECTURE**](ARCHITECTURE/COMPONENTS/CLIENT_ARCHITECTURE.md)                     | Client codebase             | Client developers          |
+| [**TENANT ISOLATION ARCHITECTURE**](ARCHITECTURE/COMPONENTS/TENANT_ISOLATION_ARCHITECTURE.md) | Multi-tenancy model         | Security teams             |
+| [**DNS NETWORK ARCHITECTURE**](ARCHITECTURE/COMPONENTS/DNS_NETWORK_ARCHITECTURE.md)           | DNS network design          | Network/DNS engineers      |
+| [**PROTOCOL STACK**](ARCHITECTURE/CORE/PROTOCOL_STACK.md)                               | Protocol stack architecture | Protocol engineers         |
+| [**NETWORK LAYERS OSI MODEL**](ARCHITECTURE/CORE/NETWORK_LAYERS_OSI_MODEL.md)           | L1-L7 details               | Protocol engineers         |
 
 ### Reference Documentation
 
@@ -89,8 +89,8 @@ Technical references and detailed specifications:
 
 | Document                                                       | Purpose          | Best For              |
 | -------------------------------------------------------------- | ---------------- | --------------------- |
-| [**REQUIREMENTS MATRIX**](ARCHITECTURE/REQUIREMENTS_MATRIX.md) | Detailed specs   | Detailed requirements |
-| [**DATA SOURCES**](ARCHITECTURE/DATA_SOURCES.md)               | Metric citations | Documentation writers |
+| [**REQUIREMENTS MATRIX**](ARCHITECTURE/REFERENCE/REQUIREMENTS_MATRIX.md) | Detailed specs   | Detailed requirements |
+| [**DATA SOURCES**](ARCHITECTURE/REFERENCE/DATA_SOURCES.md)               | Metric citations | Documentation writers |
 
 ### Laboratory Reports
 
@@ -136,20 +136,20 @@ Comprehensive laboratory and experimental reports supporting CloudBridge network
 
 ### By Topic
 
-* **Architecture & Design**: [COMPLETE ARCHITECTURE GUIDE](ARCHITECTURE/COMPLETE_ARCHITECTURE_GUIDE.md), [PROJECT OVERVIEW](ARCHITECTURE/PROJECT_OVERVIEW.md)
-* **Network Protocols**: [NETWORK LAYERS OSI MODEL](ARCHITECTURE/NETWORK_LAYERS_OSI_MODEL.md), [PROTOCOL STACK](ARCHITECTURE/PROTOCOL_STACK.md)
-* **Security**: [TENANT ISOLATION ARCHITECTURE](ARCHITECTURE/TENANT_ISOLATION_ARCHITECTURE.md)
-* **Client Development**: [CLIENT ARCHITECTURE](ARCHITECTURE/CLIENT_ARCHITECTURE.md)
-* **DNS**: [DNS NETWORK ARCHITECTURE](ARCHITECTURE/DNS_NETWORK_ARCHITECTURE.md)
-* **Requirements**: [REQUIREMENTS MATRIX](ARCHITECTURE/REQUIREMENTS_MATRIX.md), [REQUIREMENTS MATRIX GUIDE](ARCHITECTURE/REQUIREMENTS_MATRIX_GUIDE.md)
+* **Architecture & Design**: [COMPLETE ARCHITECTURE GUIDE](ARCHITECTURE/OVERVIEW/COMPLETE_ARCHITECTURE_GUIDE.md), [PROJECT OVERVIEW](ARCHITECTURE/OVERVIEW/PROJECT_OVERVIEW.md)
+* **Network Protocols**: [NETWORK LAYERS OSI MODEL](ARCHITECTURE/CORE/NETWORK_LAYERS_OSI_MODEL.md), [PROTOCOL STACK](ARCHITECTURE/CORE/PROTOCOL_STACK.md)
+* **Security**: [TENANT ISOLATION ARCHITECTURE](ARCHITECTURE/COMPONENTS/TENANT_ISOLATION_ARCHITECTURE.md)
+* **Client Development**: [CLIENT ARCHITECTURE](ARCHITECTURE/COMPONENTS/CLIENT_ARCHITECTURE.md)
+* **DNS**: [DNS NETWORK ARCHITECTURE](ARCHITECTURE/COMPONENTS/DNS_NETWORK_ARCHITECTURE.md)
+* **Requirements**: [REQUIREMENTS MATRIX](ARCHITECTURE/REFERENCE/REQUIREMENTS_MATRIX.md), [REQUIREMENTS MATRIX GUIDE](ARCHITECTURE/REFERENCE/REQUIREMENTS_MATRIX_GUIDE.md)
 * **Laboratory Research**: [LABORATORY REPORTS OVERVIEW](LAB/) - QUIC, MASQUE, and performance testing reports
 
 ### By Use Case
 
-* **Planning a deployment**: [PROJECT OVERVIEW](ARCHITECTURE/PROJECT_OVERVIEW.md) → [COMPLETE ARCHITECTURE GUIDE](ARCHITECTURE/COMPLETE_ARCHITECTURE_GUIDE.md)
-* **Understanding request flow**: [ARCHITECTURE FLOW](ARCHITECTURE/ARCHITECTURE_FLOW.md)
-* **Implementing a client**: [CLIENT ARCHITECTURE](ARCHITECTURE/CLIENT_ARCHITECTURE.md) → [PROTOCOL STACK](ARCHITECTURE/PROTOCOL_STACK.md)
-* **Troubleshooting**: [ARCHITECTURE FLOW](ARCHITECTURE/ARCHITECTURE_FLOW.md) → [NETWORK LAYERS OSI MODEL](ARCHITECTURE/NETWORK_LAYERS_OSI_MODEL.md)
+* **Planning a deployment**: [PROJECT OVERVIEW](ARCHITECTURE/OVERVIEW/PROJECT_OVERVIEW.md) → [COMPLETE ARCHITECTURE GUIDE](ARCHITECTURE/OVERVIEW/COMPLETE_ARCHITECTURE_GUIDE.md)
+* **Understanding request flow**: [ARCHITECTURE FLOW](ARCHITECTURE/CORE/ARCHITECTURE_FLOW.md)
+* **Implementing a client**: [CLIENT ARCHITECTURE](ARCHITECTURE/COMPONENTS/CLIENT_ARCHITECTURE.md) → [PROTOCOL STACK](ARCHITECTURE/CORE/PROTOCOL_STACK.md)
+* **Troubleshooting**: [ARCHITECTURE FLOW](ARCHITECTURE/CORE/ARCHITECTURE_FLOW.md) → [NETWORK LAYERS OSI MODEL](ARCHITECTURE/CORE/NETWORK_LAYERS_OSI_MODEL.md)
 * **Researching protocols**: [LABORATORY REPORTS OVERVIEW](LAB/) → [QUIC Laboratory Research](LAB/QUIC_Laboratory_Research_Report.md) → [MASQUE Research](LAB/MASQUE_Laboratory_Research_Report.md)
 * **Performance analysis**: [QUIC Performance Comparison](LAB/QUIC_Performance_Comparison_Report.md) → [Phase Testing Report](LAB/PHASE1_PHASE3_TESTING_REPORT.md)
 
