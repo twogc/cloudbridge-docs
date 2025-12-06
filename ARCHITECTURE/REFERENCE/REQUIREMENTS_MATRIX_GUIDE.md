@@ -62,7 +62,7 @@ Need to understand: What features are coming? What dependencies? What timeline?
 ## By Component (Client + 8-Step Pipeline)
 
 ### Step 0: CloudBridge Relay Client
-**See:** **[CLIENT ARCHITECTURE](CLIENT_ARCHITECTURE.md)** document
+**See:** **[CLIENT ARCHITECTURE](../COMPONENTS/CLIENT_ARCHITECTURE.md)** document
 
 **Quick Questions:**
 - Q: How does client connect to relay? → Check "Part 3: Protocol Support"
@@ -553,17 +553,17 @@ Each component section follows this structure:
 ## Related Documentation
 
 - **[Requirements Matrix](REQUIREMENTS_MATRIX.md)** - Complete component requirements and capabilities matrix
-- **[Client Architecture](CLIENT_ARCHITECTURE.md)** - CloudBridge Relay Client documentation
-- **[Complete Architecture Guide](COMPLETE_ARCHITECTURE_GUIDE.md)** - Full system architecture overview
-- **[Architecture Flow](ARCHITECTURE_FLOW.md)** - Detailed 8-step request processing pipeline
-- **[Project Overview](PROJECT_OVERVIEW.md)** - All 8 components with detailed descriptions
-- **[Tenant Isolation Architecture](TENANT_ISOLATION_ARCHITECTURE.md)** - Multi-tenancy and isolation model
-- **[Protocol Stack](PROTOCOL_STACK.md)** - Complete protocol layer specifications
-- **[Network Layers OSI Model](NETWORK_LAYERS_OSI_MODEL.md)** - L1-L7 implementation details
-- **[DNS Network Architecture](DNS_NETWORK_ARCHITECTURE.md)** - DNS design, anycast, DNSSEC
+- **[Client Architecture](../COMPONENTS/CLIENT_ARCHITECTURE.md)** - CloudBridge Relay Client documentation
+- **[Complete Architecture Guide](../OVERVIEW/COMPLETE_ARCHITECTURE_GUIDE.md)** - Full system architecture overview
+- **[Architecture Flow](../CORE/ARCHITECTURE_FLOW.md)** - Detailed 8-step request processing pipeline
+- **[Project Overview](../OVERVIEW/PROJECT_OVERVIEW.md)** - All 8 components with detailed descriptions
+- **[Tenant Isolation Architecture](../COMPONENTS/TENANT_ISOLATION_ARCHITECTURE.md)** - Multi-tenancy and isolation model
+- **[Protocol Stack](../CORE/PROTOCOL_STACK.md)** - Complete protocol layer specifications
+- **[Network Layers OSI Model](../CORE/NETWORK_LAYERS_OSI_MODEL.md)** - L1-L7 implementation details
+- **[DNS Network Architecture](../COMPONENTS/DNS_NETWORK_ARCHITECTURE.md)** - DNS design, anycast, DNSSEC
 - **[Data Sources](DATA_SOURCES.md)** - Metric definitions and verification
-- **[INDEX](INDEX.md)** - Role-based navigation and document index
-- **[START HERE](START_HERE.md)** - Navigation guide and entry point
+- **[INDEX](../INDEX.md)** - Role-based navigation and document index
+- **[START HERE](../START_HERE.md)** - Navigation guide and entry point
 
 ---
 

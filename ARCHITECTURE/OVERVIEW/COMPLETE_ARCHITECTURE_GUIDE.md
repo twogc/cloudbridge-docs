@@ -19,7 +19,7 @@
 
 ## Architecture Overview
 
-CloudBridge is an enterprise-grade P2P mesh networking platform built on 8 integrated components, spanning 7 OSI layers, with 5 distinct isolation layers for multi-tenancy. See **[Architecture Flow](ARCHITECTURE_FLOW.md)** for detailed request processing flow and **[Project Overview](PROJECT_OVERVIEW.md)** for component descriptions.
+CloudBridge is an enterprise-grade P2P mesh networking platform built on 8 integrated components, spanning 7 OSI layers, with 5 distinct isolation layers for multi-tenancy. See **[Architecture Flow](../CORE/ARCHITECTURE_FLOW.md)** for detailed request processing flow and **[Project Overview](PROJECT_OVERVIEW.md)** for component descriptions.
 
 ### Request Processing Pipeline
 
@@ -32,7 +32,7 @@ Step 1: DNS Resolution (GeoDNS)
   ├─ Process: Locate nearest PoP by geography
   ├─ Output: Anycast IP of nearest PoP
   ├─ Component: CloudBridge DNS Network
-  │  └─ See: [DNS Network Architecture](DNS_NETWORK_ARCHITECTURE.md)
+  │  └─ See: [DNS Network Architecture](../COMPONENTS/DNS_NETWORK_ARCHITECTURE.md)
   └─ Latency: < 1ms
 
   |
@@ -61,7 +61,7 @@ Step 4: Data Transmission (Relay PoPs)
   ├─ Process: QUIC + BBRv3 + tenant isolation
   ├─ Output: Data transmitted securely
   ├─ Component: CloudBridge Scalable Relay
-  │  └─ See: [Protocol Stack](PROTOCOL_STACK.md), [Network Layers OSI Model](NETWORK_LAYERS_OSI_MODEL.md)
+  │  └─ See: [Protocol Stack](../CORE/PROTOCOL_STACK.md), [Network Layers OSI Model](../CORE/NETWORK_LAYERS_OSI_MODEL.md)
   ├─ Throughput: 100 Gbps per PoP
   └─ Latency: < 5ms (via 1 PoP)
 
@@ -72,7 +72,7 @@ Step 5: Metrics Collection (Monitoring)
   ├─ Process: Collect 300+ metrics per PoP
   ├─ Output: Time-series data to Prometheus
   ├─ Component: CloudBridge Monitoring
-  │  └─ See: [Data Sources](DATA_SOURCES.md), [Requirements Matrix](REQUIREMENTS_MATRIX.md)
+  │  └─ See: [Data Sources](../REFERENCE/DATA_SOURCES.md), [Requirements Matrix](../REFERENCE/REQUIREMENTS_MATRIX.md)
   └─ Collection Interval: 15 seconds
 
   |
@@ -112,29 +112,29 @@ End-to-End Latency: 215ms from client request to full observability
 ### Component Documentation Links
 
 **Step 1 - DNS Resolution:**
-- **[DNS Network Architecture](DNS_NETWORK_ARCHITECTURE.md)** - DNS design, anycast, DNSSEC implementation
+- **[DNS Network Architecture](../COMPONENTS/DNS_NETWORK_ARCHITECTURE.md)** - DNS design, anycast, DNSSEC implementation
 
 **Step 2 - Credential Validation:**
-- **[Tenant Isolation Architecture](TENANT_ISOLATION_ARCHITECTURE.md)** - JWT authentication and multi-tenancy
-- **[Requirements Matrix](REQUIREMENTS_MATRIX.md)** - Control Plane specifications
+- **[Tenant Isolation Architecture](../COMPONENTS/TENANT_ISOLATION_ARCHITECTURE.md)** - JWT authentication and multi-tenancy
+- **[Requirements Matrix](../REFERENCE/REQUIREMENTS_MATRIX.md)** - Control Plane specifications
 
 **Step 3 - Threat Detection:**
-- **[Requirements Matrix](REQUIREMENTS_MATRIX.md)** - DDoS Protection capabilities
+- **[Requirements Matrix](../REFERENCE/REQUIREMENTS_MATRIX.md)** - DDoS Protection capabilities
 
 **Step 4 - Data Transmission:**
-- **[Protocol Stack](PROTOCOL_STACK.md)** - Complete protocol layer specifications
-- **[Network Layers OSI Model](NETWORK_LAYERS_OSI_MODEL.md)** - L1-L7 implementation details
+- **[Protocol Stack](../CORE/PROTOCOL_STACK.md)** - Complete protocol layer specifications
+- **[Network Layers OSI Model](../CORE/NETWORK_LAYERS_OSI_MODEL.md)** - L1-L7 implementation details
 - **[Project Overview](PROJECT_OVERVIEW.md)** - Scalable Relay component
 
 **Step 5 - Metrics Collection:**
-- **[Data Sources](DATA_SOURCES.md)** - Metric definitions and verification
-- **[Requirements Matrix](REQUIREMENTS_MATRIX.md)** - Monitoring specifications
+- **[Data Sources](../REFERENCE/DATA_SOURCES.md)** - Metric definitions and verification
+- **[Requirements Matrix](../REFERENCE/REQUIREMENTS_MATRIX.md)** - Monitoring specifications
 
 **Step 6 - Traffic Analysis:**
-- **[Requirements Matrix](REQUIREMENTS_MATRIX.md)** - AI Service capabilities
+- **[Requirements Matrix](../REFERENCE/REQUIREMENTS_MATRIX.md)** - AI Service capabilities
 
 **Step 7-8 - Optimization & Visibility:**
-- **[Requirements Matrix](REQUIREMENTS_MATRIX.md)** - Control Plane and Dashboard specifications
+- **[Requirements Matrix](../REFERENCE/REQUIREMENTS_MATRIX.md)** - Control Plane and Dashboard specifications
 
 ---
 
@@ -202,7 +202,7 @@ DATA DELIVERED SECURELY AND ISOLATED
 
 ## Multi-Tenancy Architecture
 
-See **[Tenant Isolation Architecture](TENANT_ISOLATION_ARCHITECTURE.md)** for complete multi-tenancy deep dive.
+See **[Tenant Isolation Architecture](../COMPONENTS/TENANT_ISOLATION_ARCHITECTURE.md)** for complete multi-tenancy deep dive.
 
 ### Five Isolation Layers
 
@@ -381,7 +381,7 @@ Tenants are isolated via audit logging and metrics.
 
 ## Network Layers (OSI L1-L7)
 
-See **[Network Layers OSI Model](NETWORK_LAYERS_OSI_MODEL.md)** and **[Protocol Stack](PROTOCOL_STACK.md)** for detailed protocol specifications.
+See **[Network Layers OSI Model](../CORE/NETWORK_LAYERS_OSI_MODEL.md)** and **[Protocol Stack](../CORE/PROTOCOL_STACK.md)** for detailed protocol specifications.
 
 ### L1: Physical Layer
 - VPC infrastructure in 3 PoPs (Moscow, Frankfurt, Amsterdam)
@@ -548,16 +548,16 @@ PoP Locations:
 
 ## Related Documentation
 
-- **[INDEX](INDEX.md)** - Complete documentation index and navigation guide
-- **[Architecture Flow](ARCHITECTURE_FLOW.md)** - Detailed 8-step request processing pipeline
+- **[INDEX](../INDEX.md)** - Complete documentation index and navigation guide
+- **[Architecture Flow](../CORE/ARCHITECTURE_FLOW.md)** - Detailed 8-step request processing pipeline
 - **[Project Overview](PROJECT_OVERVIEW.md)** - All 8 components with detailed descriptions
-- **[Tenant Isolation Architecture](TENANT_ISOLATION_ARCHITECTURE.md)** - Complete 5-layer isolation model
-- **[Protocol Stack](PROTOCOL_STACK.md)** - Complete protocol layer specifications
-- **[Network Layers OSI Model](NETWORK_LAYERS_OSI_MODEL.md)** - L1-L7 implementation details
-- **[DNS Network Architecture](DNS_NETWORK_ARCHITECTURE.md)** - DNS design, anycast, DNSSEC
-- **[Client Architecture](CLIENT_ARCHITECTURE.md)** - CloudBridge Relay Client documentation
-- **[Requirements Matrix](REQUIREMENTS_MATRIX.md)** - Component requirements and capabilities
-- **[Data Sources](DATA_SOURCES.md)** - Metric definitions and verification
+- **[Tenant Isolation Architecture](../COMPONENTS/TENANT_ISOLATION_ARCHITECTURE.md)** - Complete 5-layer isolation model
+- **[Protocol Stack](../CORE/PROTOCOL_STACK.md)** - Complete protocol layer specifications
+- **[Network Layers OSI Model](../CORE/NETWORK_LAYERS_OSI_MODEL.md)** - L1-L7 implementation details
+- **[DNS Network Architecture](../COMPONENTS/DNS_NETWORK_ARCHITECTURE.md)** - DNS design, anycast, DNSSEC
+- **[Client Architecture](../COMPONENTS/CLIENT_ARCHITECTURE.md)** - CloudBridge Relay Client documentation
+- **[Requirements Matrix](../REFERENCE/REQUIREMENTS_MATRIX.md)** - Component requirements and capabilities
+- **[Data Sources](../REFERENCE/DATA_SOURCES.md)** - Metric definitions and verification
 
 ---
 

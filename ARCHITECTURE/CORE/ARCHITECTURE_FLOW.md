@@ -10,33 +10,33 @@
 
 **Step 1 - DNS Resolution:**
 
-* [**DNS Network Architecture**](DNS_NETWORK_ARCHITECTURE.md) - DNS design, anycast, DNSSEC implementation
+* [**DNS Network Architecture**](../COMPONENTS/DNS_NETWORK_ARCHITECTURE.md) - DNS design, anycast, DNSSEC implementation
 
 **Step 2 - Credential Validation:**
 
-* [**Complete Architecture Guide**](COMPLETE_ARCHITECTURE_GUIDE.md) - Control Plane overview
-* [**Tenant Isolation Architecture**](TENANT_ISOLATION_ARCHITECTURE.md) - Multi-tenancy and JWT authentication
+* [**Complete Architecture Guide**](../OVERVIEW/COMPLETE_ARCHITECTURE_GUIDE.md) - Control Plane overview
+* [**Tenant Isolation Architecture**](../COMPONENTS/TENANT_ISOLATION_ARCHITECTURE.md) - Multi-tenancy and JWT authentication
 
 **Step 3 - Threat Detection:**
 
-* [**Complete Architecture Guide**](COMPLETE_ARCHITECTURE_GUIDE.md) - DDoS Protection overview
-* [**Requirements Matrix**](REQUIREMENTS_MATRIX.md) - DDoS component capabilities and specifications
+* [**Complete Architecture Guide**](../OVERVIEW/COMPLETE_ARCHITECTURE_GUIDE.md) - DDoS Protection overview
+* [**Requirements Matrix**](../REFERENCE/REQUIREMENTS_MATRIX.md) - DDoS component capabilities and specifications
 
 **Step 4 - Data Transmission:**
 
 * [**Protocol Stack**](PROTOCOL_STACK.md) - Complete protocol layer specifications
 * [**Network Layers OSI Model**](NETWORK_LAYERS_OSI_MODEL.md) - L1-L7 implementation details
-* [**Project Overview**](PROJECT_OVERVIEW.md) - Scalable Relay component details
+* [**Project Overview**](../OVERVIEW/PROJECT_OVERVIEW.md) - Scalable Relay component details
 
 **Step 5 - Metrics Collection:**
 
-* [**Data Sources**](DATA_SOURCES.md) - Metric definitions and verification
-* [**Requirements Matrix**](REQUIREMENTS_MATRIX.md) - Monitoring component specifications
+* [**Data Sources**](../REFERENCE/DATA_SOURCES.md) - Metric definitions and verification
+* [**Requirements Matrix**](../REFERENCE/REQUIREMENTS_MATRIX.md) - Monitoring component specifications
 
 **Step 6 - Traffic Analysis:**
 
-* [**Complete Architecture Guide**](COMPLETE_ARCHITECTURE_GUIDE.md) - AI Service overview
-* [**Requirements Matrix**](REQUIREMENTS_MATRIX.md) - AI Service capabilities and ML pipeline
+* [**Complete Architecture Guide**](../OVERVIEW/COMPLETE_ARCHITECTURE_GUIDE.md) - AI Service overview
+* [**Requirements Matrix**](../REFERENCE/REQUIREMENTS_MATRIX.md) - AI Service capabilities and ML pipeline
 
 **Step 7 - Feedback Loop:**
 
@@ -44,8 +44,8 @@
 
 **Step 8 - Operations & Visibility:**
 
-* [**Complete Architecture Guide**](COMPLETE_ARCHITECTURE_GUIDE.md) - Dashboard overview
-* [**Requirements Matrix**](REQUIREMENTS_MATRIX.md) - Dashboard features and capabilities
+* [**Complete Architecture Guide**](../OVERVIEW/COMPLETE_ARCHITECTURE_GUIDE.md) - Dashboard overview
+* [**Requirements Matrix**](../REFERENCE/REQUIREMENTS_MATRIX.md) - Dashboard features and capabilities
 
 ***
 
@@ -81,7 +81,7 @@
 * JWT signatures verified using HMAC
 * Multi-factor authentication enforcement
 * Tenant isolation via ACLs
-* See: [Tenant Isolation Architecture](TENANT_ISOLATION_ARCHITECTURE.md)
+* See: [Tenant Isolation Architecture](../COMPONENTS/TENANT_ISOLATION_ARCHITECTURE.md)
 
 **DDoS Protection (Step 3):**
 
@@ -104,7 +104,7 @@
 * No sensitive data exported
 * Prometheus scrape authentication
 * Encrypted storage of metrics
-* See: [Data Sources](DATA_SOURCES.md) for metric definitions
+* See: [Data Sources](../REFERENCE/DATA_SOURCES.md) for metric definitions
 
 **AI Analysis (Step 6):**
 
@@ -218,14 +218,14 @@ Total: 215ms from client request to full observability
 
 ## Related Documentation
 
-* [**Complete Architecture Guide**](COMPLETE_ARCHITECTURE_GUIDE.md) - Full system architecture overview
-* [**Project Overview**](PROJECT_OVERVIEW.md) - All 8 components detailed
-* [**DNS Network Architecture**](DNS_NETWORK_ARCHITECTURE.md) - DNS design and anycast details
+* [**Complete Architecture Guide**](../OVERVIEW/COMPLETE_ARCHITECTURE_GUIDE.md) - Full system architecture overview
+* [**Project Overview**](../OVERVIEW/PROJECT_OVERVIEW.md) - All 8 components detailed
+* [**DNS Network Architecture**](../COMPONENTS/DNS_NETWORK_ARCHITECTURE.md) - DNS design and anycast details
 * [**Protocol Stack**](PROTOCOL_STACK.md) - Complete protocol layer specifications
 * [**Network Layers OSI Model**](NETWORK_LAYERS_OSI_MODEL.md) - L1-L7 implementation details
-* [**Tenant Isolation Architecture**](TENANT_ISOLATION_ARCHITECTURE.md) - Multi-tenancy and security
-* [**Requirements Matrix**](REQUIREMENTS_MATRIX.md) - Component requirements and capabilities
-* [**Data Sources**](DATA_SOURCES.md) - Metric citations and verification
+* [**Tenant Isolation Architecture**](../COMPONENTS/TENANT_ISOLATION_ARCHITECTURE.md) - Multi-tenancy and security
+* [**Requirements Matrix**](../REFERENCE/REQUIREMENTS_MATRIX.md) - Component requirements and capabilities
+* [**Data Sources**](../REFERENCE/DATA_SOURCES.md) - Metric citations and verification
 
 ***
 

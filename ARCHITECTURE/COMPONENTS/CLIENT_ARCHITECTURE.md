@@ -79,7 +79,7 @@ CloudBridge Relay Client is a production-ready, cross-platform P2P mesh networki
 
                         ▼
                   Relay Server
-                (Step 4 in architecture - see [Architecture Flow](ARCHITECTURE_FLOW.md))
+                (Step 4 in architecture - see [Architecture Flow](../CORE/ARCHITECTURE_FLOW.md))
 ```
 
 ### 1.2 Component Hierarchy
@@ -1175,7 +1175,7 @@ ERROR: Error conditions requiring attention
 
 ### 9.1 Client in 8-Step Pipeline
 
-The CloudBridge Client operates primarily as the **initiator** for the 8-step architecture. See **[Architecture Flow](ARCHITECTURE_FLOW.md)** for complete request processing pipeline details.
+The CloudBridge Client operates primarily as the **initiator** for the 8-step architecture. See **[Architecture Flow](../CORE/ARCHITECTURE_FLOW.md)** for complete request processing pipeline details.
 
 ```
 Client System              CloudBridge Architecture
@@ -1219,12 +1219,12 @@ Client System              CloudBridge Architecture
 
 **Component Documentation Links:**
 - **Step 1 (DNS):** [DNS Network Architecture](DNS_NETWORK_ARCHITECTURE.md)
-- **Step 2 (Control Plane):** [Complete Architecture Guide](COMPLETE_ARCHITECTURE_GUIDE.md), [Tenant Isolation Architecture](TENANT_ISOLATION_ARCHITECTURE.md)
-- **Step 3 (DDoS):** [Complete Architecture Guide](COMPLETE_ARCHITECTURE_GUIDE.md), [Requirements Matrix](REQUIREMENTS_MATRIX.md)
-- **Step 4 (Relay):** [Protocol Stack](PROTOCOL_STACK.md), [Network Layers OSI Model](NETWORK_LAYERS_OSI_MODEL.md), [Project Overview](PROJECT_OVERVIEW.md)
-- **Step 5 (Monitoring):** [Data Sources](DATA_SOURCES.md), [Requirements Matrix](REQUIREMENTS_MATRIX.md)
-- **Step 6 (AI Service):** [Complete Architecture Guide](COMPLETE_ARCHITECTURE_GUIDE.md), [Requirements Matrix](REQUIREMENTS_MATRIX.md)
-- **Step 7-8 (Dashboard):** [Complete Architecture Guide](COMPLETE_ARCHITECTURE_GUIDE.md), [Requirements Matrix](REQUIREMENTS_MATRIX.md)
+- **Step 2 (Control Plane):** [Complete Architecture Guide](../OVERVIEW/COMPLETE_ARCHITECTURE_GUIDE.md), [Tenant Isolation Architecture](TENANT_ISOLATION_ARCHITECTURE.md)
+- **Step 3 (DDoS):** [Complete Architecture Guide](../OVERVIEW/COMPLETE_ARCHITECTURE_GUIDE.md), [Requirements Matrix](../REFERENCE/REQUIREMENTS_MATRIX.md)
+- **Step 4 (Relay):** [Protocol Stack](../CORE/PROTOCOL_STACK.md), [Network Layers OSI Model](../CORE/NETWORK_LAYERS_OSI_MODEL.md), [Project Overview](../OVERVIEW/PROJECT_OVERVIEW.md)
+- **Step 5 (Monitoring):** [Data Sources](../REFERENCE/DATA_SOURCES.md), [Requirements Matrix](../REFERENCE/REQUIREMENTS_MATRIX.md)
+- **Step 6 (AI Service):** [Complete Architecture Guide](../OVERVIEW/COMPLETE_ARCHITECTURE_GUIDE.md), [Requirements Matrix](../REFERENCE/REQUIREMENTS_MATRIX.md)
+- **Step 7-8 (Dashboard):** [Complete Architecture Guide](../OVERVIEW/COMPLETE_ARCHITECTURE_GUIDE.md), [Requirements Matrix](../REFERENCE/REQUIREMENTS_MATRIX.md)
 
 ### 9.2 Client-Relay Communication
 
@@ -1259,7 +1259,7 @@ Client                          Relay (Step 4)
    └─ Dashboard (Step 7-8)
 ```
 
-See **[Architecture Flow](ARCHITECTURE_FLOW.md)** for detailed component interaction flow.
+See **[Architecture Flow](../CORE/ARCHITECTURE_FLOW.md)** for detailed component interaction flow.
 
 ### 9.3 Tenant Isolation in Client
 
@@ -1659,20 +1659,20 @@ Diagnosis:
 
 ### Architectural References
 
-1. **[Control Plane (Step 2)](COMPLETE_ARCHITECTURE_GUIDE.md):** Client authenticates here with JWT
-2. **[DDoS Protection (Step 3)](COMPLETE_ARCHITECTURE_GUIDE.md):** Threat check happens before data transmission
-3. **[Scalable Relay (Step 4)](PROJECT_OVERVIEW.md):** Main endpoint for P2P and tunneling
-4. **[Monitoring (Step 5)](DATA_SOURCES.md):** Client reports metrics here
-5. **[AI Service (Step 6)](COMPLETE_ARCHITECTURE_GUIDE.md):** Analyzes client traffic patterns
-6. **[Dashboard (Step 7-8)](COMPLETE_ARCHITECTURE_GUIDE.md):** Displays client metrics and status
+1. **[Control Plane (Step 2)](../OVERVIEW/COMPLETE_ARCHITECTURE_GUIDE.md):** Client authenticates here with JWT
+2. **[DDoS Protection (Step 3)](../OVERVIEW/COMPLETE_ARCHITECTURE_GUIDE.md):** Threat check happens before data transmission
+3. **[Scalable Relay (Step 4)](../OVERVIEW/PROJECT_OVERVIEW.md):** Main endpoint for P2P and tunneling
+4. **[Monitoring (Step 5)](../REFERENCE/DATA_SOURCES.md):** Client reports metrics here
+5. **[AI Service (Step 6)](../OVERVIEW/COMPLETE_ARCHITECTURE_GUIDE.md):** Analyzes client traffic patterns
+6. **[Dashboard (Step 7-8)](../OVERVIEW/COMPLETE_ARCHITECTURE_GUIDE.md):** Displays client metrics and status
 
 ### Configuration References
 
-- JWT format: See **[Requirements Matrix](REQUIREMENTS_MATRIX.md)** → Section 2: Control Plane → Output Specifications
+- JWT format: See **[Requirements Matrix](../REFERENCE/REQUIREMENTS_MATRIX.md)** → Section 2: Control Plane → Output Specifications
 - P2P mesh: See **[Tenant Isolation Architecture](TENANT_ISOLATION_ARCHITECTURE.md)** → Layer 1: Network Isolation
-- Metrics: See **[Requirements Matrix](REQUIREMENTS_MATRIX.md)** → Section 5: Monitoring
+- Metrics: See **[Requirements Matrix](../REFERENCE/REQUIREMENTS_MATRIX.md)** → Section 5: Monitoring
 - Multi-tenancy: See **[Tenant Isolation Architecture](TENANT_ISOLATION_ARCHITECTURE.md)** → Complete isolation model
-- Protocol details: See **[Protocol Stack](PROTOCOL_STACK.md)** and **[Network Layers OSI Model](NETWORK_LAYERS_OSI_MODEL.md)**
+- Protocol details: See **[Protocol Stack](../CORE/PROTOCOL_STACK.md)** and **[Network Layers OSI Model](../CORE/NETWORK_LAYERS_OSI_MODEL.md)**
 
 ### External Standards
 
@@ -1686,15 +1686,15 @@ Diagnosis:
 
 ## Related Documentation
 
-- **[Architecture Flow](ARCHITECTURE_FLOW.md)** - Complete 8-step request processing pipeline
-- **[Complete Architecture Guide](COMPLETE_ARCHITECTURE_GUIDE.md)** - Full system architecture overview
+- **[Architecture Flow](../CORE/ARCHITECTURE_FLOW.md)** - Complete 8-step request processing pipeline
+- **[Complete Architecture Guide](../OVERVIEW/COMPLETE_ARCHITECTURE_GUIDE.md)** - Full system architecture overview
 - **[Tenant Isolation Architecture](TENANT_ISOLATION_ARCHITECTURE.md)** - Multi-tenancy and isolation model
-- **[Protocol Stack](PROTOCOL_STACK.md)** - Complete protocol layer specifications
-- **[Network Layers OSI Model](NETWORK_LAYERS_OSI_MODEL.md)** - L1-L7 implementation details
+- **[Protocol Stack](../CORE/PROTOCOL_STACK.md)** - Complete protocol layer specifications
+- **[Network Layers OSI Model](../CORE/NETWORK_LAYERS_OSI_MODEL.md)** - L1-L7 implementation details
 - **[DNS Network Architecture](DNS_NETWORK_ARCHITECTURE.md)** - DNS design and anycast details
-- **[Requirements Matrix](REQUIREMENTS_MATRIX.md)** - Component requirements and capabilities
-- **[Data Sources](DATA_SOURCES.md)** - Metric definitions and verification
-- **[Project Overview](PROJECT_OVERVIEW.md)** - All 8 components detailed
+- **[Requirements Matrix](../REFERENCE/REQUIREMENTS_MATRIX.md)** - Component requirements and capabilities
+- **[Data Sources](../REFERENCE/DATA_SOURCES.md)** - Metric definitions and verification
+- **[Project Overview](../OVERVIEW/PROJECT_OVERVIEW.md)** - All 8 components detailed
 
 ---
 

@@ -8,7 +8,7 @@
 
 CloudBridge network architecture spans all seven OSI layers with optimized implementations at each level. The architecture delivers sub-millisecond latency, high throughput, and global anycast routing through multi-region Points of Presence (PoPs).
 
-See [**Protocol Stack**](PROTOCOL_STACK.md) for detailed protocol specifications and [**Complete Architecture Guide**](COMPLETE_ARCHITECTURE_GUIDE.md) for full system architecture.
+See [**Protocol Stack**](PROTOCOL_STACK.md) for detailed protocol specifications and [**Complete Architecture Guide**](../OVERVIEW/COMPLETE_ARCHITECTURE_GUIDE.md) for full system architecture.
 
 ### Architecture Characteristics
 
@@ -437,7 +437,7 @@ sequenceDiagram
 
 ### DDoS Protection
 
-See [**Complete Architecture Guide**](COMPLETE_ARCHITECTURE_GUIDE.md) for DDoS Protection component (Step 3) details.
+See [**Complete Architecture Guide**](../OVERVIEW/COMPLETE_ARCHITECTURE_GUIDE.md) for DDoS Protection component (Step 3) details.
 
 * Physical Layer Filtering: Upstream ISP mitigation
 * XDP/eBPF Filters (L3): Kernel-space rate limiting
@@ -517,14 +517,14 @@ graph TB
 ## Related Documentation
 
 * [**Protocol Stack**](PROTOCOL_STACK.md) - Complete protocol layer specifications and implementation details
-* [**Complete Architecture Guide**](COMPLETE_ARCHITECTURE_GUIDE.md) - Full system architecture overview
-* [**Project Overview**](PROJECT_OVERVIEW.md) - All 8 components with detailed descriptions
+* [**Complete Architecture Guide**](../OVERVIEW/COMPLETE_ARCHITECTURE_GUIDE.md) - Full system architecture overview
+* [**Project Overview**](../OVERVIEW/PROJECT_OVERVIEW.md) - All 8 components with detailed descriptions
 * [**Architecture Flow**](ARCHITECTURE_FLOW.md) - Request processing pipeline with layer details
-* [**Tenant Isolation Architecture**](TENANT_ISOLATION_ARCHITECTURE.md) - Network isolation and multi-tenancy
-* [**DNS Network Architecture**](DNS_NETWORK_ARCHITECTURE.md) - DNS design and anycast routing
-* [**Client Architecture**](CLIENT_ARCHITECTURE.md) - How clients interact with network layers
-* [**Requirements Matrix**](REQUIREMENTS_MATRIX.md) - Component requirements and capabilities
-* [**Data Sources**](DATA_SOURCES.md) - Metric definitions and verification
+* [**Tenant Isolation Architecture**](../COMPONENTS/TENANT_ISOLATION_ARCHITECTURE.md) - Network isolation and multi-tenancy
+* [**DNS Network Architecture**](../COMPONENTS/DNS_NETWORK_ARCHITECTURE.md) - DNS design and anycast routing
+* [**Client Architecture**](../COMPONENTS/CLIENT_ARCHITECTURE.md) - How clients interact with network layers
+* [**Requirements Matrix**](../REFERENCE/REQUIREMENTS_MATRIX.md) - Component requirements and capabilities
+* [**Data Sources**](../REFERENCE/DATA_SOURCES.md) - Metric definitions and verification
 
 ***
 

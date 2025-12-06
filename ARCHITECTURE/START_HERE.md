@@ -102,7 +102,7 @@ Then read based on your role (see below).
 
 ---
 
-#### 5. **[PROJECT OVERVIEW](PROJECT_OVERVIEW.md)**
+#### 5. **[PROJECT OVERVIEW](OVERVIEW/PROJECT_OVERVIEW.md)**
 **Purpose:** 8 components with correct ordering
 
 **Describes:**
@@ -288,7 +288,7 @@ Then read based on your role (see below).
 1. Start: **[REQUIREMENTS MATRIX GUIDE](REQUIREMENTS_MATRIX_GUIDE.md)** (find your component)
 2. Read: **[ARCHITECTURE FLOW](ARCHITECTURE_FLOW.md)** (10 min)
 3. Reference: **[REQUIREMENTS MATRIX](REQUIREMENTS_MATRIX.md)** (component capabilities & use cases)
-4. Study: **[PROJECT OVERVIEW](PROJECT_OVERVIEW.md)** (deployment section) (5 min)
+4. Study: **[PROJECT OVERVIEW](OVERVIEW/PROJECT_OVERVIEW.md)** (deployment section) (5 min)
 5. Troubleshoot: **[ARCHITECTURE FLOW](ARCHITECTURE_FLOW.md)** (failure scenarios)
 6. Security: **[TENANT ISOLATION ARCHITECTURE](TENANT_ISOLATION_ARCHITECTURE.md)** (isolation section)
 7. DNS: **[DNS NETWORK ARCHITECTURE](DNS_NETWORK_ARCHITECTURE.md)** (zones, records, failover) (10 min)
@@ -411,7 +411,7 @@ Then read based on your role (see below).
 → **[TENANT ISOLATION ARCHITECTURE](TENANT_ISOLATION_ARCHITECTURE.md)**
 
 **...the system components**
-→ **[PROJECT OVERVIEW](PROJECT_OVERVIEW.md)**
+→ **[PROJECT OVERVIEW](OVERVIEW/PROJECT_OVERVIEW.md)**
 
 **...network protocols and OSI layers**
 → **[NETWORK LAYERS OSI MODEL](NETWORK_LAYERS_OSI_MODEL.md)**
@@ -462,7 +462,7 @@ Then read based on your role (see below).
 4. **[INDEX](INDEX.md)** - Navigation by role
 5. **[COMPLETE ARCHITECTURE GUIDE](COMPLETE_ARCHITECTURE_GUIDE.md)** - Central reference
 6. **[TENANT ISOLATION ARCHITECTURE](TENANT_ISOLATION_ARCHITECTURE.md)** - Multi-tenancy deep dive
-7. **[PROJECT OVERVIEW](PROJECT_OVERVIEW.md)** - 8 components and system overview
+7. **[PROJECT OVERVIEW](OVERVIEW/PROJECT_OVERVIEW.md)** - 8 components and system overview
 8. **[ARCHITECTURE FLOW](ARCHITECTURE_FLOW.md)** - Request processing pipeline
 9. **[NETWORK LAYERS OSI MODEL](NETWORK_LAYERS_OSI_MODEL.md)** - L1-L7 implementation details
 10. **[PROTOCOL STACK](PROTOCOL_STACK.md)** - Protocol stack architecture and implementation (NEW)
@@ -485,7 +485,7 @@ Then read based on your role (see below).
    - Add: Verification method
 
 2. **Adding a new component?**
-   - Update: **[PROJECT OVERVIEW](PROJECT_OVERVIEW.md)** (component description)
+   - Update: **[PROJECT OVERVIEW](OVERVIEW/PROJECT_OVERVIEW.md)** (component description)
    - Update: **[ARCHITECTURE FLOW](ARCHITECTURE_FLOW.md)** (if in pipeline)
    - Update: **[COMPLETE ARCHITECTURE GUIDE](COMPLETE_ARCHITECTURE_GUIDE.md)**
    - Add to: **[DATA SOURCES](DATA_SOURCES.md)** (LOC, specs)

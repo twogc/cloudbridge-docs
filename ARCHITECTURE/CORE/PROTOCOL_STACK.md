@@ -9,11 +9,11 @@
 
 ## Executive Summary
 
-CloudBridge использует **пять специализированных протоколов**, каждый из которых решает конкретную задачу в распределённой сетевой инфраструктуре. Этот документ описывает архитектурные решения, use cases и взаимодействие протоколов.
+CloudBridge использует **пять специализированных протоколов**, каждый из которых решает конкретную задачу в распределенной сетевой инфраструктуре. Этот документ описывает архитектурные решения, use cases и взаимодействие протоколов.
 
 **Ключевой принцип**: *Right protocol for the right job* — каждый протокол оптимизирован для своего сценария использования.
 
-See **[Network Layers OSI Model](NETWORK_LAYERS_OSI_MODEL.md)** for OSI layer implementation details and **[Complete Architecture Guide](COMPLETE_ARCHITECTURE_GUIDE.md)** for full system architecture.
+See **[Network Layers OSI Model](NETWORK_LAYERS_OSI_MODEL.md)** for OSI layer implementation details and **[Complete Architecture Guide](../OVERVIEW/COMPLETE_ARCHITECTURE_GUIDE.md)** for full system architecture.
 
 ---
 
@@ -115,7 +115,7 @@ See **[Network Layers OSI Model](NETWORK_LAYERS_OSI_MODEL.md)** for OSI layer im
    - **Up to 2-3× throughput** vs TCP Cubic в сложных сетях
 
 5. **Connection Migration**
-   - Клиент меняет IP/сеть → соединение не рвётся
+   - Клиент меняет IP/сеть → соединение не рвется
    - **Use case**: Mobile clients (WiFi → 4G/5G)
    - Connection ID вместо (IP, Port) tuple
 
@@ -651,7 +651,7 @@ ice:
 
 3. **Stealth Mode**
    - No response to unauthenticated packets
-   - Silent protocol (не выдаёт наличие VPN сканированием)
+   - Silent protocol (не выдает наличие VPN сканированием)
    - Useful для обхода DPI в некоторых сетях
 
 4. **Roaming Support**
@@ -1413,11 +1413,11 @@ wg show wg0 dump | grep handshake
 ## Related Documentation
 
 - **[Network Layers OSI Model](NETWORK_LAYERS_OSI_MODEL.md)** - OSI model implementation details (L1-L7)
-- **[Complete Architecture Guide](COMPLETE_ARCHITECTURE_GUIDE.md)** - Full system architecture overview
+- **[Complete Architecture Guide](../OVERVIEW/COMPLETE_ARCHITECTURE_GUIDE.md)** - Full system architecture overview
 - **[Architecture Flow](ARCHITECTURE_FLOW.md)** - Request processing pipeline with protocol details
-- **[DNS Network Architecture](DNS_NETWORK_ARCHITECTURE.md)** - DNS design, anycast, DNSSEC
-- **[Client Architecture](CLIENT_ARCHITECTURE.md)** - How clients use these protocols
-- **[Tenant Isolation Architecture](TENANT_ISOLATION_ARCHITECTURE.md)** - Multi-tenancy and security
-- **[Project Overview](PROJECT_OVERVIEW.md)** - All 8 components with detailed descriptions
-- **[Requirements Matrix](REQUIREMENTS_MATRIX.md)** - Component requirements and capabilities
-- **[Data Sources](DATA_SOURCES.md)** - Metric definitions and verification
+- **[DNS Network Architecture](../COMPONENTS/DNS_NETWORK_ARCHITECTURE.md)** - DNS design, anycast, DNSSEC
+- **[Client Architecture](../COMPONENTS/CLIENT_ARCHITECTURE.md)** - How clients use these protocols
+- **[Tenant Isolation Architecture](../COMPONENTS/TENANT_ISOLATION_ARCHITECTURE.md)** - Multi-tenancy and security
+- **[Project Overview](../OVERVIEW/PROJECT_OVERVIEW.md)** - All 8 components with detailed descriptions
+- **[Requirements Matrix](../REFERENCE/REQUIREMENTS_MATRIX.md)** - Component requirements and capabilities
+- **[Data Sources](../REFERENCE/DATA_SOURCES.md)** - Metric definitions and verification

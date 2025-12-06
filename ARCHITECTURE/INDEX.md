@@ -12,14 +12,14 @@
 
 **Architects & Designers:**
 1. Start: **[COMPLETE ARCHITECTURE GUIDE](COMPLETE_ARCHITECTURE_GUIDE.md)**
-2. Then: **[PROJECT OVERVIEW](PROJECT_OVERVIEW.md)**
+2. Then: **[PROJECT OVERVIEW](OVERVIEW/PROJECT_OVERVIEW.md)**
 3. Protocols: **[PROTOCOL STACK](PROTOCOL_STACK.md)**
 4. Deep dive: **[NETWORK LAYERS OSI MODEL](NETWORK_LAYERS_OSI_MODEL.md)**
 5. Security: **[TENANT ISOLATION ARCHITECTURE](TENANT_ISOLATION_ARCHITECTURE.md)**
 
 **Operations & DevOps:**
 1. Start: **[ARCHITECTURE FLOW](ARCHITECTURE_FLOW.md)** - Request flow
-2. Then: **[PROJECT OVERVIEW](PROJECT_OVERVIEW.md)** - Deployment topology
+2. Then: **[PROJECT OVERVIEW](OVERVIEW/PROJECT_OVERVIEW.md)** - Deployment topology
 3. Reference: **[COMPLETE ARCHITECTURE GUIDE](COMPLETE_ARCHITECTURE_GUIDE.md)**
 4. Security: **[TENANT ISOLATION ARCHITECTURE](TENANT_ISOLATION_ARCHITECTURE.md)**
 
@@ -108,7 +108,7 @@
 
 ---
 
-#### 3. **[PROJECT OVERVIEW](PROJECT_OVERVIEW.md)**
+#### 3. **[PROJECT OVERVIEW](OVERVIEW/PROJECT_OVERVIEW.md)**
 **Purpose:** Complete system architecture with 8 components
 
 **Contents:**
@@ -502,7 +502,7 @@ Step 8: Operations Visibility
 1. Read: **[COMPLETE ARCHITECTURE GUIDE](COMPLETE_ARCHITECTURE_GUIDE.md)** (5 minutes)
 2. Understand: Request processing pipeline - **[ARCHITECTURE FLOW](ARCHITECTURE_FLOW.md)** (5 minutes)
 3. Learn: Multi-tenancy isolation - **[TENANT ISOLATION ARCHITECTURE](TENANT_ISOLATION_ARCHITECTURE.md)** (10 minutes)
-4. Review: Component interactions - **[PROJECT OVERVIEW](PROJECT_OVERVIEW.md)** (10 minutes)
+4. Review: Component interactions - **[PROJECT OVERVIEW](OVERVIEW/PROJECT_OVERVIEW.md)** (10 minutes)
 5. Deep dive: Specific area of interest
 
 ---
@@ -512,7 +512,7 @@ Step 8: Operations Visibility
 - **[START HERE](START_HERE.md)** - Navigation guide and entry point
 - **[Complete Architecture Guide](COMPLETE_ARCHITECTURE_GUIDE.md)** - Full system architecture overview
 - **[Architecture Flow](ARCHITECTURE_FLOW.md)** - Detailed 8-step request processing pipeline
-- **[Project Overview](PROJECT_OVERVIEW.md)** - All 8 components with detailed descriptions
+- **[Project Overview](OVERVIEW/PROJECT_OVERVIEW.md)** - All 8 components with detailed descriptions
 - **[Tenant Isolation Architecture](TENANT_ISOLATION_ARCHITECTURE.md)** - Complete 5-layer isolation model
 - **[Protocol Stack](PROTOCOL_STACK.md)** - Complete protocol layer specifications
 - **[Network Layers OSI Model](NETWORK_LAYERS_OSI_MODEL.md)** - L1-L7 implementation details

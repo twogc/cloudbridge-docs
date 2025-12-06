@@ -8,7 +8,7 @@
 
 This matrix provides visibility into what each component requires (inputs, parameters, dependencies) and what features are being built (Futures), organized by the 8-step request processing pipeline. This document directly addresses the gap between "what's needed to run this component" and "what's planned for the future."
 
-See **[Requirements Matrix Guide](REQUIREMENTS_MATRIX_GUIDE.md)** for quick navigation and **[Architecture Flow](ARCHITECTURE_FLOW.md)** for the complete 8-step request processing pipeline.
+See **[Requirements Matrix Guide](REQUIREMENTS_MATRIX_GUIDE.md)** for quick navigation and **[Architecture Flow](../CORE/ARCHITECTURE_FLOW.md)** for the complete 8-step request processing pipeline.
 
 For each component, you'll find:
 - **Current Capabilities**: What works now in production/testing
@@ -644,17 +644,17 @@ Verification: Query GeoIP database, confirm country code matches policy
 
 ### Component: Scalable Relay - QUIC + BBRv3 + P2P
 
-**Current Implementation Status:** 35% complete (interface-driven, stubs)
-**Location:** `internal/relay/*`, `internal/quic/*`, `internal/p2p/*`, `cmd/relay/`
+**Current Implementation Status:** 80% complete (Beta / Integration Phase)
+**Location:** `cmd/relay/*`, `internal/quic/*`, `internal/p2p/*`
 
 ### Current Capabilities
 
-- QUIC protocol (RFC 9000) with 0-RTT resumption support
-- BBRv3 congestion control (50% jitter reduction, 5.79× bufferbloat improvement)
+- QUIC protocol (RFC 9000) with 0-RTT resumption support (Implemented in `enhanced_quic.go`)
+- BBRv3 congestion control (Active in `internal/quic/congestion_control.go`)
 - Multi-tenant peer isolation (Calico VRF-based)
 - TLS 1.3 with mTLS for peer authentication
-- NAT traversal with TURN server integration
-- TCP/UDP forwarding (framework, stubs)
+- MASQUE tunneling support (Implemented in `masque_support.go`)
+- TCP/UDP forwarding with smart fallback
 
 ### Required Inputs
 
@@ -1126,30 +1126,29 @@ Verification: Open Jaeger UI, search by trace_id, verify span hierarchy
 
 ## 6. AI Service - Traffic Analysis (Step 6)
 
-### Component: AI Service - TensorFlow + PyTorch Models
+### Component: AI Service - Scikit-Learn + Multi-Armed Bandit
 
-**Current Implementation Status:** 20% complete (framework, model stubs)
+**Current Implementation Status:** 40% complete (Core logic ready, models trainable)
 **Location:** `ml/`, `internal/ai/`, Python microservice
 
 ### Current Capabilities
 
-- ML inference framework ready (TensorFlow/PyTorch loaded)
-- Traffic pattern classification capability
-- Model versioning system (framework)
+- ML inference framework ready (Scikit-learn loaded)
+- Anomaly detection using Isolation Forest
+- Dynamic route optimization using Multi-Armed Bandit (MAB)
+- Load prediction using Linear Regression
 - Real-time inference (<100ms target)
-- Multi-model inference pipeline
-- GPU/TPU support (framework)
+- Automated model retraining loop
 
 ### Required Inputs
 
 | Input | Type | Source | Required |
 |-------|------|--------|----------|
 | Metrics Data | Prometheus time series | Step 5: Monitoring | Yes |
-| Historical Data | 7-30 days of metrics | Monitoring metrics DB | Yes |
-| Network Trace Data | Packet metadata | Relay (PCAP logs) | No |
+| Historical Data | 7-14 days of metrics | Monitoring metrics DB | Yes |
 | Threat Scores | Float (0-1) | Step 3: DDoS | Yes |
 | Tenant Configuration | JSON | Control Plane | No |
-| Model Weights | TensorFlow .pb files | Model registry | Yes |
+| Model Weights | Python Pickle (.pkl) | Model registry | Yes |
 
 ### Input Parameters (Configuration)
 
@@ -1157,21 +1156,18 @@ Verification: Open Jaeger UI, search by trace_id, verify span hierarchy
 |-----------|------|---------|-------|
 | `ai.enabled` | bool | `true` | Enable AI service |
 | `ai.inference_timeout_ms` | int | `100` | Max inference latency |
-| `ai.model_path` | string | `models/ai/v1.pb` | TensorFlow model file |
-| `ai.batch_size` | int | `32` | Batch size for inference |
-| `ai.gpu_enabled` | bool | `true` | Use GPU if available |
-| `ai.enable_training` | bool | `false` | Train models on new data (Future) |
+| `ai.model_path` | string | `models/` | Directory for .pkl models |
+| `ai.enable_training` | bool | `true` | Train models on new data |
 | `ai.training_interval_hours` | int | `24` | Retrain frequency |
-| `ai.min_training_samples` | int | `50000` | Min samples for training |
-| `ai.model_confidence_threshold` | float | `0.75` | Prediction confidence threshold |
+| `ai.min_training_samples` | int | `1000` | Min samples for training |
+| `ai.anomaly_contamination` | float | `0.1` | Anomaly detection sensitivity |
 
 **ML Models Available:**
 ```
-1. Traffic-Classification-v1.pb    (Classify: normal, bot, anomaly)
-2. Capacity-Predictor-v1.pb        (Predict: peak hours, capacity needs)
-3. Anomaly-Detector-v1.pb          (Detect: unusual patterns vs baseline)
-4. Threat-Correlator-v1.pb         (Correlate: threats with infrastructure)
-5. Optimization-Engine-v1.pb       (Recommend: tuning parameters)
+1. anomaly_detector.pkl   (Isolation Forest: Detect anomalies)
+2. load_predictor.pkl     (Linear Regression: Forecast load)
+3. routing_bandit.pkl     (Multi-Armed Bandit: Route selection)
+4. scaler.pkl             (StandardScaler: Data normalization)
 ```
 
 ### Output Specifications
@@ -1732,17 +1728,17 @@ Verification: Apply recommendation, monitor improvement over 24 hours
 ## Related Documentation
 
 - **[Requirements Matrix Guide](REQUIREMENTS_MATRIX_GUIDE.md)** - Quick navigation guide for this matrix
-- **[Architecture Flow](ARCHITECTURE_FLOW.md)** - Detailed 8-step request processing pipeline
-- **[Complete Architecture Guide](COMPLETE_ARCHITECTURE_GUIDE.md)** - Full system architecture overview
-- **[Project Overview](PROJECT_OVERVIEW.md)** - All 8 components with detailed descriptions
-- **[Client Architecture](CLIENT_ARCHITECTURE.md)** - CloudBridge Relay Client documentation
-- **[Tenant Isolation Architecture](TENANT_ISOLATION_ARCHITECTURE.md)** - Multi-tenancy and isolation model
-- **[Protocol Stack](PROTOCOL_STACK.md)** - Complete protocol layer specifications
-- **[Network Layers OSI Model](NETWORK_LAYERS_OSI_MODEL.md)** - L1-L7 implementation details
-- **[DNS Network Architecture](DNS_NETWORK_ARCHITECTURE.md)** - DNS design, anycast, DNSSEC
+- **[Architecture Flow](../CORE/ARCHITECTURE_FLOW.md)** - Detailed 8-step request processing pipeline
+- **[Complete Architecture Guide](../OVERVIEW/COMPLETE_ARCHITECTURE_GUIDE.md)** - Full system architecture overview
+- **[Project Overview](../OVERVIEW/PROJECT_OVERVIEW.md)** - All 8 components with detailed descriptions
+- **[Client Architecture](../COMPONENTS/CLIENT_ARCHITECTURE.md)** - CloudBridge Relay Client documentation
+- **[Tenant Isolation Architecture](../COMPONENTS/TENANT_ISOLATION_ARCHITECTURE.md)** - Multi-tenancy and isolation model
+- **[Protocol Stack](../CORE/PROTOCOL_STACK.md)** - Complete protocol layer specifications
+- **[Network Layers OSI Model](../CORE/NETWORK_LAYERS_OSI_MODEL.md)** - L1-L7 implementation details
+- **[DNS Network Architecture](../COMPONENTS/DNS_NETWORK_ARCHITECTURE.md)** - DNS design, anycast, DNSSEC
 - **[Data Sources](DATA_SOURCES.md)** - Metric definitions and verification
-- **[INDEX](INDEX.md)** - Role-based navigation and document index
-- **[START HERE](START_HERE.md)** - Navigation guide and entry point
+- **[INDEX](../INDEX.md)** - Role-based navigation and document index
+- **[START HERE](../START_HERE.md)** - Navigation guide and entry point
 
 ---
 

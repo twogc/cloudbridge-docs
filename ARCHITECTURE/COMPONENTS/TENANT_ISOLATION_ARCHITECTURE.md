@@ -12,7 +12,7 @@ CloudBridge implements enterprise-grade multi-tenancy with five distinct isolati
 
 Isolation Guarantee: ZERO cross-tenant access across network, application, resource, and data layers.
 
-See [Complete Architecture Guide](COMPLETE_ARCHITECTURE_GUIDE.md) for the full system architecture and [Architecture Flow](ARCHITECTURE_FLOW.md) for the request processing pipeline.
+See [Complete Architecture Guide](../OVERVIEW/COMPLETE_ARCHITECTURE_GUIDE.md) for the full system architecture and [Architecture Flow](../CORE/ARCHITECTURE_FLOW.md) for the request processing pipeline.
 
 ---
 

@@ -4,7 +4,7 @@ This directory contains comprehensive architectural documentation for the CloudB
 
 ## Core Documents
 
-### 1. **[PROJECT OVERVIEW](PROJECT_OVERVIEW.md)**
+### 1. **[PROJECT OVERVIEW](OVERVIEW/PROJECT_OVERVIEW.md)**
 
 Comprehensive overview of the entire CloudBridge ecosystem including all 8 components.
 
@@ -91,13 +91,13 @@ Deep dive into the OSI model implementation (L1-L7 layers).
 ## Quick Navigation
 
 **For Administrators:**
-Start with **[PROJECT OVERVIEW](PROJECT_OVERVIEW.md)**, then reference **[NETWORK LAYERS OSI MODEL](NETWORK_LAYERS_OSI_MODEL.md)** for specific layer details.
+Start with **[PROJECT OVERVIEW](OVERVIEW/PROJECT_OVERVIEW.md)**, then reference **[NETWORK LAYERS OSI MODEL](NETWORK_LAYERS_OSI_MODEL.md)** for specific layer details.
 
 **For Developers:**
-Read **[NETWORK LAYERS OSI MODEL](NETWORK_LAYERS_OSI_MODEL.md)** first for protocol details, then **[PROJECT OVERVIEW](PROJECT_OVERVIEW.md)** for integration points. See also **[CLIENT ARCHITECTURE](CLIENT_ARCHITECTURE.md)** for client implementation.
+Read **[NETWORK LAYERS OSI MODEL](NETWORK_LAYERS_OSI_MODEL.md)** first for protocol details, then **[PROJECT OVERVIEW](OVERVIEW/PROJECT_OVERVIEW.md)** for integration points. See also **[CLIENT ARCHITECTURE](CLIENT_ARCHITECTURE.md)** for client implementation.
 
 **For Operations:**
-Focus on **[PROJECT OVERVIEW](PROJECT_OVERVIEW.md)** deployment topology and operational runbooks, plus **[NETWORK LAYERS OSI MODEL](NETWORK_LAYERS_OSI_MODEL.md)** monitoring section. See **[ARCHITECTURE FLOW](ARCHITECTURE_FLOW.md)** for request processing flow.
+Focus on **[PROJECT OVERVIEW](OVERVIEW/PROJECT_OVERVIEW.md)** deployment topology and operational runbooks, plus **[NETWORK LAYERS OSI MODEL](NETWORK_LAYERS_OSI_MODEL.md)** monitoring section. See **[ARCHITECTURE FLOW](ARCHITECTURE_FLOW.md)** for request processing flow.
 
 **For Security Teams:**
 Read the Security Architecture sections in both documents. See **[TENANT ISOLATION ARCHITECTURE](TENANT_ISOLATION_ARCHITECTURE.md)** for complete multi-tenancy model.

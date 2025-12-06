@@ -15,7 +15,7 @@ CloudBridge Global Network is an enterprise-grade P2P mesh networking platform c
 * Availability Target: 99.99% SLO
 * P2P Direct Connections: 68%
 
-**Request Processing Pipeline:** See [**Architecture Flow**](ARCHITECTURE_FLOW.md) for detailed request processing flow.
+**Request Processing Pipeline:** See [**Architecture Flow**](../CORE/ARCHITECTURE_FLOW.md) for detailed request processing flow.
 
 1. CloudBridge Relay Client (initiates connection)
 2. Client requests → DNS (GeoDNS resolution)
@@ -107,7 +107,7 @@ graph TB
 * Docker container
 * Kubernetes sidecar
 
-**For Complete Details:** See the [**CLIENT ARCHITECTURE**](CLIENT_ARCHITECTURE.md) document
+**For Complete Details:** See the [**CLIENT ARCHITECTURE**](../COMPONENTS/CLIENT_ARCHITECTURE.md) document
 
 ***
 
@@ -146,24 +146,24 @@ graph TB
 
 **Technology Stack:**
 
-* Language: Python 3.11
-* ML Framework: TensorFlow 2.12, PyTorch 2.0
-* Pipeline: 9 phases of neural processing
+* Language: Python 3.11, FastAPI
+* Core ML: Scikit-learn (Isolation Forest, Linear Regression), Multi-Armed Bandit (MAB)
+* Time Series: Prophet, XGBoost
+* Optional DL: TensorFlow, PyTorch (GPU support available)
+* Architecture: Modular with Service Orchestrator
 
 **AI Capabilities:**
 
-* Anomaly Detection: Real-time network anomalies
-* Load Prediction: 24-hour traffic forecasting
-* Route Optimization: Dynamic path selection
-* Auto-retraining: Continuous model improvement
-* Latency Prediction: Client experience modeling
+* Anomaly Detection: Isolation Forest for real-time network health monitoring
+* Route Optimization: Multi-Armed Bandit algorithm for dynamic path selection specific to PoPs (MOW, FRA, AMS)
+* Load Prediction: Linear Regression & Prophet for traffic forecasting
+* Auto-retraining: Continuous background model retraining loop
 
 **Data Processing:**
 
 * Batch Processing: Nightly model retraining
-* Real-time Inference: <100ms response time
-* Time-series Analysis: Seasonal pattern detection
-* Feature Engineering: 500+ network features
+* Real-time Inference: <100ms response time using cached models
+* Caching: Redis-based state management
 
 **Integration:**
 
@@ -826,15 +826,15 @@ graph TB
 
 **Related Documentation:**
 
-* [**Network Layers OSI Model**](NETWORK_LAYERS_OSI_MODEL.md) - OSI model implementation details (L1-L7)
-* [**Protocol Stack**](PROTOCOL_STACK.md) - Complete protocol layer specifications
+* [**Network Layers OSI Model**](../CORE/NETWORK_LAYERS_OSI_MODEL.md) - OSI model implementation details (L1-L7)
+* [**Protocol Stack**](../CORE/PROTOCOL_STACK.md) - Complete protocol layer specifications
 * [**Complete Architecture Guide**](COMPLETE_ARCHITECTURE_GUIDE.md) - Full system architecture overview
-* [**Architecture Flow**](ARCHITECTURE_FLOW.md) - Request processing pipeline with all 8 steps
-* [**Tenant Isolation Architecture**](TENANT_ISOLATION_ARCHITECTURE.md) - Multi-tenancy and isolation model
-* [**DNS Network Architecture**](DNS_NETWORK_ARCHITECTURE.md) - DNS design, anycast, DNSSEC
-* [**Client Architecture**](CLIENT_ARCHITECTURE.md) - CloudBridge Relay Client documentation
-* [**Requirements Matrix**](REQUIREMENTS_MATRIX.md) - Component requirements and capabilities
-* [**Data Sources**](DATA_SOURCES.md) - Metric definitions and verification
+* [**Architecture Flow**](../CORE/ARCHITECTURE_FLOW.md) - Request processing pipeline with all 8 steps
+* [**Tenant Isolation Architecture**](../COMPONENTS/TENANT_ISOLATION_ARCHITECTURE.md) - Multi-tenancy and isolation model
+* [**DNS Network Architecture**](../COMPONENTS/DNS_NETWORK_ARCHITECTURE.md) - DNS design, anycast, DNSSEC
+* [**Client Architecture**](../COMPONENTS/CLIENT_ARCHITECTURE.md) - CloudBridge Relay Client documentation
+* [**Requirements Matrix**](../REFERENCE/REQUIREMENTS_MATRIX.md) - Component requirements and capabilities
+* [**Data Sources**](../REFERENCE/DATA_SOURCES.md) - Metric definitions and verification
 
 ***
 
