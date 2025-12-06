@@ -6,7 +6,7 @@ description: >-
 
 # Architecture Overview
 
-| File                                                                        | Purpose                           |
-| --------------------------------------------------------------------------- | --------------------------------- |
-| [`PROJECT_OVERVIEW.md`](./)                                                 | Component summary and key metrics |
-| [`COMPLETE_ARCHITECTURE_GUIDE.md`](OVERVIEW/COMPLETE_ARCHITECTURE_GUIDE.md) | End-to-end architecture guide     |
+| File                                                                                  | Purpose                           |
+| ------------------------------------------------------------------------------------- | --------------------------------- |
+| [.](./ "mention")                                                                     | Component summary and key metrics |
+| [COMPLETE\_ARCHITECTURE\_GUIDE.md](OVERVIEW/COMPLETE_ARCHITECTURE_GUIDE.md "mention") | End-to-end architecture guide     |
