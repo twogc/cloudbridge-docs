@@ -38,37 +38,37 @@ See **[Network Layers OSI Model](NETWORK_LAYERS_OSI_MODEL.md)** for OSI layer im
 
 ```
 ┌──────────────────────────────────────────────────────────────┐
-│                   CloudBridge Protocol Stack                 │
+│ CloudBridge Protocol Stack │
 ├──────────────────────────────────────────────────────────────┤
-│                                                              │
-│  Layer 5: Application                                        │
-│  ┌────────────────────────────────────────────────────┐      │
-│  │  CloudBridge Application Protocol (CBAP)           │      │
-│  │  • Peer discovery, mesh management, AI routing     │      │
-│  └────────────────────────────────────────────────────┘      │
-│                                                              │
-│  Layer 4: Control & Signaling                                │
-│  ┌────────────────────────────────────────────────────┐      │
-│  │  WebSocket (WSS)                                   │      │
-│  │  • Session management, heartbeats, signaling       │      │
-│  └────────────────────────────────────────────────────┘      │
-│                                                              │
-│  Layer 3: Data Transport (Choose One)                        │
-│  ┌──────────┬──────────┬──────────┬──────────────────┐       │
-│  │   QUIC   │  MASQUE  │   ICE    │   WireGuard      │       │
-│  │ (Primary)│(Proxying)│  (P2P)   │  (P2P Tunnel)    │       │
-│  └──────────┴──────────┴──────────┴──────────────────┘       │
-│                                                              │
-│  Layer 2: Network (UDP/TCP)                                  │
-│  ┌────────────────────────────────────────────────────┐      │
-│  │  UDP (preferred) / TCP (fallback)                  │      │
-│  └────────────────────────────────────────────────────┘      │
-│                                                              │
-│  Layer 1: Physical (Internet)                                │
-│  ┌────────────────────────────────────────────────────┐      │
-│  │  IPv4 / IPv6 / Multi-path                          │      │
-│  └────────────────────────────────────────────────────┘      │
-│                                                              │
+│ │
+│ Layer 5: Application │
+│ ┌────────────────────────────────────────────────────┐ │
+│ │ CloudBridge Application Protocol (CBAP) │ │
+│ │ • Peer discovery, mesh management, AI routing │ │
+│ └────────────────────────────────────────────────────┘ │
+│ │
+│ Layer 4: Control & Signaling │
+│ ┌────────────────────────────────────────────────────┐ │
+│ │ WebSocket (WSS) │ │
+│ │ • Session management, heartbeats, signaling │ │
+│ └────────────────────────────────────────────────────┘ │
+│ │
+│ Layer 3: Data Transport (Choose One) │
+│ ┌──────────┬──────────┬──────────┬──────────────────┐ │
+│ │ QUIC │ MASQUE │ ICE │ WireGuard │ │
+│ │ (Primary)│(Proxying)│ (P2P) │ (P2P Tunnel) │ │
+│ └──────────┴──────────┴──────────┴──────────────────┘ │
+│ │
+│ Layer 2: Network (UDP/TCP) │
+│ ┌────────────────────────────────────────────────────┐ │
+│ │ UDP (preferred) / TCP (fallback) │ │
+│ └────────────────────────────────────────────────────┘ │
+│ │
+│ Layer 1: Physical (Internet) │
+│ ┌────────────────────────────────────────────────────┐ │
+│ │ IPv4 / IPv6 / Multi-path │ │
+│ └────────────────────────────────────────────────────┘ │
+│ │
 └──────────────────────────────────────────────────────────────┘
 ```
 
@@ -123,39 +123,39 @@ See **[Network Layers OSI Model](NETWORK_LAYERS_OSI_MODEL.md)** for OSI layer im
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
-│                    QUIC Protocol Stack                      │
+│ QUIC Protocol Stack │
 ├─────────────────────────────────────────────────────────────┤
-│                                                             │
-│  ┌───────────────────────────────────────────────────┐      │
-│  │  HTTP/3 (Application Layer)                       │      │
-│  │  • Request/Response streams                       │      │
-│  │  • Server push (optional)                         │      │
-│  └───────────────────────────────────────────────────┘      │
-│                        ▲                                    │
-│                        │                                    │
-│  ┌───────────────────────────────────────────────────┐      │
-│  │  QUIC Transport (RFC 9000)                        │      │
-│  │  • Stream management                              │      │
-│  │  • Flow control (per-stream + connection-level)   │      │
-│  │  • Congestion control (BBRv3)                     │      │
-│  │  • Loss recovery (packet retransmission)          │      │
-│  └───────────────────────────────────────────────────┘      │
-│                        ▲                                    │
-│                        │                                    │
-│  ┌───────────────────────────────────────────────────┐      │
-│  │  TLS 1.3 (Encryption & Auth)                      │      │
-│  │  • Handshake (0-RTT / 1-RTT)                      │      │
-│  │  • Per-packet encryption                          │      │
-│  │  • Perfect forward secrecy                        │      │
-│  └───────────────────────────────────────────────────┘      │
-│                        ▲                                    │
-│                        │                                    │
-│  ┌───────────────────────────────────────────────────┐      │
-│  │  UDP (Unreliable Datagram)                        │      │
-│  │  • Port: 443 (standard HTTPS port)                │      │
-│  │  • Firewall-friendly                              │      │
-│  └───────────────────────────────────────────────────┘      │
-│                                                             │
+│ │
+│ ┌───────────────────────────────────────────────────┐ │
+│ │ HTTP/3 (Application Layer) │ │
+│ │ • Request/Response streams │ │
+│ │ • Server push (optional) │ │
+│ └───────────────────────────────────────────────────┘ │
+│ ▲ │
+│ │ │
+│ ┌───────────────────────────────────────────────────┐ │
+│ │ QUIC Transport (RFC 9000) │ │
+│ │ • Stream management │ │
+│ │ • Flow control (per-stream + connection-level) │ │
+│ │ • Congestion control (BBRv3) │ │
+│ │ • Loss recovery (packet retransmission) │ │
+│ └───────────────────────────────────────────────────┘ │
+│ ▲ │
+│ │ │
+│ ┌───────────────────────────────────────────────────┐ │
+│ │ TLS 1.3 (Encryption & Auth) │ │
+│ │ • Handshake (0-RTT / 1-RTT) │ │
+│ │ • Per-packet encryption │ │
+│ │ • Perfect forward secrecy │ │
+│ └───────────────────────────────────────────────────┘ │
+│ ▲ │
+│ │ │
+│ ┌───────────────────────────────────────────────────┐ │
+│ │ UDP (Unreliable Datagram) │ │
+│ │ • Port: 443 (standard HTTPS port) │ │
+│ │ • Firewall-friendly │ │
+│ └───────────────────────────────────────────────────┘ │
+│ │
 └─────────────────────────────────────────────────────────────┘
 ```
 
@@ -279,7 +279,7 @@ Relay ──[QUIC]──> AI Routing Engine
 
 ```
 Client ──[CONNECT-UDP request]──> MASQUE Proxy ──[UDP]──> Target Server
-       <──[UDP datagrams]──────────┘            <───────────┘
+       <──[UDP datagrams]──────────┘ <───────────┘
 ```
 
 **Use Case**: WebRTC/ICE traffic in corporate networks
@@ -305,7 +305,7 @@ After this, all UDP packets are encapsulated as HTTP/3 datagrams.
 
 ```
 Client ──[CONNECT-IP request]──> MASQUE Proxy ──[IP Layer]──> Internet
-       <──[IP packets]──────────────┘           <──────────────┘
+       <──[IP packets]──────────────┘ <──────────────┘
 ```
 
 **Use Case**: Full VPN-like experience without traditional VPN protocols
@@ -315,39 +315,39 @@ Client ──[CONNECT-IP request]──> MASQUE Proxy ──[IP Layer]──> In
 CONNECT-IP / HTTP/3
 Host: masque-proxy.cloudbridge.network
 Capsule-Protocol: ?1
-IP-Protocol: 4  # IPv4
+IP-Protocol: 4 # IPv4
 ```
 
 ### Architecture
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
-│                    MASQUE Architecture                      │
+│ MASQUE Architecture │
 ├─────────────────────────────────────────────────────────────┤
-│                                                             │
-│  Corporate Network              │      Open Internet        │
-│                                 │                           │
-│  ┌────────────┐                 │      ┌──────────────┐     │
-│  │   Client   │                 │      │ MASQUE Proxy │     │
-│  │            │                 │      │ (CloudBridge)│     │
-│  └──────┬─────┘                 │      └──────┬───────┘     │
-│         │                       │             │             │
-│         │ 1. HTTP/3 CONNECT-UDP │             │             │
-│         │ ─────────────────────────────────>  │             │
-│         │                       │             │             │
-│         │ 2. HTTP/3 200 OK      │             │             │
-│         │ <─────────────────────────────────  │             │
-│         │                       │             │             │
-│         │ 3. Encapsulated UDP   │             │             │
-│         │    in HTTP/3 Capsules │             │ 4. Real UDP │
-│         │ ─────────────────────────────────> │ ──────────>  │
-│         │                       │             │   Target    │
-│         │ 5. Response           │             │             │
-│         │ <───────────────────────────────── │ <──────────  │
-│                                 │                           │
-│  Firewall sees: HTTPS (TCP:443) │  Proxy sees: UDP traffic  │
-│  ✓ Allowed                      │  ✓ Direct forwarding      │
-│                                 │                           │
+│ │
+│ Corporate Network │ Open Internet │
+│ │ │
+│ ┌────────────┐ │ ┌──────────────┐ │
+│ │ Client │ │ │ MASQUE Proxy │ │
+│ │ │ │ │ (CloudBridge)│ │
+│ └──────┬─────┘ │ └──────┬───────┘ │
+│ │ │ │ │
+│ │ 1. HTTP/3 CONNECT-UDP │ │ │
+│ │ ─────────────────────────────────> │ │
+│ │ │ │ │
+│ │ 2. HTTP/3 200 OK │ │ │
+│ │ <───────────────────────────────── │ │
+│ │ │ │ │
+│ │ 3. Encapsulated UDP │ │ │
+│ │ in HTTP/3 Capsules │ │ 4. Real UDP │
+│ │ ─────────────────────────────────> │ ──────────> │
+│ │ │ │ Target │
+│ │ 5. Response │ │ │
+│ │ <───────────────────────────────── │ <────────── │
+│ │ │
+│ Firewall sees: HTTPS (TCP:443) │ Proxy sees: UDP traffic │
+│ Allowed │ Direct forwarding │
+│ │ │
 └─────────────────────────────────────────────────────────────┘
 ```
 
@@ -379,7 +379,7 @@ iceAgent.UseConnection(masqueConn)
 
 ```
 Branch Office ──[MASQUE over cellular]──> HQ PoP ──> Corporate Resources
-(No VPN hardware)                         (CloudBridge)
+(No VPN hardware) (CloudBridge)
 ```
 
 **Benefits**:
@@ -416,11 +416,11 @@ masque:
     - protocol: connect-udp
       listen_addr: ":443"
       allowed_targets:
-        - "*.cloudbridge.network:3478"  # STUN servers
+        - "*.cloudbridge.network:3478" # STUN servers
         - "*.cloudbridge.network:19302" # TURN servers
     - protocol: connect-ip
       listen_addr: ":443"
-      ip_protocols: [4, 6]  # IPv4, IPv6
+      ip_protocols: [4, 6] # IPv4, IPv6
 ```
 
 ---
@@ -454,41 +454,41 @@ masque:
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
-│                  ICE Connection Process                     │
+│ ICE Connection Process │
 ├─────────────────────────────────────────────────────────────┤
-│                                                             │
-│  Peer A                                        Peer B       │
-│  (Behind NAT)                                  (Behind NAT) │
-│                                                             │
-│  Step 1: Gather Candidates                                  │
-│  ┌──────────────────────────┐                 ┌───────────┐ │
-│  │ Host:                    │                 │ Host:     │ │
-│  │ 10.0.0.5                 │                 │ 10.0.1.8  │ │
-│  │                          │                 │           │ │
-│  │ Server Reflex (via STUN):│                 │ Server    │ │
-│  │ 203.0.113.5:41234        │                 │ Reflex:   │ │
-│  │                          │                 │ 198.51... │ │
-│  └──────────────────────────┘                 └───────────┘ │
-│         │                                            │      │
-│         │ Step 2: Exchange via Signaling Server      │      │
-│         │           (WebSocket/CloudBridge)          │      │
-│         │ ──────────────────────────────────────────>│      │
-│         │ <──────────────────────────────────────────       │
-│         │                                            │      │
-│  Step 3: Connectivity Checks (STUN Binding)          │      │
-│         │                                            │      │
-│         │ ──── Try Host-to-Host ────────────────X    │      │
-│         │      (Blocked by NAT)                      │      │
-│         │                                            │      │
-│         │ ──── Try Server Reflex ──────────────────> │      │
-│         │ <───────────────────────────────────────── │      │
-│         │              ✓ SUCCESS                     │      │
-│         │                                            │      │
-│  Step 4: Establish P2P Data Channel                  │      │
-│         │ <════════════════════════════════════════> │      │
-│         │         Direct UDP Connection              │      │
-│         │         (bypassing CloudBridge relay)      │      │
-│                                                             │
+│ │
+│ Peer A Peer B │
+│ (Behind NAT) (Behind NAT) │
+│ │
+│ Step 1: Gather Candidates │
+│ ┌──────────────────────────┐ ┌───────────┐ │
+│ │ Host: │ │ Host: │ │
+│ │ 10.0.0.5 │ │ 10.0.1.8 │ │
+│ │ │ │ │ │
+│ │ Server Reflex (via STUN):│ │ Server │ │
+│ │ 203.0.113.5:41234 │ │ Reflex: │ │
+│ │ │ │ 198.51... │ │
+│ └──────────────────────────┘ └───────────┘ │
+│ │ │ │
+│ │ Step 2: Exchange via Signaling Server │ │
+│ │ (WebSocket/CloudBridge) │ │
+│ │ ──────────────────────────────────────────>│ │
+│ │ <────────────────────────────────────────── │
+│ │ │ │
+│ Step 3: Connectivity Checks (STUN Binding) │ │
+│ │ │ │
+│ │ ──── Try Host-to-Host ────────────────X │ │
+│ │ (Blocked by NAT) │ │
+│ │ │ │
+│ │ ──── Try Server Reflex ──────────────────> │ │
+│ │ <───────────────────────────────────────── │ │
+│ │ SUCCESS │ │
+│ │ │ │
+│ Step 4: Establish P2P Data Channel │ │
+│ │ <════════════════════════════════════════> │ │
+│ │ Direct UDP Connection │ │
+│ │ (bypassing CloudBridge relay) │ │
+│ │
 └─────────────────────────────────────────────────────────────┘
 ```
 
@@ -575,24 +575,24 @@ Mobile App ──[TURN]──> CloudBridge Relay ──[TURN]──> IoT Device
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
-│              CloudBridge STUN/TURN Infrastructure           │
+│ CloudBridge STUN/TURN Infrastructure │
 ├─────────────────────────────────────────────────────────────┤
-│                                                             │
-│  Global PoPs:                                               │
-│                                                             │
-│  ┌─────────────┐   ┌─────────────┐   ┌─────────────┐        │
-│  │  Moscow PoP │   │ Frankfurt   │   │ Amsterdam   │        │
-│  │             │   │     PoP     │   │     PoP     │        │
-│  │ STUN: :3478 │   │ STUN: :3478 │   │ STUN: :3478 │        │
-│  │ TURN: :3478 │   │ TURN: :3478 │   │ TURN: :3478 │        │
-│  │ TURNS::5349 │   │ TURNS::5349 │   │ TURNS::5349 │        │
-│  └─────────────┘   └─────────────┘   └─────────────┘        │
-│                                                             │
-│  Client selects nearest PoP based on:                       │
-│  • GeoDNS (anycast resolution)                              │
-│  • AI routing (latency optimization)                        │
-│  • Load balancing (server capacity)                         │
-│                                                             │
+│ │
+│ Global PoPs: │
+│ │
+│ ┌─────────────┐ ┌─────────────┐ ┌─────────────┐ │
+│ │ Moscow PoP │ │ Frankfurt │ │ Amsterdam │ │
+│ │ │ │ PoP │ │ PoP │ │
+│ │ STUN: :3478 │ │ STUN: :3478 │ │ STUN: :3478 │ │
+│ │ TURN: :3478 │ │ TURN: :3478 │ │ TURN: :3478 │ │
+│ │ TURNS::5349 │ │ TURNS::5349 │ │ TURNS::5349 │ │
+│ └─────────────┘ └─────────────┘ └─────────────┘ │
+│ │
+│ Client selects nearest PoP based on: │
+│ • GeoDNS (anycast resolution) │
+│ • AI routing (latency optimization) │
+│ • Load balancing (server capacity) │
+│ │
 └─────────────────────────────────────────────────────────────┘
 ```
 
@@ -620,7 +620,7 @@ ice:
     - stun.cloudbridge.network:3478
   turn_servers:
     - turn.cloudbridge.network:3478
-    - turns.cloudbridge.network:5349  # TLS
+    - turns.cloudbridge.network:5349 # TLS
   credential_ttl: 24h
   realm: "cloudbridge.network"
 ```
@@ -663,28 +663,28 @@ ice:
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
-│                 WireGuard in CloudBridge                    │
+│ WireGuard in CloudBridge │
 ├─────────────────────────────────────────────────────────────┤
-│                                                             │
-│  Peer A                                        Peer B       │
-│  ┌────────────────┐                      ┌────────────────┐ │
-│  │ WireGuard      │                      │ WireGuard      │ │
-│  │ Interface      │                      │ Interface      │ │
-│  │ wg0: 10.8.0.1  │                      │ wg0: 10.8.0.2  │ │
-│  └───────┬────────┘                      └────────┬───────┘ │
-│          │                                        │         │
-│          │ Encrypted UDP (port 51820)             │         │
-│          │ ═══════════════════════════════════════          │
-│          │                                        │         │
-│          │ ┌─────────────────────────────┐        │         │
-│          └─┤  CloudBridge Signaling      │────────┘         │
-│            │  (Key exchange, endpoints)  │                  │
-│            └─────────────────────────────┘                  │
-│                                                             │
-│  Traffic Flow:                                              │
-│  Application ──> wg0 ──> Encrypt ──> UDP ──> Internet       │
-│              <── wg0 <── Decrypt <── UDP <── Internet       │
-│                                                             │
+│ │
+│ Peer A Peer B │
+│ ┌────────────────┐ ┌────────────────┐ │
+│ │ WireGuard │ │ WireGuard │ │
+│ │ Interface │ │ Interface │ │
+│ │ wg0: 10.8.0.1 │ │ wg0: 10.8.0.2 │ │
+│ └───────┬────────┘ └────────┬───────┘ │
+│ │ │ │
+│ │ Encrypted UDP (port 51820) │ │
+│ │ ═══════════════════════════════════════ │
+│ │ │ │
+│ │ ┌─────────────────────────────┐ │ │
+│ └─┤ CloudBridge Signaling │────────┘ │
+│ │ (Key exchange, endpoints) │ │
+│ └─────────────────────────────┘ │
+│ │
+│ Traffic Flow: │
+│ Application ──> wg0 ──> Encrypt ──> UDP ──> Internet │
+│ <── wg0 <── Decrypt <── UDP <── Internet │
+│ │
 └─────────────────────────────────────────────────────────────┘
 ```
 
@@ -696,7 +696,7 @@ ice:
 
 ```
 IoT Device ──[WireGuard]──> Gateway ──> CloudBridge
-(Minimal CPU/RAM)           (Edge device)
+(Minimal CPU/RAM) (Edge device)
 ```
 
 **Benefits**:
@@ -721,7 +721,7 @@ PersistentKeepalive = 25
 
 ```
 Branch Office ──[WireGuard]──> CloudBridge PoP ──> HQ Network
-(Router with WG)                (Moscow/Frankfurt)
+(Router with WG) (Moscow/Frankfurt)
 ```
 
 **Why WireGuard here?**
@@ -841,38 +841,38 @@ db.StoreWireGuardKey(tenantID, deviceID, publicKey)
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
-│               WebSocket Control Plane                       │
+│ WebSocket Control Plane │
 ├─────────────────────────────────────────────────────────────┤
-│                                                             │
-│  Client                          CloudBridge Server         │
-│                                                             │
-│  ┌──────────────┐                ┌───────────────────┐      │
-│  │  WebSocket   │                │  WebSocket        │      │
-│  │  Client      │                │  Server (Gin)     │      │
-│  └──────┬───────┘                └─────────┬─────────┘      │
-│         │                                  │                │
-│         │ 1. HTTP Upgrade Request          │                │
-│         │ ────────────────────────────────>│                │
-│         │    GET /ws HTTP/1.1              │                │
-│         │    Upgrade: websocket            │                │
-│         │    Connection: Upgrade           │                │
-│         │                                  │                │
-│         │ 2. 101 Switching Protocols       │                │
-│         │ <────────────────────────────────│                │
-│         │    HTTP/1.1 101 Switching        │                │
-│         │    Upgrade: websocket            │                │
-│         │                                  │                │
-│         │ 3. Bidirectional Messages        │                │
-│         │ <══════════════════════════════> │                │
-│         │                                  │                │
-│         │ ┌──────────────────────────┐     │                │
-│         │ │ Message Types:           │     │                │
-│         │ │ • ICE candidates         │     │                │
-│         │ │ • SDP offer/answer       │     │                │
-│         │ │ • Heartbeat pings        │     │                │
-│         │ │ • Mesh topology updates  │     │                │
-│         │ └──────────────────────────┘     │                │
-│         │                                  │                │
+│ │
+│ Client CloudBridge Server │
+│ │
+│ ┌──────────────┐ ┌───────────────────┐ │
+│ │ WebSocket │ │ WebSocket │ │
+│ │ Client │ │ Server (Gin) │ │
+│ └──────┬───────┘ └─────────┬─────────┘ │
+│ │ │ │
+│ │ 1. HTTP Upgrade Request │ │
+│ │ ────────────────────────────────>│ │
+│ │ GET /ws HTTP/1.1 │ │
+│ │ Upgrade: websocket │ │
+│ │ Connection: Upgrade │ │
+│ │ │ │
+│ │ 2. 101 Switching Protocols │ │
+│ │ <────────────────────────────────│ │
+│ │ HTTP/1.1 101 Switching │ │
+│ │ Upgrade: websocket │ │
+│ │ │ │
+│ │ 3. Bidirectional Messages │ │
+│ │ <══════════════════════════════> │ │
+│ │ │ │
+│ │ ┌──────────────────────────┐ │ │
+│ │ │ Message Types: │ │ │
+│ │ │ • ICE candidates │ │ │
+│ │ │ • SDP offer/answer │ │ │
+│ │ │ • Heartbeat pings │ │ │
+│ │ │ • Mesh topology updates │ │ │
+│ │ └──────────────────────────┘ │ │
+│ │ │ │
 └─────────────────────────────────────────────────────────────┘
 ```
 
@@ -911,16 +911,16 @@ CloudBridge uses **JSON-based message protocol** over WebSocket:
 #### 1. WebRTC Signaling Exchange
 
 ```
-Peer A                  WebSocket Server           Peer B
-  │                            │                      │
-  │ ──[SDP Offer]────────────> │                      │
-  │                            │ ──[Forward offer]──> │
-  │                            │                      │
-  │                            │ <──[SDP Answer]──────│
-  │ <──[Forward answer]─────── │                      │
-  │                            │                      │
-  │ ──[ICE Candidate]────────> │ ──[Forward]───────>  │
-  │ <──[ICE Candidate]──────── │ <──[Forward]──────   │
+Peer A WebSocket Server Peer B
+  │ │ │
+  │ ──[SDP Offer]────────────> │ │
+  │ │ ──[Forward offer]──> │
+  │ │ │
+  │ │ <──[SDP Answer]──────│
+  │ <──[Forward answer]─────── │ │
+  │ │ │
+  │ ──[ICE Candidate]────────> │ ──[Forward]───────> │
+  │ <──[ICE Candidate]──────── │ <──[Forward]────── │
 ```
 
 **Code Example**:
@@ -947,13 +947,13 @@ ws.onmessage = (event) => {
 #### 2. Heartbeat & Session Management
 
 ```
-Client                    Server
-  │                          │
+Client Server
+  │ │
   │ ──[heartbeat]──────────> │ (every 30s)
   │ <──[ack]─────────────────│
-  │                          │
-  │        (60s timeout)     │
-  │                          │ (server marks client offline)
+  │ │
+  │ (60s timeout) │
+  │ │ (server marks client offline)
 ```
 
 **Purpose**:
@@ -992,7 +992,7 @@ Server broadcasts to all peers in mesh:
   "peers": [
     {"id": "peer-a", "status": "online"},
     {"id": "peer-b", "status": "online"},
-    {"id": "peer-c", "status": "offline"}  // New info
+    {"id": "peer-c", "status": "offline"} // New info
   ]
 }
 ```
@@ -1032,7 +1032,7 @@ websocket:
   # Performance tuning
   read_buffer_size: 1024
   write_buffer_size: 1024
-  max_message_size: 65536  # 64 KB
+  max_message_size: 65536 # 64 KB
 
   # Timeouts
   handshake_timeout: 10s
@@ -1067,54 +1067,54 @@ websocket:
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
-│                 Protocol Selection Flowchart                │
+│ Protocol Selection Flowchart │
 └─────────────────────────────────────────────────────────────┘
 
 START: Need to connect peers/clients
   │
   ├─> Is this CONTROL PLANE communication?
-  │   (signaling, heartbeat, small messages)
-  │   │
-  │   └─> YES ──> Use WebSocket (WSS)
-  │              • ICE signaling
-  │              • Heartbeats
-  │              • Mesh updates
+  │ (signaling, heartbeat, small messages)
+  │ │
+  │ └─> YES ──> Use WebSocket (WSS)
+  │ • ICE signaling
+  │ • Heartbeats
+  │ • Mesh updates
   │
   ├─> Is this DATA PLANE communication?
-  │   (bulk data, streaming, file transfer)
-  │   │
-  │   ├─> Can both peers reach each other directly? (No NAT/firewall)
-  │   │   │
-  │   │   └─> YES ──> Use QUIC (HTTP/3)
-  │   │              • Inter-PoP
-  │   │              • Client-to-Relay
-  │   │              • Best performance
-  │   │
-  │   ├─> Are peers behind NAT/firewall?
-  │   │   │
-  │   │   ├─> Is UDP blocked? (corporate network)
-  │   │   │   │
-  │   │   │   └─> YES ──> Use MASQUE (CONNECT-UDP/IP over QUIC/HTTPS)
-  │   │   │              • Bypasses corporate firewall
-  │   │   │              • Looks like HTTPS
-  │   │   │
-  │   │   ├─> Is WebRTC too heavyweight? (IoT, embedded)
-  │   │   │   │
-  │   │   │   └─> YES ──> Use WireGuard
-  │   │   │              • Simple P2P tunnel
-  │   │   │              • Low resource usage
-  │   │   │              • Stealth mode
-  │   │   │
-  │   │   └─> Otherwise ──> Use WebRTC/ICE
-  │   │                    • Standard P2P
-  │   │                    • NAT traversal
-  │   │                    • TURN fallback
-  │   │
-  │   └─> Is this IoT/embedded device with strict resource limits?
-  │       │
-  │       └─> YES ──> Use WireGuard
-  │                  • Kernel-space efficiency
-  │                  • Minimal CPU/RAM
+  │ (bulk data, streaming, file transfer)
+  │ │
+  │ ├─> Can both peers reach each other directly? (No NAT/firewall)
+  │ │ │
+  │ │ └─> YES ──> Use QUIC (HTTP/3)
+  │ │ • Inter-PoP
+  │ │ • Client-to-Relay
+  │ │ • Best performance
+  │ │
+  │ ├─> Are peers behind NAT/firewall?
+  │ │ │
+  │ │ ├─> Is UDP blocked? (corporate network)
+  │ │ │ │
+  │ │ │ └─> YES ──> Use MASQUE (CONNECT-UDP/IP over QUIC/HTTPS)
+  │ │ │ • Bypasses corporate firewall
+  │ │ │ • Looks like HTTPS
+  │ │ │
+  │ │ ├─> Is WebRTC too heavyweight? (IoT, embedded)
+  │ │ │ │
+  │ │ │ └─> YES ──> Use WireGuard
+  │ │ │ • Simple P2P tunnel
+  │ │ │ • Low resource usage
+  │ │ │ • Stealth mode
+  │ │ │
+  │ │ └─> Otherwise ──> Use WebRTC/ICE
+  │ │ • Standard P2P
+  │ │ • NAT traversal
+  │ │ • TURN fallback
+  │ │
+  │ └─> Is this IoT/embedded device with strict resource limits?
+  │ │
+  │ └─> YES ──> Use WireGuard
+  │ • Kernel-space efficiency
+  │ • Minimal CPU/RAM
   │
   └─> End
 ```
@@ -1184,42 +1184,42 @@ START: Need to connect peers/clients
 
 | Protocol | Encryption | Key Exchange | Forward Secrecy | Post-Quantum Ready |
 |----------|-----------|--------------|-----------------|-------------------|
-| **QUIC** | TLS 1.3 (AES-GCM/ChaCha20) | ECDHE | ✓ Yes | Hybrid mode planned |
-| **MASQUE** | TLS 1.3 | ECDHE | ✓ Yes | Same as QUIC |
-| **WebRTC** | DTLS 1.2+ / SRTP | ECDHE | ✓ Yes | No |
-| **WireGuard** | ChaCha20-Poly1305 | Curve25519 | ✓ Yes | No (v2 planned) |
-| **WebSocket** | TLS 1.3 | ECDHE | ✓ Yes | Depends on TLS |
+| **QUIC** | TLS 1.3 (AES-GCM/ChaCha20) | ECDHE | Yes | Hybrid mode planned |
+| **MASQUE** | TLS 1.3 | ECDHE | Yes | Same as QUIC |
+| **WebRTC** | DTLS 1.2+ / SRTP | ECDHE | Yes | No |
+| **WireGuard** | ChaCha20-Poly1305 | Curve25519 | Yes | No (v2 planned) |
+| **WebSocket** | TLS 1.3 | ECDHE | Yes | Depends on TLS |
 
 ### Authentication Mechanisms
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
-│              Authentication per Protocol                    │
+│ Authentication per Protocol │
 ├─────────────────────────────────────────────────────────────┤
-│                                                             │
-│  QUIC:                                                      │
-│  • TLS 1.3 mutual auth (client certificates)                │
-│  • OR: HTTP/3 Authorization header (JWT from Zitadel)       │
-│                                                             │
-│  MASQUE:                                                    │
-│  • HTTP/3 Authorization header (required)                   │
-│  • Validates JWT before CONNECT-UDP/IP                      │
-│                                                             │
-│  WebRTC/ICE:                                                │
-│  • TURN credentials (temporary, time-limited)               │
-│  • Generated per-session by CloudBridge                     │
-│  • HMAC-based authentication                                │
-│                                                             │
-│  WireGuard:                                                 │
-│  • Public key cryptography (no passwords)                   │
-│  • Pre-shared keys stored in CloudBridge DB                 │
-│  • Key rotation every 30 days                               │
-│                                                             │
-│  WebSocket:                                                 │
-│  • JWT in query parameter or header                         │
-│  • Validated before WebSocket upgrade                       │
-│  • Auto-disconnect on token expiry                          │
-│                                                             │
+│ │
+│ QUIC: │
+│ • TLS 1.3 mutual auth (client certificates) │
+│ • OR: HTTP/3 Authorization header (JWT from Zitadel) │
+│ │
+│ MASQUE: │
+│ • HTTP/3 Authorization header (required) │
+│ • Validates JWT before CONNECT-UDP/IP │
+│ │
+│ WebRTC/ICE: │
+│ • TURN credentials (temporary, time-limited) │
+│ • Generated per-session by CloudBridge │
+│ • HMAC-based authentication │
+│ │
+│ WireGuard: │
+│ • Public key cryptography (no passwords) │
+│ • Pre-shared keys stored in CloudBridge DB │
+│ • Key rotation every 30 days │
+│ │
+│ WebSocket: │
+│ • JWT in query parameter or header │
+│ • Validated before WebSocket upgrade │
+│ • Auto-disconnect on token expiry │
+│ │
 └─────────────────────────────────────────────────────────────┘
 ```
 
@@ -1344,22 +1344,22 @@ CloudBridge's **five-protocol architecture** обеспечивает:
 
 | Feature | QUIC | MASQUE | WebRTC/ICE | WireGuard | WebSocket |
 |---------|------|--------|------------|-----------|-----------|
-| **0-RTT Handshake** | ✓ | ✓ | ✗ | ✓ | ✗ |
-| **NAT Traversal** | ✗ | ✗ | ✓ | ✗ | ✗ |
-| **Connection Migration** | ✓ | ✓ | ✗ | ✓ | ✗ |
-| **Multiplexing** | ✓ | ✓ | ✓ | ✗ | ✗ |
-| **Firewall Bypass** | | ✓ | | ✗ | ✓ |
-| **Browser Support** | | | ✓ | ✗ | ✓ |
-| **P2P Direct** | ✗ | ✗ | ✓ | ✓ | ✗ |
-| **Low Resource (IoT)** | ✗ | ✗ | ✗ | ✓ | ✓ |
-| **High Throughput** | ✓ | ✓ | | ✓✓ | ✗ |
-| **Low Latency** | ✓✓ | ✓ | ✓✓ | ✓✓ | |
+| **0-RTT Handshake** | | | | | |
+| **NAT Traversal** | | | | | |
+| **Connection Migration** | | | | | |
+| **Multiplexing** | | | | | |
+| **Firewall Bypass** | | | | | |
+| **Browser Support** | | | | | |
+| **P2P Direct** | | | | | |
+| **Low Resource (IoT)** | | | | | |
+| **High Throughput** | | | | | |
+| **Low Latency** | | | | | |
 
 Legend:
-- ✓✓ Excellent
-- ✓ Good
+- Excellent
+- Good
 - Partial / Depends
-- ✗ Not supported
+- Not supported
 
 ---
 
